@@ -1,0 +1,253 @@
+#!/bin/bash
+# backtester — manage Polymarket backtesting strategies
+#
+# Usage:
+#   backtester start <strategy>      Start a strategy (fresh $100)
+#   backtester stop <strategy>       Stop a running strategy
+#   backtester restart <strategy>    Stop + start fresh
+#   backtester follow <strategy>     Tail live logs
+#   backtester status [strategy]     Show balance & stats
+#   backtester list                  List all strategies
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+BACKTEST_DIR="$SCRIPT_DIR/backtesting"
+VENV="$BACKTEST_DIR/.venv/bin/python"
+PLIST_DIR="$HOME/Library/LaunchAgents"
+PLIST_PREFIX="com.polymarket.backtester"
+
+strategy_plist() { echo "$PLIST_DIR/${PLIST_PREFIX}.${1}.plist"; }
+strategy_db()    { echo "$BACKTEST_DIR/db_${1}.db"; }
+strategy_log()   { echo "$BACKTEST_DIR/logs_${1}.log"; }
+
+is_running() {
+    launchctl list 2>/dev/null | grep -q "${PLIST_PREFIX}.${1}"
+}
+
+cmd_start() {
+    local strategy="$1"
+    if [ -z "$strategy" ]; then
+        echo "Usage: backtester start <strategy>"
+        echo ""
+        echo "Available strategies:"
+        for f in "$BACKTEST_DIR/strategies/"*.py; do
+            [ -f "$f" ] || continue
+            local name=$(basename "$f" .py)
+            [ "$name" = "__init__" ] && continue
+            echo "  $name"
+        done
+        return 1
+    fi
+
+    if [ ! -f "$BACKTEST_DIR/strategies/${strategy}.py" ]; then
+        echo "Strategy not found: ${strategy}"
+        echo "Run 'backtester list' to see available strategies."
+        return 1
+    fi
+
+    if is_running "$strategy"; then
+        echo "Strategy '$strategy' is already running."
+        echo ""
+        echo "  backtester follow $strategy    — view live logs"
+        echo "  backtester status $strategy    — check stats"
+        echo "  backtester restart $strategy   — restart fresh"
+        echo "  backtester stop $strategy      — stop it"
+        return 0
+    fi
+
+    local db_path=$(strategy_db "$strategy")
+    local log_path=$(strategy_log "$strategy")
+    local plist=$(strategy_plist "$strategy")
+
+    # Fresh start: clear logs and DB
+    > "$log_path"
+    rm -f "$db_path"
+
+    mkdir -p "$PLIST_DIR"
+
+    cat > "$plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>${PLIST_PREFIX}.${strategy}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>${VENV}</string>
+        <string>${BACKTEST_DIR}/run_live.py</string>
+        <string>--strategy</string>
+        <string>${strategy}</string>
+        <string>--reset</string>
+        <string>--balance</string>
+        <string>100</string>
+        <string>--db</string>
+        <string>${db_path}</string>
+        <string>--log</string>
+        <string>${log_path}</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>${SCRIPT_DIR}</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>${log_path}</string>
+    <key>StandardErrorPath</key>
+    <string>${log_path}</string>
+</dict>
+</plist>
+EOF
+
+    launchctl load "$plist"
+    echo "Started strategy '$strategy'"
+    echo ""
+    echo "  Balance:  \$100.00"
+    echo "  DB:       $db_path"
+    echo "  Logs:     $log_path"
+    echo ""
+    echo "  backtester follow $strategy    — view live logs"
+    echo "  backtester status $strategy    — check stats"
+    echo "  backtester stop $strategy      — stop it"
+}
+
+cmd_stop() {
+    local strategy="$1"
+    if [ -z "$strategy" ]; then
+        echo "Usage: backtester stop <strategy>"
+        return 1
+    fi
+
+    local plist=$(strategy_plist "$strategy")
+
+    if ! is_running "$strategy"; then
+        echo "Strategy '$strategy' is not running."
+        return 0
+    fi
+
+    launchctl unload "$plist" 2>/dev/null
+    rm -f "$plist"
+    echo "Stopped strategy '$strategy'"
+}
+
+cmd_restart() {
+    local strategy="$1"
+    if [ -z "$strategy" ]; then
+        echo "Usage: backtester restart <strategy>"
+        return 1
+    fi
+
+    cmd_stop "$strategy" 2>/dev/null || true
+    sleep 1
+    cmd_start "$strategy"
+}
+
+cmd_follow() {
+    local strategy="$1"
+    if [ -z "$strategy" ]; then
+        echo "Usage: backtester follow <strategy>"
+        return 1
+    fi
+
+    local log_path=$(strategy_log "$strategy")
+    if [ ! -f "$log_path" ]; then
+        echo "No logs found for '$strategy'. Has it been started?"
+        return 1
+    fi
+
+    tail -f "$log_path"
+}
+
+cmd_status() {
+    local strategy="$1"
+
+    if [ -n "$strategy" ]; then
+        local db_path=$(strategy_db "$strategy")
+        local running="stopped"
+        is_running "$strategy" && running="RUNNING"
+
+        echo "Strategy: $strategy [$running]"
+        echo ""
+        if [ -f "$db_path" ]; then
+            "$VENV" -c "
+import sys; sys.path.insert(0, '$BACKTEST_DIR')
+import db
+stats = db.get_stats(db_path='$db_path')
+print(f'  Balance:     \${stats[\"balance\"]:.2f}')
+print(f'  Trades:      {stats[\"total_trades\"]}')
+print(f'  Wins:        {stats[\"wins\"]}')
+print(f'  Losses:      {stats[\"losses\"]}')
+print(f'  Win Rate:    {stats[\"win_rate\"]:.1f}%')
+print(f'  PnL:        \${stats[\"total_pnl\"]:+.2f}')
+print(f'  Fees:       \${stats[\"total_fees\"]:.2f}')
+print(f'  Open Bets:   {stats[\"open_positions\"]}')
+" 2>/dev/null || echo "  No data yet"
+        else
+            echo "  No data yet. Start with: backtester start $strategy"
+        fi
+    else
+        echo "=== Backtester Status ==="
+        echo ""
+        local found=false
+        for f in "$BACKTEST_DIR/strategies/"*.py; do
+            [ -f "$f" ] || continue
+            local name=$(basename "$f" .py)
+            [ "$name" = "__init__" ] && continue
+            local db_path=$(strategy_db "$name")
+            local running="stopped"
+            is_running "$name" && running="RUNNING"
+
+            if [ -f "$db_path" ]; then
+                found=true
+                "$VENV" -c "
+import sys; sys.path.insert(0, '$BACKTEST_DIR')
+import db
+stats = db.get_stats(db_path='$db_path')
+wr = f\"{stats['win_rate']:.0f}%\" if stats['total_trades'] > 0 else '-'
+print(f'  {\"$name\":<25s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]}/{stats[\"losses\"]}  WR: {wr}  PnL: \${stats[\"total_pnl\"]:+.2f}')
+" 2>/dev/null
+            else
+                echo "  ${name}  [${running}]  no data"
+            fi
+        done
+        if [ "$found" = false ]; then
+            echo "  No strategies have run yet."
+            echo "  Start one with: backtester start <strategy>"
+        fi
+    fi
+}
+
+cmd_list() {
+    echo "Available strategies:"
+    echo ""
+    for f in "$BACKTEST_DIR/strategies/"*.py; do
+        [ -f "$f" ] || continue
+        local name=$(basename "$f" .py)
+        [ "$name" = "__init__" ] && continue
+        local status="stopped"
+        is_running "$name" && status="RUNNING"
+        printf "  %-25s [%s]\n" "$name" "$status"
+    done
+}
+
+case "${1:-}" in
+    start)   cmd_start "$2" ;;
+    stop)    cmd_stop "$2" ;;
+    restart) cmd_restart "$2" ;;
+    follow)  cmd_follow "$2" ;;
+    status)  cmd_status "$2" ;;
+    list)    cmd_list ;;
+    *)
+        echo "backtester — manage Polymarket backtesting strategies"
+        echo ""
+        echo "Usage:"
+        echo "  backtester start <strategy>      Start fresh (\$100 balance)"
+        echo "  backtester stop <strategy>       Stop a running strategy"
+        echo "  backtester restart <strategy>    Restart fresh"
+        echo "  backtester follow <strategy>     Tail live logs"
+        echo "  backtester status [strategy]     Show stats (all or one)"
+        echo "  backtester list                  List all strategies"
+        ;;
+esac

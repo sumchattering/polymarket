@@ -6,7 +6,7 @@ Backtesting configuration — all tunable parameters in one place.
 INITIAL_BALANCE = 100.0
 
 # Position sizing
-DEFAULT_BET_SIZE = 2.0      # USD per bet
+DEFAULT_BET_SIZE = 5.0      # USD per bet
 MIN_BET_SIZE = 0.50         # Minimum bet
 MAX_BET_SIZE = 10.0         # Maximum bet
 MAX_CONCURRENT_BETS = 10    # Max open positions at once

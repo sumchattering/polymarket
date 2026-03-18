@@ -1,0 +1,18 @@
+2026-03-18 04:17:08,976 [INFO] === Starting live backtester ===
+2026-03-18 04:17:08,976 [INFO] === Starting live backtester ===
+2026-03-18 04:17:08,977 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:17:08,977 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:17:08,977 [INFO] Bet size: $5.00 | Max entry delay: 30s
+2026-03-18 04:17:08,977 [INFO] Bet size: $5.00 | Max entry delay: 30s
+2026-03-18 04:17:08,977 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_simple_btc_ob.db
+2026-03-18 04:17:08,977 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_simple_btc_ob.db
+2026-03-18 04:17:08,979 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:17:08,979 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:17:09,101 [INFO] Market: Bitcoin Up or Down - March 18, 12:15AM-12:20AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 129s | Remaining: 171s
+2026-03-18 04:17:09,101 [INFO] Market: Bitcoin Up or Down - March 18, 12:15AM-12:20AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 129s | Remaining: 171s
+2026-03-18 04:17:09,101 [INFO] Too late in window (129s > 30s), waiting for next
+2026-03-18 04:17:09,101 [INFO] Too late in window (129s > 30s), waiting for next
+2026-03-18 04:17:09,105 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:17:09,105 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:17:09,105 [INFO] Waiting 171s for next 5-min window...
+2026-03-18 04:17:09,105 [INFO] Waiting 171s for next 5-min window...

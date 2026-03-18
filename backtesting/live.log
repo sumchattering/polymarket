@@ -1,0 +1,103 @@
+2026-03-18 03:21:34,485 [INFO] Starting live backtester: strategy=simple_btc_ob coin=bitcoin tf=5m
+2026-03-18 03:21:34,485 [INFO] Bet size: $5.00 | Max concurrent: 10
+2026-03-18 03:21:34,487 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 03:21:37,303 [INFO] BTC: $74,301.42 | Balance: $100.00 | Open: 0
+2026-03-18 03:21:38,007 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:21:38,011 [INFO] Placed trade #4: UP $5.00
+2026-03-18 03:21:38,013 [INFO] Stats | Balance: $95.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 03:21:38,014 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:26:01,503 [INFO] Shutting down gracefully...
+2026-03-18 03:26:02,422 [INFO] Shutdown complete
+2026-03-18 03:26:02,424 [INFO] Stats | Balance: $95.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 03:26:04,592 [INFO] Starting live backtester: strategy=simple_btc_ob coin=bitcoin tf=5m
+2026-03-18 03:26:04,592 [INFO] Bet size: $5.00 | Max concurrent: 10
+2026-03-18 03:26:04,595 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 03:26:07,293 [INFO] BTC: $74,514.01 | Balance: $100.00 | Open: 0
+2026-03-18 03:26:08,008 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:26:08,516 [INFO] Market: Bitcoin Up or Down - March 18, 1:45AM-1:50AM ET | UP ask: 0.51
+2026-03-18 03:26:08,519 [INFO] Placed trade #5: UP $5.00
+2026-03-18 03:26:08,521 [INFO] Stats | Balance: $95.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 03:26:08,522 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:31:10,594 [INFO] BTC: $74,530.00 | Balance: $104.32 | Open: 0
+2026-03-18 03:31:11,286 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:31:11,814 [INFO] Market: Bitcoin Up or Down - March 18, 12:20AM-12:25AM ET | UP ask: 0.51
+2026-03-18 03:31:11,816 [INFO] Placed trade #6: UP $5.00
+2026-03-18 03:31:11,818 [INFO] Stats | Balance: $99.32 | Trades: 1 | W/L: 1/0 | Win Rate: 100.0% | PnL: $+4.32
+2026-03-18 03:31:11,818 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:36:14,015 [INFO] BTC: $74,611.33 | Balance: $108.65 | Open: 0
+2026-03-18 03:36:14,744 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:36:15,638 [INFO] Market: Bitcoin Up or Down - March 18, 12:25AM-12:30AM ET | UP ask: 0.51
+2026-03-18 03:36:15,642 [INFO] Placed trade #7: UP $5.00
+2026-03-18 03:36:15,646 [INFO] Stats | Balance: $103.65 | Trades: 2 | W/L: 2/0 | Win Rate: 100.0% | PnL: $+8.65
+2026-03-18 03:36:15,646 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:41:17,955 [INFO] BTC: $74,494.35 | Balance: $103.65 | Open: 0
+2026-03-18 03:41:18,660 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:41:19,750 [INFO] Market: Bitcoin Up or Down - March 18, 12:20AM-12:25AM ET | UP ask: 0.51
+2026-03-18 03:41:19,753 [INFO] Placed trade #8: UP $5.00
+2026-03-18 03:41:19,755 [INFO] Stats | Balance: $98.65 | Trades: 3 | W/L: 2/1 | Win Rate: 66.7% | PnL: $+3.65
+2026-03-18 03:41:19,755 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:46:22,038 [INFO] BTC: $74,500.00 | Balance: $107.97 | Open: 0
+2026-03-18 03:46:22,745 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:46:24,127 [INFO] Market: Bitcoin Up or Down - March 18, 12:25AM-12:30AM ET | UP ask: 0.51
+2026-03-18 03:46:24,130 [INFO] Placed trade #9: UP $5.00
+2026-03-18 03:46:24,133 [INFO] Stats | Balance: $102.97 | Trades: 4 | W/L: 3/1 | Win Rate: 75.0% | PnL: $+7.97
+2026-03-18 03:46:24,133 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:51:25,759 [INFO] BTC: $74,446.95 | Balance: $102.97 | Open: 0
+2026-03-18 03:51:26,486 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:51:27,427 [INFO] Market: Bitcoin Up or Down - March 18, 12:25AM-12:30AM ET | UP ask: 0.51
+2026-03-18 03:51:27,431 [INFO] Placed trade #10: UP $5.00
+2026-03-18 03:51:27,434 [INFO] Stats | Balance: $97.97 | Trades: 5 | W/L: 3/2 | Win Rate: 60.0% | PnL: $+2.97
+2026-03-18 03:51:27,434 [INFO] Sleeping 300s until next cycle...
+2026-03-18 03:56:29,833 [INFO] BTC: $74,480.03 | Balance: $107.29 | Open: 0
+2026-03-18 03:56:30,561 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 03:56:31,531 [INFO] Market: Bitcoin Up or Down - March 18, 12:20AM-12:25AM ET | UP ask: 0.51
+2026-03-18 03:56:31,535 [INFO] Placed trade #11: UP $5.00
+2026-03-18 03:56:31,539 [INFO] Stats | Balance: $102.29 | Trades: 6 | W/L: 4/2 | Win Rate: 66.7% | PnL: $+7.29
+2026-03-18 03:56:31,539 [INFO] Sleeping 300s until next cycle...
+2026-03-18 04:01:33,913 [INFO] BTC: $74,481.13 | Balance: $111.62 | Open: 0
+2026-03-18 04:01:34,651 [INFO] Signal: UP (confidence: 0.66)
+2026-03-18 04:01:35,136 [INFO] Market: Bitcoin Up or Down - March 18, 10:45AM-10:50AM ET | UP ask: 0.51
+2026-03-18 04:01:35,139 [INFO] Placed trade #12: UP $5.00
+2026-03-18 04:01:35,142 [INFO] Stats | Balance: $106.62 | Trades: 7 | W/L: 5/2 | Win Rate: 71.4% | PnL: $+11.62
+2026-03-18 04:01:35,142 [INFO] Sleeping 300s until next cycle...
+2026-03-18 04:02:53,461 [INFO] Shutting down gracefully...
+2026-03-18 04:02:53,493 [INFO] Shutdown complete
+2026-03-18 04:02:53,497 [INFO] Stats | Balance: $106.62 | Trades: 7 | W/L: 5/2 | Win Rate: 71.4% | PnL: $+11.62
+2026-03-18 04:02:56,232 [INFO] === Starting live backtester ===
+2026-03-18 04:02:56,232 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:07:29,192 [INFO] === Starting live backtester ===
+2026-03-18 04:07:29,192 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:07:36,079 [INFO] === Starting live backtester ===
+2026-03-18 04:07:36,079 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:08:14,037 [INFO] === Starting live backtester ===
+2026-03-18 04:08:14,037 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:08:14,038 [INFO] Bet size: $5.00 | Max entry delay: 30s
+2026-03-18 04:08:14,040 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:08:14,232 [INFO] Market: Bitcoin Up or Down - March 18, 12:05AM-12:10AM ET | UP: 0.600 DOWN: 0.400 | Elapsed: 194s | Remaining: 106s
+2026-03-18 04:08:14,232 [INFO] Too late in window (194s elapsed > 30s), waiting for next
+2026-03-18 04:08:14,235 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:08:14,235 [INFO] Waiting 106s for next 5-min window...
+2026-03-18 04:08:19,057 [INFO] === Starting live backtester ===
+2026-03-18 04:08:19,057 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:08:19,058 [INFO] Bet size: $5.00 | Max entry delay: 30s
+2026-03-18 04:08:19,060 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:08:19,156 [INFO] Market: Bitcoin Up or Down - March 18, 12:05AM-12:10AM ET | UP: 0.600 DOWN: 0.400 | Elapsed: 199s | Remaining: 101s
+2026-03-18 04:08:19,156 [INFO] Too late in window (199s elapsed > 30s), waiting for next
+2026-03-18 04:08:19,159 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:08:19,160 [INFO] Waiting 101s for next 5-min window...
+2026-03-18 04:10:00,923 [INFO] Market: Bitcoin Up or Down - March 18, 12:10AM-12:15AM ET | UP: 0.505 DOWN: 0.495 | Elapsed: 0s | Remaining: 300s
+2026-03-18 04:10:01,027 [INFO] Market: Bitcoin Up or Down - March 18, 12:10AM-12:15AM ET | UP: 0.505 DOWN: 0.495 | Elapsed: 1s | Remaining: 299s
+2026-03-18 04:10:04,388 [INFO] Signal: UP (confidence: 0.66) | BTC: $74,408.02 | Balance: $100.00
+2026-03-18 04:10:04,391 [INFO] *** BET *** #13: UP $5.00 @ 0.505 on Bitcoin Up or Down - March 18, 12:10AM-12:15AM ET
+2026-03-18 04:10:04,393 [INFO] Stats | Balance: $95.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:10:04,393 [INFO] Waiting 296s for next 5-min window...
+2026-03-18 04:10:04,394 [INFO] Signal: UP (confidence: 0.66) | BTC: $74,408.02 | Balance: $100.00
+2026-03-18 04:10:04,397 [INFO] *** BET *** #14: UP $5.00 @ 0.505 on Bitcoin Up or Down - March 18, 12:10AM-12:15AM ET
+2026-03-18 04:10:04,399 [INFO] Stats | Balance: $90.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:10:04,399 [INFO] Waiting 296s for next 5-min window...
+2026-03-18 04:11:50,890 [INFO] Shutting down gracefully...
+2026-03-18 04:11:50,890 [INFO] Shutting down gracefully...
+2026-03-18 04:11:51,025 [INFO] Shutdown complete
+2026-03-18 04:11:51,025 [INFO] Shutdown complete
+2026-03-18 04:11:51,029 [INFO] Stats | Balance: $90.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:11:51,029 [INFO] Stats | Balance: $90.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
