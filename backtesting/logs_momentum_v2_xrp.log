@@ -1,0 +1,21 @@
+2026-03-18 06:29:59,406 [INFO] === Starting front-tester ===
+2026-03-18 06:29:59,406 [INFO] Strategy: momentum_v2 | Coin: xrp
+2026-03-18 06:29:59,406 [INFO] Sizing: 2% of balance
+2026-03-18 06:29:59,406 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-18 06:29:59,406 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v2_xrp.db
+2026-03-18 06:29:59,408 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:29:59,408 [INFO] Waiting 1s for next window. Will precompute signal in -29s...
+2026-03-18 06:29:59,412 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:29:59,412 [INFO] Pre-computing signal for next window...
+2026-03-18 06:30:02,916 [INFO] No signal — market is choppy or no pattern detected
+2026-03-18 06:30:04,036 [INFO] No signal cached, skipping this window
+2026-03-18 06:30:04,037 [INFO] Waiting 296s for next window. Will precompute signal in 266s...
+2026-03-18 06:30:04,043 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:34:30,545 [INFO] Pre-computing signal for next window...
+2026-03-18 06:34:31,078 [INFO] No signal — market is choppy or no pattern detected
+2026-03-18 06:35:00,422 [INFO] No signal cached, skipping this window
+2026-03-18 06:35:00,422 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 06:35:00,428 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:39:31,072 [INFO] Pre-computing signal for next window...
+2026-03-18 06:39:31,736 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.5253
+2026-03-18 06:39:31,736 [INFO] Reasoning: RSI=30 oversold | ADX=26 CHOP=35

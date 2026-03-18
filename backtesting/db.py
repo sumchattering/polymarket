@@ -157,8 +157,9 @@ def resolve_trade(trade_id, outcome, end_price, fee_rate=0.10, db_path=None):
 
         if outcome == "WIN":
             gross_payout = shares * 1.0  # Each share pays $1 on win
-            profit = gross_payout - bet_size
-            fees = profit * fee_rate
+            entry_price = trade["entry_price"]
+            # Polymarket fee: shares * price * 0.25 * (price * (1-price))^2
+            fees = shares * entry_price * 0.25 * (entry_price * (1 - entry_price)) ** 2
             net_payout = gross_payout - fees
             pnl = net_payout - bet_size
 

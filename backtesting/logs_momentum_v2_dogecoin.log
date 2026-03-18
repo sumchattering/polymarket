@@ -1,0 +1,21 @@
+2026-03-18 06:29:59,388 [INFO] === Starting front-tester ===
+2026-03-18 06:29:59,388 [INFO] Strategy: momentum_v2 | Coin: dogecoin
+2026-03-18 06:29:59,388 [INFO] Sizing: 2% of balance
+2026-03-18 06:29:59,388 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-18 06:29:59,388 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v2_dogecoin.db
+2026-03-18 06:29:59,390 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:29:59,390 [INFO] Waiting 1s for next window. Will precompute signal in -29s...
+2026-03-18 06:29:59,393 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:29:59,394 [INFO] Pre-computing signal for next window...
+2026-03-18 06:30:02,554 [INFO] No signal — market is choppy or no pattern detected
+2026-03-18 06:30:03,699 [INFO] No signal cached, skipping this window
+2026-03-18 06:30:03,699 [INFO] Waiting 297s for next window. Will precompute signal in 267s...
+2026-03-18 06:30:03,703 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:34:30,918 [INFO] Pre-computing signal for next window...
+2026-03-18 06:34:31,436 [INFO] No signal — market is choppy or no pattern detected
+2026-03-18 06:35:00,925 [INFO] No signal cached, skipping this window
+2026-03-18 06:35:00,925 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 06:35:00,930 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:39:31,072 [INFO] Pre-computing signal for next window...
+2026-03-18 06:39:31,736 [INFO] Cached signal: UP (confidence: 0.60) | Price: $0.1005
+2026-03-18 06:39:31,736 [INFO] Reasoning: RSI=30 oversold | ADX=29 CHOP=36

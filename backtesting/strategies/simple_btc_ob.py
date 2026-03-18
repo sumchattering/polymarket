@@ -42,20 +42,12 @@ def generate_signal(coin, timeframe, current_price, ohlcv):
     """
     Strategy entry point.
 
-    Args:
-        coin: "bitcoin"
-        timeframe: "5m"
-        current_price: current BTC price
-        ohlcv: 1m candles from runner (not used — we fetch 15m ourselves)
-
     Returns:
-        (direction, confidence) or None to skip
+        (direction, confidence, reasoning) or None to skip.
     """
     import price as price_mod
 
     symbol = price_mod.symbol_for_coin(coin)
-
-    # Fetch 15-minute candles for order block detection
     candles_15m = price_mod.get_ohlcv(symbol, TIMEFRAME_CANDLES, limit=100)
 
     if len(candles_15m) < MIN_CANDLES:
@@ -63,7 +55,6 @@ def generate_signal(coin, timeframe, current_price, ohlcv):
 
     df = _ohlcv_to_dataframe(candles_15m)
 
-    # Run order block detection
     order_blocks, fractals, h_lines = calculate_order_blocks(
         df,
         FILTER_FRACTAL_LENGTH,
@@ -75,52 +66,59 @@ def generate_signal(coin, timeframe, current_price, ohlcv):
     if not order_blocks:
         return None
 
-    # Sort by time, most recent last
     order_blocks.sort(key=lambda x: x["time"])
 
-    # Analyze the most recent order blocks
     last_ob = order_blocks[-1]
     second_last_ob = order_blocks[-2] if len(order_blocks) >= 2 else None
 
     direction = None
     confidence = 0.0
+    reasons = []
 
     # Base signal from last order block
     if last_ob["type"] == "bullish":
         direction = "UP"
         confidence = 0.55
+        reasons.append(f"Last OB: bullish @ ${last_ob['price']:,.2f} ({last_ob['time'].strftime('%H:%M')})")
     elif last_ob["type"] == "bearish":
         direction = "DOWN"
         confidence = 0.55
+        reasons.append(f"Last OB: bearish @ ${last_ob['price']:,.2f} ({last_ob['time'].strftime('%H:%M')})")
 
     if direction is None:
         return None
 
-    # Boost confidence if second-to-last agrees
-    if second_last_ob:
-        if last_ob["type"] == "bullish" and second_last_ob["type"] == "bullish":
-            confidence += 0.10
-        elif last_ob["type"] == "bearish" and second_last_ob["type"] == "bearish":
-            confidence += 0.10
+    # Last two OBs agree — strong signal
+    if second_last_ob and last_ob["type"] == second_last_ob["type"]:
+        confidence += 0.10
+        reasons.append(f"Last 2 OBs both {last_ob['type']} (+0.10)")
 
-    # Boost for successive order blocks
+    # Successive count — very strong signal
     successive = last_ob.get("successive_count", 0)
     if successive >= 3:
-        confidence += 0.15
+        confidence += 0.20
+        reasons.append(f"Successive: {successive} in a row (+0.20)")
     elif successive >= 2:
-        confidence += 0.10
+        confidence += 0.15
+        reasons.append(f"Successive: {successive} in a row (+0.15)")
 
-    # Boost for recommended (pico) order blocks
-    if last_ob.get("recommended") == "true":
-        confidence += 0.05
+    # Pico — good signal
     if last_ob.get("pico") == "true":
-        confidence += 0.03
+        confidence += 0.05
+        reasons.append("Pico OB (+0.05)")
 
-    # Boost for FVG (fair value gap)
+    # FVG (fair value gap) — good signal
     if last_ob.get("fvg") == "true":
-        confidence += 0.03
+        confidence += 0.05
+        reasons.append("FVG present (+0.05)")
 
-    # Cap at 0.95
     confidence = min(confidence, 0.95)
 
-    return direction, confidence
+    # Summary
+    total_obs = len(order_blocks)
+    bullish_count = sum(1 for ob in order_blocks if ob["type"] == "bullish")
+    bearish_count = sum(1 for ob in order_blocks if ob["type"] == "bearish")
+    reasons.append(f"Total OBs: {total_obs} ({bullish_count} bullish, {bearish_count} bearish)")
+
+    reasoning = " | ".join(reasons)
+    return direction, confidence, reasoning

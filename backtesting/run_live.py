@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Live backtesting runner — monitors BTC 5-minute markets continuously.
+Live front-testing runner — monitors 5-minute up/down markets continuously.
 
 Each strategy gets its own DB and log file for full isolation.
 Managed by the `backtester` CLI script.
 
-Usage:
-    python backtesting/run_live.py --strategy simple_btc_ob --db path/to/db --log path/to/log
+Key optimization: signal is pre-computed during the wait between windows,
+so when a new window opens we only need to fetch market + place bet (~1-2s).
 """
 import sys
 import os
@@ -23,11 +23,10 @@ import config
 import price
 import market
 
-# Max seconds into a window we'll still enter (buy early for best odds)
-MAX_ENTRY_DELAY = 30
+MAX_ENTRY_DELAY = 45
 
 running = True
-_db_path = None  # Set in main(), used by all functions
+_db_path = None
 
 
 def signal_handler(sig, frame):
@@ -43,10 +42,10 @@ log = logging.getLogger("live")
 
 
 def setup_logging(log_path=None):
-    """Configure logging to file and stdout."""
-    handlers = [logging.StreamHandler()]
     if log_path:
-        handlers.append(logging.FileHandler(log_path))
+        handlers = [logging.FileHandler(log_path)]
+    else:
+        handlers = [logging.StreamHandler()]
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
@@ -55,7 +54,6 @@ def setup_logging(log_path=None):
 
 
 def load_strategy(name):
-    """Load a strategy module from strategies/<name>.py"""
     import importlib.util
     path = os.path.join(os.path.dirname(__file__), "strategies", f"{name}.py")
     if not os.path.exists(path):
@@ -67,8 +65,35 @@ def load_strategy(name):
     return mod.generate_signal
 
 
-def resolve_pending():
-    """Resolve pending trades by checking actual Polymarket market results."""
+def get_bet_size(coin):
+    """Dynamic position sizing — % of balance, with optional per-coin overrides."""
+    balance = db.get_balance(_db_path)
+    sizing = config.COIN_SIZING.get(coin, {})
+    pct = sizing.get("pct", config.BET_PCT)
+    cap = sizing.get("cap", config.BET_CAP)
+
+    bet = balance * pct
+    if cap:
+        bet = min(bet, cap)
+    bet = max(bet, 0)
+    bet = min(bet, balance)
+    return round(bet, 2)
+
+
+def coin_slug(coin):
+    """Convert coin name to Polymarket slug prefix."""
+    mapping = {
+        "bitcoin": "btc",
+        "ethereum": "eth",
+        "solana": "sol",
+        "dogecoin": "doge",
+        "xrp": "xrp",
+        "bnb": "bnb",
+    }
+    return mapping.get(coin, coin)
+
+
+def resolve_pending(coin):
     conn = db.get_db(_db_path)
     pending = conn.execute(
         "SELECT * FROM trades WHERE outcome = 'PENDING'"
@@ -92,8 +117,7 @@ def resolve_pending():
             outcome = "LOSS"
 
         try:
-            symbol = price.symbol_for_coin("bitcoin")
-            end_price = price.get_current_price(symbol)
+            end_price = price.get_current_price(price.symbol_for_coin(coin))
         except Exception:
             end_price = 0
 
@@ -103,64 +127,71 @@ def resolve_pending():
     db.take_snapshot(_db_path)
 
 
-def run_cycle(strategy_fn, strategy_name, coin="bitcoin"):
-    """
-    Run one 5-minute cycle:
-    1. Resolve old pending trades
-    2. Get the current market and its odds
-    3. Run OB signal
-    4. If confident, bet immediately at start-of-window odds
-    """
-    resolve_pending()
+def precompute_signal(strategy_fn, coin="dogecoin"):
+    """Pre-compute signal during wait time."""
+    try:
+        symbol = price.symbol_for_coin(coin)
+        current_price = price.get_current_price(symbol)
+        ohlcv = price.get_ohlcv(symbol, "1m", limit=60)
 
+        result = strategy_fn(coin, "5m", current_price, ohlcv)
+        if result is None:
+            return None
+
+        if len(result) == 3:
+            direction, confidence, reasoning = result
+        else:
+            direction, confidence = result
+            reasoning = ""
+
+        return direction, confidence, current_price, reasoning
+    except Exception as e:
+        log.error(f"Error precomputing signal: {e}")
+        return None
+
+
+def place_bet_fast(cached_signal, strategy_name, coin="dogecoin"):
+    """Place bet using pre-computed signal. Only fetches market (1 API call)."""
     balance = db.get_balance(_db_path)
     open_pos = db.get_open_positions(_db_path)
 
-    if balance < config.MIN_BET_SIZE:
-        log.warning(f"Balance too low: ${balance:.2f}")
-        return
+    bet_size = get_bet_size(coin)
+
+    if bet_size < config.MIN_BET_SIZE:
+        log.warning(f"Bet too small: ${bet_size:.2f} (balance: ${balance:.2f})")
+        return False
 
     if open_pos >= config.MAX_CONCURRENT_BETS:
         log.info(f"Max concurrent bets: {open_pos}")
-        return
+        return False
 
-    mkt = market.get_current_5m_market("btc")
+    slug_prefix = coin_slug(coin)
+    mkt = market.get_current_5m_market(slug_prefix)
     if not mkt:
-        log.warning("No active market found")
-        return
+        log.warning(f"No active market found for {slug_prefix}")
+        return False
 
     log.info(
         f"Market: {mkt['title']} | "
         f"UP: {mkt['up_price']:.3f} DOWN: {mkt['down_price']:.3f} | "
-        f"Elapsed: {mkt['elapsed_seconds']}s | Remaining: {mkt['remaining_seconds']}s"
+        f"Elapsed: {mkt['elapsed_seconds']}s"
     )
 
     if mkt["elapsed_seconds"] > MAX_ENTRY_DELAY:
-        log.info(f"Too late in window ({mkt['elapsed_seconds']}s > {MAX_ENTRY_DELAY}s), waiting for next")
-        return
+        log.info(f"Too late in window ({mkt['elapsed_seconds']}s > {MAX_ENTRY_DELAY}s)")
+        return False
 
-    symbol = price.symbol_for_coin(coin)
-    current_price = price.get_current_price(symbol)
-    ohlcv = price.get_ohlcv(symbol, "1m", limit=60)
-
-    result = strategy_fn(coin, "5m", current_price, ohlcv)
-    if result is None:
-        log.info("Signal: SKIP")
-        return
-
-    direction, confidence = result
-    log.info(f"Signal: {direction} (confidence: {confidence:.2f}) | BTC: ${current_price:,.2f} | Balance: ${balance:.2f}")
+    direction, confidence, coin_price, reasoning = cached_signal
 
     if confidence < config.MIN_CONFIDENCE:
         log.info(f"Confidence {confidence:.2f} < {config.MIN_CONFIDENCE}, skipping")
-        return
+        return False
 
-    if direction == "UP":
-        entry_price = mkt["up_price"]
-    else:
-        entry_price = mkt["down_price"]
+    entry_price = mkt["up_price"] if direction == "UP" else mkt["down_price"]
 
-    bet_size = min(config.DEFAULT_BET_SIZE, balance)
+    log.info(f"Signal: {direction} (conf: {confidence:.2f}) | Price: ${coin_price:,.4f} | Bet: ${bet_size:.2f} ({bet_size/balance*100:.1f}% of ${balance:.2f})")
+    if reasoning:
+        log.info(f"Reasoning: {reasoning}")
 
     trade_id = db.place_bet(
         strategy=strategy_name,
@@ -171,17 +202,16 @@ def run_cycle(strategy_fn, strategy_name, coin="bitcoin"):
         confidence=confidence,
         entry_price=entry_price,
         bet_size_usd=bet_size,
-        start_price=current_price,
+        start_price=coin_price,
         db_path=_db_path,
     )
     if trade_id:
-        log.info(
-            f"*** BET *** #{trade_id}: {direction} ${bet_size:.2f} @ {entry_price:.3f} on {mkt['title']}"
-        )
+        log.info(f"*** BET *** #{trade_id}: {direction} ${bet_size:.2f} @ {entry_price:.3f} on {mkt['title']}")
+        return True
+    return False
 
 
 def print_stats(strategy=None):
-    """Log current stats."""
     stats = db.get_stats(strategy=strategy, db_path=_db_path)
     log.info(
         f"Stats | Balance: ${stats['balance']:.2f} | "
@@ -192,31 +222,55 @@ def print_stats(strategy=None):
     )
 
 
-def wait_for_next_window():
-    """Sleep until the start of the next 5-minute window."""
+def wait_for_next_window_with_precompute(strategy_fn, strategy_name, coin="dogecoin"):
+    """Wait for the next 5-min window. Pre-compute signal ~30s before."""
     now = int(time.time())
     next_window = ((now // 300) + 1) * 300
     wait = next_window - now
-    log.info(f"Waiting {wait}s for next 5-min window...")
-    for _ in range(wait):
-        if not running:
+    precompute_at = next_window - 30
+
+    log.info(f"Waiting {wait}s for next window. Will precompute signal in {precompute_at - now}s...")
+
+    resolve_pending(coin)
+    print_stats(strategy_name)
+
+    cached_signal = None
+    precomputed = False
+
+    while running:
+        now = int(time.time())
+        if now >= next_window:
             break
+
+        if not precomputed and now >= precompute_at:
+            log.info("Pre-computing signal for next window...")
+            cached_signal = precompute_signal(strategy_fn, coin)
+            precomputed = True
+            if cached_signal:
+                d, c, p, r = cached_signal
+                log.info(f"Cached signal: {d} (confidence: {c:.2f}) | Price: ${p:,.4f}")
+                if r:
+                    log.info(f"Reasoning: {r}")
+            else:
+                log.info("No signal — market is choppy or no pattern detected")
+
         time.sleep(1)
+
+    return cached_signal
 
 
 def main():
     global _db_path
 
-    parser = argparse.ArgumentParser(description="Live backtesting runner")
-    parser.add_argument("--strategy", default="simple_btc_ob")
-    parser.add_argument("--coin", default="bitcoin")
+    parser = argparse.ArgumentParser(description="Live front-testing runner")
+    parser.add_argument("--strategy", default="momentum_v2")
+    parser.add_argument("--coin", default="dogecoin")
     parser.add_argument("--reset", action="store_true")
     parser.add_argument("--balance", type=float, default=100.0)
-    parser.add_argument("--db", default=None, help="Path to strategy-specific SQLite DB")
-    parser.add_argument("--log", default=None, help="Path to strategy-specific log file")
+    parser.add_argument("--db", default=None)
+    parser.add_argument("--log", default=None)
     args = parser.parse_args()
 
-    # Set up per-strategy paths
     _db_path = args.db
     setup_logging(args.log)
 
@@ -225,17 +279,33 @@ def main():
         db.reset_account(args.balance, _db_path)
     strategy_fn = load_strategy(args.strategy)
 
-    log.info(f"=== Starting live backtester ===")
+    sizing = config.COIN_SIZING.get(args.coin, {})
+    pct = sizing.get("pct", config.BET_PCT)
+    cap = sizing.get("cap", config.BET_CAP)
+    cap_str = f" cap ${cap}" if cap else ""
+
+    log.info(f"=== Starting front-tester ===")
     log.info(f"Strategy: {args.strategy} | Coin: {args.coin}")
-    log.info(f"Bet size: ${config.DEFAULT_BET_SIZE:.2f} | Max entry delay: {MAX_ENTRY_DELAY}s")
+    log.info(f"Sizing: {pct*100:.0f}% of balance{cap_str}")
+    log.info(f"Fee rate: {config.FEE_RATE*100:.2f}% | Min confidence: {config.MIN_CONFIDENCE}")
     log.info(f"DB: {_db_path or 'default'}")
     print_stats()
 
+    cached_signal = wait_for_next_window_with_precompute(
+        strategy_fn, args.strategy, args.coin
+    )
+
     while running:
         try:
-            run_cycle(strategy_fn, args.strategy, args.coin)
-            print_stats(args.strategy)
-            wait_for_next_window()
+            if cached_signal:
+                place_bet_fast(cached_signal, args.strategy, args.coin)
+            else:
+                log.info("No signal cached, skipping this window")
+
+            cached_signal = wait_for_next_window_with_precompute(
+                strategy_fn, args.strategy, args.coin
+            )
+
         except Exception as e:
             log.error(f"Error in cycle: {e}", exc_info=True)
             time.sleep(30)

@@ -1,18 +1,91 @@
-2026-03-18 04:17:08,976 [INFO] === Starting live backtester ===
-2026-03-18 04:17:08,976 [INFO] === Starting live backtester ===
-2026-03-18 04:17:08,977 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
-2026-03-18 04:17:08,977 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
-2026-03-18 04:17:08,977 [INFO] Bet size: $5.00 | Max entry delay: 30s
-2026-03-18 04:17:08,977 [INFO] Bet size: $5.00 | Max entry delay: 30s
-2026-03-18 04:17:08,977 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_simple_btc_ob.db
-2026-03-18 04:17:08,977 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_simple_btc_ob.db
-2026-03-18 04:17:08,979 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
-2026-03-18 04:17:08,979 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
-2026-03-18 04:17:09,101 [INFO] Market: Bitcoin Up or Down - March 18, 12:15AM-12:20AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 129s | Remaining: 171s
-2026-03-18 04:17:09,101 [INFO] Market: Bitcoin Up or Down - March 18, 12:15AM-12:20AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 129s | Remaining: 171s
-2026-03-18 04:17:09,101 [INFO] Too late in window (129s > 30s), waiting for next
-2026-03-18 04:17:09,101 [INFO] Too late in window (129s > 30s), waiting for next
-2026-03-18 04:17:09,105 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
-2026-03-18 04:17:09,105 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
-2026-03-18 04:17:09,105 [INFO] Waiting 171s for next 5-min window...
-2026-03-18 04:17:09,105 [INFO] Waiting 171s for next 5-min window...
+2026-03-18 04:36:49,774 [INFO] === Starting live backtester ===
+2026-03-18 04:36:49,774 [INFO] Strategy: simple_btc_ob | Coin: bitcoin
+2026-03-18 04:36:49,774 [INFO] Bet size: $5.00
+2026-03-18 04:36:49,774 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_simple_btc_ob.db
+2026-03-18 04:36:49,777 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:36:49,777 [INFO] Waiting 191s for next window. Will precompute signal in 161s...
+2026-03-18 04:36:49,780 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:39:30,946 [INFO] Pre-computing OB signal for next window...
+2026-03-18 04:39:34,373 [INFO] Cached signal: UP (confidence: 0.65) | BTC: $74,227.45
+2026-03-18 04:39:34,373 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:40:00,620 [INFO] Market: Bitcoin Up or Down - March 18, 12:40AM-12:45AM ET | UP: 0.525 DOWN: 0.475 | Elapsed: 0s
+2026-03-18 04:40:00,621 [INFO] Signal: UP (conf: 0.65) | BTC: $74,227.45 | Balance: $100.00
+2026-03-18 04:40:00,621 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:40:00,624 [INFO] *** BET *** #1: UP $5.00 @ 0.525 on Bitcoin Up or Down - March 18, 12:40AM-12:45AM ET
+2026-03-18 04:40:00,624 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 04:40:00,722 [INFO] Trade #1 (btc-updown-5m-1773808800): not resolved yet
+2026-03-18 04:40:00,730 [INFO] Stats | Balance: $95.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:44:30,628 [INFO] Pre-computing OB signal for next window...
+2026-03-18 04:44:31,678 [INFO] Cached signal: UP (confidence: 0.65) | BTC: $74,223.56
+2026-03-18 04:44:31,678 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:45:01,185 [INFO] Market: Bitcoin Up or Down - March 18, 12:45AM-12:50AM ET | UP: 0.535 DOWN: 0.465 | Elapsed: 1s
+2026-03-18 04:45:01,185 [INFO] Signal: UP (conf: 0.65) | BTC: $74,223.56 | Balance: $95.00
+2026-03-18 04:45:01,185 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:45:01,187 [INFO] *** BET *** #2: UP $5.00 @ 0.535 on Bitcoin Up or Down - March 18, 12:45AM-12:50AM ET
+2026-03-18 04:45:01,188 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-18 04:45:01,271 [INFO] Trade #1 (btc-updown-5m-1773808800): not resolved yet
+2026-03-18 04:45:01,349 [INFO] Trade #2 (btc-updown-5m-1773809100): not resolved yet
+2026-03-18 04:45:01,355 [INFO] Stats | Balance: $90.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 04:49:30,509 [INFO] Pre-computing OB signal for next window...
+2026-03-18 04:49:31,581 [INFO] Cached signal: UP (confidence: 0.65) | BTC: $74,194.24
+2026-03-18 04:49:31,581 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:50:01,115 [INFO] Market: Bitcoin Up or Down - March 18, 12:50AM-12:55AM ET | UP: 0.505 DOWN: 0.495 | Elapsed: 1s
+2026-03-18 04:50:01,115 [INFO] Signal: UP (conf: 0.65) | BTC: $74,194.24 | Balance: $90.00
+2026-03-18 04:50:01,115 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:50:01,120 [INFO] *** BET *** #3: UP $5.00 @ 0.505 on Bitcoin Up or Down - March 18, 12:50AM-12:55AM ET
+2026-03-18 04:50:01,120 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-18 04:50:01,445 [INFO] Trade #1: market resolved UP, we bet UP → WIN
+2026-03-18 04:50:01,537 [INFO] Trade #2 (btc-updown-5m-1773809100): not resolved yet
+2026-03-18 04:50:01,622 [INFO] Trade #3 (btc-updown-5m-1773809400): not resolved yet
+2026-03-18 04:50:01,631 [INFO] Stats | Balance: $94.07 | Trades: 1 | W/L: 1/0 | Win Rate: 100.0% | PnL: $+4.07
+2026-03-18 04:54:31,099 [INFO] Pre-computing OB signal for next window...
+2026-03-18 04:54:32,107 [INFO] Cached signal: UP (confidence: 0.65) | BTC: $74,176.29
+2026-03-18 04:54:32,107 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:55:00,441 [INFO] Market: Bitcoin Up or Down - March 18, 12:55AM-1:00AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 0s
+2026-03-18 04:55:00,442 [INFO] Signal: UP (conf: 0.65) | BTC: $74,176.29 | Balance: $94.07
+2026-03-18 04:55:00,442 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 04:55:00,446 [INFO] *** BET *** #4: UP $5.00 @ 0.515 on Bitcoin Up or Down - March 18, 12:55AM-1:00AM ET
+2026-03-18 04:55:00,447 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 04:55:00,839 [INFO] Trade #2: market resolved DOWN, we bet UP → LOSS
+2026-03-18 04:55:00,919 [INFO] Trade #3 (btc-updown-5m-1773809400): not resolved yet
+2026-03-18 04:55:01,029 [INFO] Trade #4 (btc-updown-5m-1773809700): not resolved yet
+2026-03-18 04:55:01,038 [INFO] Stats | Balance: $89.07 | Trades: 2 | W/L: 1/1 | Win Rate: 50.0% | PnL: $-0.93
+2026-03-18 04:59:30,469 [INFO] Pre-computing OB signal for next window...
+2026-03-18 04:59:31,510 [INFO] Cached signal: UP (confidence: 0.65) | BTC: $74,170.24
+2026-03-18 04:59:31,510 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 05:00:01,226 [INFO] Market: Bitcoin Up or Down - March 18, 1:00AM-1:05AM ET | UP: 0.525 DOWN: 0.475 | Elapsed: 1s
+2026-03-18 05:00:01,226 [INFO] Signal: UP (conf: 0.65) | BTC: $74,170.24 | Balance: $89.07
+2026-03-18 05:00:01,226 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 05:00:01,230 [INFO] *** BET *** #5: UP $5.00 @ 0.525 on Bitcoin Up or Down - March 18, 1:00AM-1:05AM ET
+2026-03-18 05:00:01,230 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-18 05:00:01,664 [INFO] Trade #3: market resolved DOWN, we bet UP → LOSS
+2026-03-18 05:00:01,753 [INFO] Trade #4 (btc-updown-5m-1773809700): not resolved yet
+2026-03-18 05:00:01,836 [INFO] Trade #5 (btc-updown-5m-1773810000): not resolved yet
+2026-03-18 05:00:01,844 [INFO] Stats | Balance: $84.07 | Trades: 3 | W/L: 1/2 | Win Rate: 33.3% | PnL: $-5.93
+2026-03-18 05:04:30,041 [INFO] Pre-computing OB signal for next window...
+2026-03-18 05:04:31,086 [INFO] Cached signal: UP (confidence: 0.65) | BTC: $74,213.16
+2026-03-18 05:04:31,086 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 05:05:00,834 [INFO] Market: Bitcoin Up or Down - March 18, 1:05AM-1:10AM ET | UP: 0.525 DOWN: 0.475 | Elapsed: 0s
+2026-03-18 05:05:00,835 [INFO] Signal: UP (conf: 0.65) | BTC: $74,213.16 | Balance: $84.07
+2026-03-18 05:05:00,835 [INFO] Reasoning: Last OB: bullish @ $73,535.36 (00:30) | Pico OB (+0.05) | FVG present (+0.05) | Total OBs: 3 (2 bullish, 1 bearish)
+2026-03-18 05:05:00,838 [INFO] *** BET *** #6: UP $5.00 @ 0.525 on Bitcoin Up or Down - March 18, 1:05AM-1:10AM ET
+2026-03-18 05:05:00,838 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 05:05:01,164 [INFO] Trade #4: market resolved DOWN, we bet UP → LOSS
+2026-03-18 05:05:01,248 [INFO] Trade #5 (btc-updown-5m-1773810000): not resolved yet
+2026-03-18 05:05:01,424 [INFO] Trade #6 (btc-updown-5m-1773810300): not resolved yet
+2026-03-18 05:05:01,434 [INFO] Stats | Balance: $79.07 | Trades: 4 | W/L: 1/3 | Win Rate: 25.0% | PnL: $-10.93
+2026-03-18 05:07:27,954 [INFO] Shutting down gracefully...
+2026-03-18 05:07:27,954 [INFO] Shutdown complete
+2026-03-18 05:07:27,957 [INFO] Stats | Balance: $79.07 | Trades: 4 | W/L: 1/3 | Win Rate: 25.0% | PnL: $-10.93
+Account initialized with $100.00
+Account reset to $100.00
+Placed UP bet #1: $5.00 @ 0.525 on bitcoin (simple_btc_ob)
+Placed UP bet #2: $5.00 @ 0.535 on bitcoin (simple_btc_ob)
+Placed UP bet #3: $5.00 @ 0.505 on bitcoin (simple_btc_ob)
+Trade #1 → WIN | PnL: $+4.07 | Balance: $94.07
+Placed UP bet #4: $5.00 @ 0.515 on bitcoin (simple_btc_ob)
+Trade #2 → LOSS | PnL: $-5.00 | Balance: $89.07
+Placed UP bet #5: $5.00 @ 0.525 on bitcoin (simple_btc_ob)
+Trade #3 → LOSS | PnL: $-5.00 | Balance: $84.07
+Placed UP bet #6: $5.00 @ 0.525 on bitcoin (simple_btc_ob)
+Trade #4 → LOSS | PnL: $-5.00 | Balance: $79.07
