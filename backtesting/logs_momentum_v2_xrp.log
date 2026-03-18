@@ -19,3 +19,45 @@
 2026-03-18 06:39:31,072 [INFO] Pre-computing signal for next window...
 2026-03-18 06:39:31,736 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.5253
 2026-03-18 06:39:31,736 [INFO] Reasoning: RSI=30 oversold | ADX=26 CHOP=35
+2026-03-18 06:40:00,285 [INFO] Market: XRP Up or Down - March 18, 2:40AM-2:45AM ET | UP: 0.495 DOWN: 0.505 | Elapsed: 0s
+2026-03-18 06:40:00,285 [INFO] Signal: UP (conf: 0.60) | Price: $1.5253 | Bet: $2.00 (2.0% of $100.00)
+2026-03-18 06:40:00,285 [INFO] Reasoning: RSI=30 oversold | ADX=26 CHOP=35
+2026-03-18 06:40:00,287 [INFO] *** BET *** #1: UP $2.00 @ 0.495 on XRP Up or Down - March 18, 2:40AM-2:45AM ET
+2026-03-18 06:40:00,288 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 06:40:00,452 [INFO] Trade #1 (xrp-updown-5m-1773816000): not resolved yet
+2026-03-18 06:40:00,458 [INFO] Stats | Balance: $98.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:44:30,421 [INFO] Pre-computing signal for next window...
+2026-03-18 06:44:31,092 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.5250
+2026-03-18 06:44:31,092 [INFO] Reasoning: RSI=22 oversold | ADX=36 CHOP=31
+2026-03-18 06:45:00,741 [INFO] Market: XRP Up or Down - March 18, 2:45AM-2:50AM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-18 06:45:00,742 [INFO] Signal: UP (conf: 0.60) | Price: $1.5250 | Bet: $1.96 (2.0% of $98.00)
+2026-03-18 06:45:00,742 [INFO] Reasoning: RSI=22 oversold | ADX=36 CHOP=31
+2026-03-18 06:45:00,746 [INFO] *** BET *** #2: UP $1.96 @ 0.500 on XRP Up or Down - March 18, 2:45AM-2:50AM ET
+2026-03-18 06:45:00,746 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 06:45:00,841 [INFO] Trade #1 (xrp-updown-5m-1773816000): not resolved yet
+2026-03-18 06:45:00,997 [INFO] Trade #2 (xrp-updown-5m-1773816300): not resolved yet
+2026-03-18 06:45:01,006 [INFO] Stats | Balance: $96.04 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-18 06:49:30,935 [INFO] Pre-computing signal for next window...
+2026-03-18 06:49:31,506 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.5259
+2026-03-18 06:49:31,506 [INFO] Reasoning: RSI=27 oversold | ADX=47 CHOP=39
+2026-03-18 06:50:01,289 [INFO] Market: XRP Up or Down - March 18, 2:50AM-2:55AM ET | UP: 0.495 DOWN: 0.505 | Elapsed: 1s
+2026-03-18 06:50:01,290 [INFO] Signal: UP (conf: 0.60) | Price: $1.5259 | Bet: $1.92 (2.0% of $96.04)
+2026-03-18 06:50:01,290 [INFO] Reasoning: RSI=27 oversold | ADX=47 CHOP=39
+2026-03-18 06:50:01,293 [INFO] *** BET *** #3: UP $1.92 @ 0.495 on XRP Up or Down - March 18, 2:50AM-2:55AM ET
+2026-03-18 06:50:01,293 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-18 06:50:01,699 [INFO] Trade #1: market resolved UP, we bet UP → WIN
+2026-03-18 06:50:01,783 [INFO] Trade #2 (xrp-updown-5m-1773816300): not resolved yet
+2026-03-18 06:50:01,960 [INFO] Trade #3 (xrp-updown-5m-1773816600): not resolved yet
+2026-03-18 06:50:01,969 [INFO] Stats | Balance: $98.13 | Trades: 1 | W/L: 1/0 | Win Rate: 100.0% | PnL: $+2.01
+2026-03-18 06:54:30,533 [INFO] Pre-computing signal for next window...
+2026-03-18 06:54:31,118 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.5268
+2026-03-18 06:54:31,118 [INFO] Reasoning: RSI=71 overbought | ADX=49 CHOP=49
+2026-03-18 06:55:00,620 [INFO] Market: XRP Up or Down - March 18, 2:55AM-3:00AM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-18 06:55:00,620 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.5268 | Bet: $1.96 (2.0% of $98.13)
+2026-03-18 06:55:00,620 [INFO] Reasoning: RSI=71 overbought | ADX=49 CHOP=49
+2026-03-18 06:55:00,625 [INFO] *** BET *** #4: DOWN $1.96 @ 0.500 on XRP Up or Down - March 18, 2:55AM-3:00AM ET
+2026-03-18 06:55:00,625 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-18 06:55:01,309 [INFO] Trade #2: market resolved DOWN, we bet UP → LOSS
+2026-03-18 06:55:01,398 [INFO] Trade #3 (xrp-updown-5m-1773816600): not resolved yet
+2026-03-18 06:55:01,498 [INFO] Trade #4 (xrp-updown-5m-1773816900): not resolved yet
+2026-03-18 06:55:01,507 [INFO] Stats | Balance: $96.17 | Trades: 2 | W/L: 1/1 | Win Rate: 50.0% | PnL: $+0.05
