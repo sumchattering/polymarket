@@ -66,15 +66,23 @@ def load_strategy(name):
 
 
 def get_bet_size(coin):
-    """Dynamic position sizing — % of balance, with optional per-coin overrides."""
+    """Dynamic position sizing — scales up as balance grows.
+
+    $100-$200: 2%
+    $200-$400: 3%
+    $400-$800: 4%
+    $800+:     4% (cap)
+    """
     balance = db.get_balance(_db_path)
-    sizing = config.COIN_SIZING.get(coin, {})
-    pct = sizing.get("pct", config.BET_PCT)
-    cap = sizing.get("cap", config.BET_CAP)
+
+    if balance >= 400:
+        pct = 0.04
+    elif balance >= 200:
+        pct = 0.03
+    else:
+        pct = 0.02
 
     bet = balance * pct
-    if cap:
-        bet = min(bet, cap)
     bet = max(bet, 0)
     bet = min(bet, balance)
     return round(bet, 2)
@@ -279,14 +287,9 @@ def main():
         db.reset_account(args.balance, _db_path)
     strategy_fn = load_strategy(args.strategy)
 
-    sizing = config.COIN_SIZING.get(args.coin, {})
-    pct = sizing.get("pct", config.BET_PCT)
-    cap = sizing.get("cap", config.BET_CAP)
-    cap_str = f" cap ${cap}" if cap else ""
-
     log.info(f"=== Starting front-tester ===")
     log.info(f"Strategy: {args.strategy} | Coin: {args.coin}")
-    log.info(f"Sizing: {pct*100:.0f}% of balance{cap_str}")
+    log.info(f"Sizing: 2% (<$200) → 3% (<$400) → 4% ($400+)")
     log.info(f"Fee rate: {config.FEE_RATE*100:.2f}% | Min confidence: {config.MIN_CONFIDENCE}")
     log.info(f"DB: {_db_path or 'default'}")
     print_stats()
