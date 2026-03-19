@@ -53,6 +53,11 @@ def calc_chop(df, period=14):
     atr_sum = tr.rolling(period).sum()
     return 100 * np.log10(atr_sum / (h.rolling(period).max() - l.rolling(period).min())) / np.log10(period)
 
+def calc_atr(df, period=14):
+    h, l, c = df["high"], df["low"], df["close"]
+    tr = pd.DataFrame({"hl": h-l, "hc": (h-c.shift()).abs(), "lc": (l-c.shift()).abs()}).max(axis=1)
+    return tr.rolling(period).mean()
+
 
 # ── Data ─────────────────────────────────────────────────────────────────
 
@@ -92,6 +97,9 @@ def prepare_data(coin, days):
         df_1m[f"rsi_{p}"] = calc_rsi(df_1m["close"], p)
     df_1m["adx_14"] = calc_adx(df_1m, 14)
     df_1m["chop_14"] = calc_chop(df_1m, 14)
+    df_1m["atr_14"] = calc_atr(df_1m, 14)
+    df_1m["ema_20"] = df_1m["close"].ewm(span=20, adjust=False).mean()
+    df_1m["stretch_atr_20"] = (df_1m["close"] - df_1m["ema_20"]) / df_1m["atr_14"]
 
     # Consec5: 5 consecutive candles same direction
     candle_up = (df_1m["close"] > df_1m["open"]).astype(int)
@@ -103,7 +111,9 @@ def prepare_data(coin, days):
     df_5m_s = df_5m.sort_values("window").copy()
     df_5m_s["lookup_ts"] = df_5m_s["window"] - 60000
 
-    ind_cols = ["timestamp"] + [f"rsi_{p}" for p in [7,10,14,21,28]] + ["adx_14", "chop_14", "consec5_up", "consec5_down"]
+    ind_cols = ["timestamp"] + [f"rsi_{p}" for p in [7,10,14,21,28]] + [
+        "adx_14", "chop_14", "atr_14", "ema_20", "stretch_atr_20", "consec5_up", "consec5_down"
+    ]
     m = pd.merge_asof(
         df_5m_s[["window", "went_up", "lookup_ts"]],
         df_1m.sort_values("timestamp")[ind_cols],
@@ -152,29 +162,82 @@ def discover_strategies():
 
 # ── Vectorized evaluation ────────────────────────────────────────────────
 
-def _build_signal_masks(m, params, coin_full):
-    """Build UP/DOWN signal masks from strategy params. Returns (up_mask, down_mask)."""
-    filt = (m["adx_14"] > params["adx"]) & (m["chop_14"] < params["chop"])
+def _resolve_params(params, coin_full):
+    overrides = params.get("coin_overrides", {}).get(coin_full)
+    if overrides:
+        params = {**params, **overrides}
+    return params
 
-    skip = params["skip_hours"]
+
+def _build_single_masks(m, params, coin_full):
+    """Build a single pair of UP/DOWN masks from one strategy config."""
+    params = _resolve_params(params, coin_full)
+
+    filt = pd.Series(True, index=m.index)
+
+    adx_min = params.get("adx")
+    if adx_min is not None:
+        filt = filt & (m["adx_14"] > adx_min)
+
+    adx_max = params.get("adx_max")
+    if adx_max is not None:
+        filt = filt & (m["adx_14"] < adx_max)
+
+    chop_max = params.get("chop")
+    if chop_max is not None:
+        filt = filt & (m["chop_14"] < chop_max)
+
+    chop_min = params.get("chop_min")
+    if chop_min is not None:
+        filt = filt & (m["chop_14"] > chop_min)
+
+    skip = params.get("skip_hours", {})
     if isinstance(skip, dict):
         skip = skip.get(coin_full, set())
     if skip:
         filt = filt & (~m["hour"].isin(skip))
 
     rsi_col = params["rsi_col"]
+    stretch_col = params.get("stretch_col", "stretch_atr_20")
+    min_stretch = params.get("min_stretch_atr")
+
+    stretch_up = pd.Series(True, index=m.index)
+    stretch_down = pd.Series(True, index=m.index)
+    if min_stretch is not None:
+        stretch_up = m[stretch_col] <= -min_stretch
+        stretch_down = m[stretch_col] >= min_stretch
 
     if params.get("consec5"):
         # Consec5 has priority, RSI fills in when no consec signal
         consec_up = filt & m["consec5_up"]
         consec_down = filt & m["consec5_down"]
-        rsi_up = filt & (m[rsi_col] < params["rsi_lo"]) & ~consec_up & ~consec_down
-        rsi_down = filt & (m[rsi_col] > params["rsi_hi"]) & ~consec_up & ~consec_down
+        rsi_up = filt & (m[rsi_col] < params["rsi_lo"]) & stretch_up & ~consec_up & ~consec_down
+        rsi_down = filt & (m[rsi_col] > params["rsi_hi"]) & stretch_down & ~consec_up & ~consec_down
         up_mask = consec_up | rsi_up
         down_mask = consec_down | rsi_down
     else:
-        up_mask = filt & (m[rsi_col] < params["rsi_lo"])
-        down_mask = filt & (m[rsi_col] > params["rsi_hi"])
+        up_mask = filt & (m[rsi_col] < params["rsi_lo"]) & stretch_up
+        down_mask = filt & (m[rsi_col] > params["rsi_hi"]) & stretch_down
+
+    return up_mask, down_mask
+
+
+def _build_signal_masks(m, params, coin_full):
+    """Build UP/DOWN signal masks from strategy params. Returns (up_mask, down_mask)."""
+    up_mask, down_mask = _build_single_masks(m, params, coin_full)
+
+    for extra in params.get("extra_entries", []):
+        coins = extra.get("coins")
+        if coins and coin_full not in coins:
+            continue
+
+        extra_up, extra_down = _build_single_masks(m, extra, coin_full)
+        if extra.get("only_when_base_absent", True):
+            extra_up = extra_up & ~up_mask & ~down_mask
+            extra_down = extra_down & ~up_mask & ~down_mask
+
+        up_mask = up_mask | extra_up
+        down_mask = down_mask | extra_down
 
     return up_mask, down_mask
 

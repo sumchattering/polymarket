@@ -1903,3 +1903,79 @@
 2026-03-19 06:45:00,797 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-19 06:45:01,167 [INFO] Trade #62: market resolved UP, we bet UP → WIN
 2026-03-19 06:45:01,174 [INFO] Stats | Balance: $119.04 | Trades: 62 | W/L: 36/26 | Win Rate: 58.1% | PnL: $+19.04
+2026-03-19 06:49:31,139 [INFO] Pre-computing signal for next window...
+2026-03-19 06:49:31,664 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $0.0947
+2026-03-19 06:49:31,664 [INFO] Reasoning: RSI=83 overbought | ADX=41 CHOP=26
+2026-03-19 06:50:00,419 [INFO] Market: Dogecoin Up or Down - March 19, 2:50AM-2:55AM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 06:50:00,419 [INFO] Signal: DOWN (conf: 0.60) | Price: $0.0947 | Bet: $2.38 (2.0% of $119.04)
+2026-03-19 06:50:00,420 [INFO] Reasoning: RSI=83 overbought | ADX=41 CHOP=26
+2026-03-19 06:50:00,423 [INFO] *** BET *** #63: DOWN $2.38 @ 0.500 on Dogecoin Up or Down - March 19, 2:50AM-2:55AM ET
+2026-03-19 06:50:00,423 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 06:50:00,552 [INFO] Trade #63 (doge-updown-5m-1773903000): not resolved yet
+2026-03-19 06:50:00,562 [INFO] Stats | Balance: $116.66 | Trades: 62 | W/L: 36/26 | Win Rate: 58.1% | PnL: $+19.04
+2026-03-19 06:54:30,763 [INFO] Pre-computing signal for next window...
+2026-03-19 06:54:31,324 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 06:55:00,900 [INFO] No signal cached, skipping this window
+2026-03-19 06:55:00,901 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 06:55:00,992 [INFO] Trade #63 (doge-updown-5m-1773903000): not resolved yet
+2026-03-19 06:55:00,999 [INFO] Stats | Balance: $116.66 | Trades: 62 | W/L: 36/26 | Win Rate: 58.1% | PnL: $+19.04
+2026-03-19 06:59:30,024 [INFO] Pre-computing signal for next window...
+2026-03-19 06:59:30,574 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 07:00:00,114 [INFO] No signal cached, skipping this window
+2026-03-19 07:00:00,114 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:00:00,523 [INFO] Trade #63: market resolved DOWN, we bet DOWN → WIN
+2026-03-19 07:00:00,532 [INFO] Stats | Balance: $121.38 | Trades: 63 | W/L: 37/26 | Win Rate: 58.7% | PnL: $+21.38
+2026-03-19 07:04:31,051 [INFO] Pre-computing signal for next window...
+2026-03-19 07:04:31,658 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 07:05:00,120 [INFO] No signal cached, skipping this window
+2026-03-19 07:05:00,121 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:05:00,129 [INFO] Stats | Balance: $121.38 | Trades: 63 | W/L: 37/26 | Win Rate: 58.7% | PnL: $+21.38
+2026-03-19 07:09:30,218 [INFO] Pre-computing signal for next window...
+2026-03-19 07:09:30,772 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 07:10:00,334 [INFO] No signal cached, skipping this window
+2026-03-19 07:10:00,334 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:10:00,343 [INFO] Stats | Balance: $121.38 | Trades: 63 | W/L: 37/26 | Win Rate: 58.7% | PnL: $+21.38
+2026-03-19 07:14:30,777 [INFO] Pre-computing signal for next window...
+2026-03-19 07:14:31,325 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 07:15:00,026 [INFO] No signal cached, skipping this window
+2026-03-19 07:15:00,027 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:15:00,033 [INFO] Stats | Balance: $121.38 | Trades: 63 | W/L: 37/26 | Win Rate: 58.7% | PnL: $+21.38
+2026-03-19 07:19:30,088 [INFO] Pre-computing signal for next window...
+2026-03-19 07:19:30,663 [INFO] Cached signal: UP (confidence: 0.60) | Price: $0.0940
+2026-03-19 07:19:30,664 [INFO] Reasoning: RSI=11 oversold | ADX=53 CHOP=33
+2026-03-19 07:20:00,392 [INFO] Market: Dogecoin Up or Down - March 19, 3:20AM-3:25AM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 07:20:00,393 [INFO] Signal: UP (conf: 0.60) | Price: $0.0940 | Bet: $2.43 (2.0% of $121.38)
+2026-03-19 07:20:00,393 [INFO] Reasoning: RSI=11 oversold | ADX=53 CHOP=33
+2026-03-19 07:20:00,396 [INFO] *** BET *** #64: UP $2.43 @ 0.500 on Dogecoin Up or Down - March 19, 3:20AM-3:25AM ET
+2026-03-19 07:20:00,396 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:20:00,477 [INFO] Trade #64 (doge-updown-5m-1773904800): not resolved yet
+2026-03-19 07:20:00,487 [INFO] Stats | Balance: $118.95 | Trades: 63 | W/L: 37/26 | Win Rate: 58.7% | PnL: $+21.38
+2026-03-19 07:24:30,679 [INFO] Pre-computing signal for next window...
+2026-03-19 07:24:31,357 [INFO] Cached signal: UP (confidence: 0.60) | Price: $0.0934
+2026-03-19 07:24:31,357 [INFO] Reasoning: RSI=16 oversold | ADX=81 CHOP=27
+2026-03-19 07:25:01,037 [INFO] Market: Dogecoin Up or Down - March 19, 3:25AM-3:30AM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 1s
+2026-03-19 07:25:01,037 [INFO] Signal: UP (conf: 0.60) | Price: $0.0934 | Bet: $2.38 (2.0% of $118.95)
+2026-03-19 07:25:01,037 [INFO] Reasoning: RSI=16 oversold | ADX=81 CHOP=27
+2026-03-19 07:25:01,040 [INFO] *** BET *** #65: UP $2.38 @ 0.500 on Dogecoin Up or Down - March 19, 3:25AM-3:30AM ET
+2026-03-19 07:25:01,040 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 07:25:01,126 [INFO] Trade #64 (doge-updown-5m-1773904800): not resolved yet
+2026-03-19 07:25:01,331 [INFO] Trade #65 (doge-updown-5m-1773905100): not resolved yet
+2026-03-19 07:25:01,338 [INFO] Stats | Balance: $116.57 | Trades: 63 | W/L: 37/26 | Win Rate: 58.7% | PnL: $+21.38
+2026-03-19 07:29:30,670 [INFO] Pre-computing signal for next window...
+2026-03-19 07:29:31,248 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 07:30:00,646 [INFO] No signal cached, skipping this window
+2026-03-19 07:30:00,646 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:30:01,016 [INFO] Trade #64: market resolved DOWN, we bet UP → LOSS
+2026-03-19 07:30:01,192 [INFO] Trade #65 (doge-updown-5m-1773905100): not resolved yet
+2026-03-19 07:30:01,200 [INFO] Stats | Balance: $116.57 | Trades: 64 | W/L: 37/27 | Win Rate: 57.8% | PnL: $+18.95
+2026-03-19 07:34:30,625 [INFO] Pre-computing signal for next window...
+2026-03-19 07:34:31,242 [INFO] Cached signal: UP (confidence: 0.65) | Price: $0.0941
+2026-03-19 07:34:31,242 [INFO] Reasoning: Consec5 UP | ADX=41 CHOP=37
+2026-03-19 07:35:00,912 [INFO] Market: Dogecoin Up or Down - March 19, 3:35AM-3:40AM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 07:35:00,912 [INFO] Signal: UP (conf: 0.65) | Price: $0.0941 | Bet: $2.33 (2.0% of $116.57)
+2026-03-19 07:35:00,912 [INFO] Reasoning: Consec5 UP | ADX=41 CHOP=37
+2026-03-19 07:35:00,916 [INFO] *** BET *** #66: UP $2.33 @ 0.500 on Dogecoin Up or Down - March 19, 3:35AM-3:40AM ET
+2026-03-19 07:35:00,916 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 07:35:01,405 [INFO] Trade #65: market resolved UP, we bet UP → WIN
+2026-03-19 07:35:01,594 [INFO] Trade #66 (doge-updown-5m-1773905700): not resolved yet
+2026-03-19 07:35:01,605 [INFO] Stats | Balance: $118.96 | Trades: 65 | W/L: 38/27 | Win Rate: 58.5% | PnL: $+21.29
