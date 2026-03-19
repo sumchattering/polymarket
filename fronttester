@@ -187,7 +187,49 @@ cmd_reload() {
         return 1
     fi
 
-    # Unload and reload the plist — keeps DB and logs intact
+    # Parse strategy and coin from service name (e.g. momentum_v4_dogecoin)
+    # Coin is the last segment after the last underscore
+    local coin="${name##*_}"
+    local strategy="${name%_*}"
+
+    local db_path=$(strategy_db "$name")
+    local log_path=$(strategy_log "$name")
+
+    # Rewrite plist WITHOUT --reset to preserve DB
+    cat > "$plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>${PLIST_PREFIX}.${name}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>${VENV}</string>
+        <string>${BACKTEST_DIR}/run_live.py</string>
+        <string>--strategy</string>
+        <string>${strategy}</string>
+        <string>--coin</string>
+        <string>${coin}</string>
+        <string>--db</string>
+        <string>${db_path}</string>
+        <string>--log</string>
+        <string>${log_path}</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>${SCRIPT_DIR}</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>${log_path}</string>
+    <key>StandardErrorPath</key>
+    <string>${log_path}</string>
+</dict>
+</plist>
+EOF
+
     launchctl unload "$plist" 2>/dev/null
     sleep 1
     launchctl load "$plist"
@@ -296,6 +338,7 @@ case "${1:-}" in
     start)   cmd_start "$2" "$3" ;;
     stop)    cmd_stop "$2" ;;
     restart) cmd_restart "$2" "$3" ;;
+    reload)  cmd_reload "$2" ;;
     follow)  cmd_follow "$2" ;;
     status)  cmd_status "$2" ;;
     list)    cmd_list ;;
@@ -305,7 +348,8 @@ case "${1:-}" in
         echo "Usage:"
         echo "  fronttester start <strategy> [coin]   Start fresh (\$100 balance)"
         echo "  fronttester stop <service_name>       Stop a running strategy"
-        echo "  fronttester restart <strategy> [coin]  Restart fresh"
+        echo "  fronttester restart <strategy> [coin]  Restart fresh (wipes DB)"
+        echo "  fronttester reload <service_name|all>  Reload code (keeps DB/logs)"
         echo "  fronttester follow <service_name>     Tail live logs"
         echo "  fronttester status [service_name]     Show stats (all or one)"
         echo "  fronttester list                      List all strategies"

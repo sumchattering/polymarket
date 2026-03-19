@@ -1635,3 +1635,116 @@
 2026-03-19 11:30:00,790 [INFO] No signal cached, skipping this window
 2026-03-19 11:30:00,790 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-19 11:30:00,799 [INFO] Stats | Balance: $126.92 | Trades: 49 | W/L: 31/18 | Win Rate: 63.3% | PnL: $+26.92
+2026-03-19 11:34:29,010 [INFO] Shutting down gracefully...
+2026-03-19 11:34:29,010 [INFO] Shutdown complete
+2026-03-19 11:34:29,013 [INFO] Stats | Balance: $126.92 | Trades: 49 | W/L: 31/18 | Win Rate: 63.3% | PnL: $+26.92
+Account initialized with $100.00
+Account reset to $100.00
+Placed UP bet #1: $2.00 @ 0.5 on dogecoin (momentum_v3)
+Trade #1 → LOSS | PnL: $-2.00 | Balance: $98.00
+Placed UP bet #2: $1.96 @ 0.5 on dogecoin (momentum_v3)
+Placed UP bet #3: $1.92 @ 0.49 on dogecoin (momentum_v3)
+Trade #2 → WIN | PnL: $+1.93 | Balance: $98.01
+Trade #3 → WIN | PnL: $+1.97 | Balance: $101.90
+Placed UP bet #4: $2.04 @ 0.51 on dogecoin (momentum_v3)
+Trade #4 → WIN | PnL: $+1.93 | Balance: $103.83
+Placed DOWN bet #5: $2.08 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #6: $2.03 @ 0.495 on dogecoin (momentum_v3)
+Placed DOWN bet #7: $1.99 @ 0.5 on dogecoin (momentum_v3)
+Trade #5 → LOSS | PnL: $-2.08 | Balance: $97.73
+Placed DOWN bet #8: $1.95 @ 0.5 on dogecoin (momentum_v3)
+Trade #6 → LOSS | PnL: $-2.03 | Balance: $95.78
+Trade #7 → LOSS | PnL: $-1.99 | Balance: $95.78
+Trade #8 → WIN | PnL: $+1.92 | Balance: $99.65
+Placed DOWN bet #9: $1.99 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #10: $1.95 @ 0.535 on dogecoin (momentum_v3)
+Trade #9 → LOSS | PnL: $-1.99 | Balance: $95.71
+Trade #10 → WIN | PnL: $+1.66 | Balance: $99.32
+Placed UP bet #11: $1.99 @ 0.49 on dogecoin (momentum_v3)
+Trade #11 → WIN | PnL: $+2.04 | Balance: $101.36
+Placed DOWN bet #12: $2.03 @ 0.5 on dogecoin (momentum_v3)
+Trade #12 → WIN | PnL: $+2.00 | Balance: $103.36
+Placed UP bet #13: $2.07 @ 0.5 on dogecoin (momentum_v3)
+Placed UP bet #14: $2.03 @ 0.5 on dogecoin (momentum_v3)
+Trade #13 → WIN | PnL: $+2.04 | Balance: $103.37
+Placed UP bet #15: $2.07 @ 0.5 on dogecoin (momentum_v3)
+Trade #14 → LOSS | PnL: $-2.03 | Balance: $101.30
+Trade #15 → WIN | PnL: $+2.04 | Balance: $105.40
+Placed DOWN bet #16: $2.11 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #17: $2.07 @ 0.5 on dogecoin (momentum_v3)
+Trade #16 → LOSS | PnL: $-2.11 | Balance: $101.22
+Trade #17 → WIN | PnL: $+2.04 | Balance: $105.33
+Placed UP bet #18: $2.11 @ 0.5 on dogecoin (momentum_v3)
+Trade #18 → WIN | PnL: $+2.08 | Balance: $107.41
+Placed UP bet #19: $2.15 @ 0.535 on dogecoin (momentum_v3)
+Trade #19 → LOSS | PnL: $-2.15 | Balance: $105.26
+Placed DOWN bet #20: $2.11 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #21: $2.06 @ 0.5 on dogecoin (momentum_v3)
+Trade #20 → LOSS | PnL: $-2.11 | Balance: $101.09
+Trade #21 → WIN | PnL: $+2.03 | Balance: $105.18
+Placed UP bet #22: $2.10 @ 0.5 on dogecoin (momentum_v3)
+Trade #22 → WIN | PnL: $+2.07 | Balance: $107.24
+Placed UP bet #23: $2.14 @ 0.5 on dogecoin (momentum_v3)
+Trade #23 → WIN | PnL: $+2.11 | Balance: $109.35
+Placed DOWN bet #24: $2.19 @ 0.5 on dogecoin (momentum_v3)
+Trade #24 → WIN | PnL: $+2.16 | Balance: $111.51
+Placed UP bet #25: $2.23 @ 0.5 on dogecoin (momentum_v3)
+Trade #25 → LOSS | PnL: $-2.23 | Balance: $109.28
+Placed UP bet #26: $2.19 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #27: $2.14 @ 0.5 on dogecoin (momentum_v3)
+Trade #26 → WIN | PnL: $+2.16 | Balance: $109.29
+Placed DOWN bet #28: $2.19 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #29: $2.14 @ 0.5 on dogecoin (momentum_v3)
+Trade #27 → LOSS | PnL: $-2.14 | Balance: $104.96
+Placed DOWN bet #30: $2.10 @ 0.5 on dogecoin (momentum_v3)
+Trade #28 → LOSS | PnL: $-2.19 | Balance: $102.86
+Placed DOWN bet #31: $2.06 @ 0.5 on dogecoin (momentum_v3)
+Trade #29 → LOSS | PnL: $-2.14 | Balance: $100.80
+Trade #30 → LOSS | PnL: $-2.10 | Balance: $100.80
+Trade #31 → WIN | PnL: $+2.03 | Balance: $104.89
+Placed UP bet #32: $2.10 @ 0.5 on dogecoin (momentum_v3)
+Trade #32 → WIN | PnL: $+2.07 | Balance: $106.96
+Placed UP bet #33: $2.14 @ 0.5 on dogecoin (momentum_v3)
+Placed UP bet #34: $2.10 @ 0.5 on dogecoin (momentum_v3)
+Trade #33 → LOSS | PnL: $-2.14 | Balance: $102.72
+Placed DOWN bet #35: $2.05 @ 0.49 on dogecoin (momentum_v3)
+Trade #34 → WIN | PnL: $+2.07 | Balance: $104.83
+Trade #35 → WIN | PnL: $+2.10 | Balance: $108.99
+Placed UP bet #36: $2.18 @ 0.5 on dogecoin (momentum_v3)
+Trade #36 → WIN | PnL: $+2.15 | Balance: $111.13
+Placed DOWN bet #37: $2.22 @ 0.5 on dogecoin (momentum_v3)
+Trade #37 → WIN | PnL: $+2.19 | Balance: $113.32
+Placed UP bet #38: $2.27 @ 0.5 on dogecoin (momentum_v3)
+Trade #38 → WIN | PnL: $+2.23 | Balance: $115.55
+Placed DOWN bet #39: $2.31 @ 0.5 on dogecoin (momentum_v3)
+Trade #39 → WIN | PnL: $+2.27 | Balance: $117.83
+Placed UP bet #40: $2.36 @ 0.5 on dogecoin (momentum_v3)
+Placed UP bet #41: $2.31 @ 0.5 on dogecoin (momentum_v3)
+Trade #40 → LOSS | PnL: $-2.36 | Balance: $113.16
+Trade #41 → WIN | PnL: $+2.27 | Balance: $117.74
+Placed DOWN bet #42: $2.35 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #43: $2.31 @ 0.5 on dogecoin (momentum_v3)
+Trade #42 → WIN | PnL: $+2.31 | Balance: $117.74
+Trade #43 → WIN | PnL: $+2.27 | Balance: $122.33
+Placed DOWN bet #44: $2.45 @ 0.5 on dogecoin (momentum_v3)
+Placed DOWN bet #45: $2.40 @ 0.5 on dogecoin (momentum_v3)
+Trade #44 → WIN | PnL: $+2.41 | Balance: $122.34
+Trade #45 → WIN | PnL: $+2.36 | Balance: $127.10
+Placed UP bet #46: $2.54 @ 0.5 on dogecoin (momentum_v3)
+Placed UP bet #47: $2.49 @ 0.5 on dogecoin (momentum_v3)
+Placed UP bet #48: $2.44 @ 0.5 on dogecoin (momentum_v3)
+Trade #46 → LOSS | PnL: $-2.54 | Balance: $119.63
+Trade #47 → LOSS | PnL: $-2.49 | Balance: $119.63
+Trade #48 → WIN | PnL: $+2.40 | Balance: $124.47
+Placed UP bet #49: $2.49 @ 0.5 on dogecoin (momentum_v3)
+Trade #49 → WIN | PnL: $+2.45 | Balance: $126.92
+2026-03-19 11:34:31,838 [INFO] === Starting front-tester ===
+2026-03-19 11:34:31,838 [INFO] Strategy: momentum_v3 | Coin: dogecoin
+2026-03-19 11:34:31,838 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-19 11:34:31,838 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-19 11:34:31,838 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v3_dogecoin.db
+2026-03-19 11:34:31,841 [INFO] Stats | Balance: $126.92 | Trades: 49 | W/L: 31/18 | Win Rate: 63.3% | PnL: $+26.92
+2026-03-19 11:34:31,841 [INFO] Waiting 29s for next window. Will precompute signal in -1s...
+2026-03-19 11:34:31,845 [INFO] Stats | Balance: $126.92 | Trades: 49 | W/L: 31/18 | Win Rate: 63.3% | PnL: $+26.92
+2026-03-19 11:34:31,845 [INFO] Pre-computing signal for next window...
+2026-03-19 11:34:35,824 [INFO] No signal — market is choppy or no pattern detected

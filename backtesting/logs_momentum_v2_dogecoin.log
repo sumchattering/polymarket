@@ -2279,3 +2279,168 @@
 2026-03-19 11:30:00,790 [INFO] No signal cached, skipping this window
 2026-03-19 11:30:00,790 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-19 11:30:00,805 [INFO] Stats | Balance: $125.65 | Trades: 75 | W/L: 44/31 | Win Rate: 58.7% | PnL: $+25.65
+2026-03-19 11:34:24,580 [INFO] Shutting down gracefully...
+2026-03-19 11:34:24,580 [INFO] Shutdown complete
+2026-03-19 11:34:24,583 [INFO] Stats | Balance: $125.65 | Trades: 75 | W/L: 44/31 | Win Rate: 58.7% | PnL: $+25.65
+Account initialized with $100.00
+Account reset to $100.00
+Placed UP bet #1: $2.00 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #2: $1.96 @ 0.5 on dogecoin (momentum_v2)
+Trade #1 → WIN | PnL: $+1.97 | Balance: $100.01
+Trade #2 → LOSS | PnL: $-1.96 | Balance: $100.01
+Placed UP bet #3: $2.00 @ 0.63 on dogecoin (momentum_v2)
+Placed UP bet #4: $1.96 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #5: $1.92 @ 0.5 on dogecoin (momentum_v2)
+Trade #3 → LOSS | PnL: $-2.00 | Balance: $94.13
+Trade #4 → LOSS | PnL: $-1.96 | Balance: $94.13
+Trade #5 → WIN | PnL: $+1.89 | Balance: $97.94
+Placed UP bet #6: $1.96 @ 0.515 on dogecoin (momentum_v2)
+Trade #6 → WIN | PnL: $+1.82 | Balance: $99.75
+Placed DOWN bet #7: $2.00 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #8: $1.96 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #9: $1.92 @ 0.5 on dogecoin (momentum_v2)
+Trade #7 → WIN | PnL: $+1.97 | Balance: $97.84
+Trade #8 → WIN | PnL: $+1.93 | Balance: $101.73
+Trade #9 → WIN | PnL: $+1.89 | Balance: $105.54
+Placed UP bet #10: $2.11 @ 0.5 on dogecoin (momentum_v2)
+Trade #10 → WIN | PnL: $+2.08 | Balance: $107.62
+Placed UP bet #11: $2.15 @ 0.51 on dogecoin (momentum_v2)
+Placed UP bet #12: $2.11 @ 0.5 on dogecoin (momentum_v2)
+Trade #11 → LOSS | PnL: $-2.15 | Balance: $103.36
+Placed DOWN bet #13: $2.07 @ 0.49 on dogecoin (momentum_v2)
+Placed DOWN bet #14: $2.03 @ 0.5 on dogecoin (momentum_v2)
+Trade #12 → WIN | PnL: $+2.08 | Balance: $103.45
+Trade #13 → WIN | PnL: $+2.12 | Balance: $107.64
+Trade #14 → LOSS | PnL: $-2.03 | Balance: $107.64
+Placed DOWN bet #15: $2.15 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #16: $2.11 @ 0.5 on dogecoin (momentum_v2)
+Trade #15 → WIN | PnL: $+2.12 | Balance: $107.64
+Placed UP bet #17: $2.15 @ 0.515 on dogecoin (momentum_v2)
+Placed UP bet #18: $2.11 @ 0.51 on dogecoin (momentum_v2)
+Trade #16 → LOSS | PnL: $-2.11 | Balance: $103.38
+Trade #17 → LOSS | PnL: $-2.15 | Balance: $103.38
+Trade #18 → WIN | PnL: $+1.99 | Balance: $107.49
+Placed UP bet #19: $2.15 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #20: $2.11 @ 0.5 on dogecoin (momentum_v2)
+Trade #19 → LOSS | PnL: $-2.15 | Balance: $103.23
+Trade #20 → LOSS | PnL: $-2.11 | Balance: $103.23
+Placed UP bet #21: $2.06 @ 0.5 on dogecoin (momentum_v2)
+Trade #21 → LOSS | PnL: $-2.06 | Balance: $101.17
+Placed DOWN bet #22: $2.02 @ 0.5 on dogecoin (momentum_v2)
+Trade #22 → WIN | PnL: $+1.99 | Balance: $103.16
+Placed DOWN bet #23: $2.06 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #24: $2.02 @ 0.49 on dogecoin (momentum_v2)
+Trade #23 → LOSS | PnL: $-2.06 | Balance: $99.08
+Trade #24 → WIN | PnL: $+2.07 | Balance: $103.17
+Placed UP bet #25: $2.06 @ 0.51 on dogecoin (momentum_v2)
+Trade #25 → WIN | PnL: $+1.95 | Balance: $105.12
+Placed DOWN bet #26: $2.10 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #27: $2.06 @ 0.495 on dogecoin (momentum_v2)
+Placed DOWN bet #28: $2.02 @ 0.5 on dogecoin (momentum_v2)
+Trade #26 → LOSS | PnL: $-2.10 | Balance: $98.94
+Placed DOWN bet #29: $1.98 @ 0.5 on dogecoin (momentum_v2)
+Trade #27 → LOSS | PnL: $-2.06 | Balance: $96.96
+Trade #28 → LOSS | PnL: $-2.02 | Balance: $96.96
+Trade #29 → WIN | PnL: $+1.95 | Balance: $100.88
+Placed UP bet #30: $2.02 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #31: $1.98 @ 0.535 on dogecoin (momentum_v2)
+Trade #30 → WIN | PnL: $+1.99 | Balance: $100.89
+Trade #31 → WIN | PnL: $+1.69 | Balance: $104.56
+Placed UP bet #32: $2.09 @ 0.49 on dogecoin (momentum_v2)
+Trade #32 → WIN | PnL: $+2.14 | Balance: $106.71
+Placed DOWN bet #33: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Trade #33 → WIN | PnL: $+2.10 | Balance: $108.80
+Placed DOWN bet #34: $2.18 @ 0.5 on dogecoin (momentum_v2)
+Trade #34 → LOSS | PnL: $-2.18 | Balance: $106.62
+Placed UP bet #35: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #36: $2.09 @ 0.5 on dogecoin (momentum_v2)
+Trade #35 → WIN | PnL: $+2.10 | Balance: $106.63
+Placed UP bet #37: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Trade #36 → LOSS | PnL: $-2.09 | Balance: $104.50
+Trade #37 → WIN | PnL: $+2.10 | Balance: $108.73
+Placed DOWN bet #38: $2.17 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #39: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #40: $2.09 @ 0.5 on dogecoin (momentum_v2)
+Trade #38 → LOSS | PnL: $-2.17 | Balance: $102.34
+Trade #39 → WIN | PnL: $+2.10 | Balance: $106.56
+Trade #40 → LOSS | PnL: $-2.09 | Balance: $106.56
+Placed UP bet #41: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Trade #41 → WIN | PnL: $+2.10 | Balance: $108.66
+Placed UP bet #42: $2.17 @ 0.535 on dogecoin (momentum_v2)
+Trade #42 → LOSS | PnL: $-2.17 | Balance: $106.49
+Placed DOWN bet #43: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #44: $2.09 @ 0.5 on dogecoin (momentum_v2)
+Trade #43 → LOSS | PnL: $-2.13 | Balance: $102.27
+Trade #44 → WIN | PnL: $+2.06 | Balance: $106.42
+Placed UP bet #45: $2.13 @ 0.5 on dogecoin (momentum_v2)
+Trade #45 → WIN | PnL: $+2.10 | Balance: $108.51
+Placed UP bet #46: $2.17 @ 0.5 on dogecoin (momentum_v2)
+Trade #46 → WIN | PnL: $+2.14 | Balance: $110.65
+Placed DOWN bet #47: $2.21 @ 0.5 on dogecoin (momentum_v2)
+Trade #47 → WIN | PnL: $+2.18 | Balance: $112.83
+Placed UP bet #48: $2.26 @ 0.5 on dogecoin (momentum_v2)
+Trade #48 → LOSS | PnL: $-2.26 | Balance: $110.57
+Placed UP bet #49: $2.21 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #50: $2.17 @ 0.5 on dogecoin (momentum_v2)
+Trade #49 → WIN | PnL: $+2.18 | Balance: $110.57
+Placed DOWN bet #51: $2.21 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #52: $2.17 @ 0.5 on dogecoin (momentum_v2)
+Trade #50 → LOSS | PnL: $-2.17 | Balance: $106.19
+Placed DOWN bet #53: $2.12 @ 0.5 on dogecoin (momentum_v2)
+Trade #51 → LOSS | PnL: $-2.21 | Balance: $104.07
+Placed DOWN bet #54: $2.08 @ 0.5 on dogecoin (momentum_v2)
+Trade #52 → LOSS | PnL: $-2.17 | Balance: $101.99
+Placed DOWN bet #55: $2.04 @ 0.5 on dogecoin (momentum_v2)
+Trade #53 → LOSS | PnL: $-2.12 | Balance: $99.95
+Trade #54 → WIN | PnL: $+2.05 | Balance: $104.08
+Placed UP bet #56: $2.08 @ 0.5 on dogecoin (momentum_v2)
+Trade #55 → WIN | PnL: $+2.01 | Balance: $106.05
+Trade #56 → WIN | PnL: $+2.05 | Balance: $110.17
+Placed UP bet #57: $2.20 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #58: $2.16 @ 0.5 on dogecoin (momentum_v2)
+Trade #57 → LOSS | PnL: $-2.20 | Balance: $105.81
+Placed DOWN bet #59: $2.12 @ 0.49 on dogecoin (momentum_v2)
+Trade #58 → WIN | PnL: $+2.13 | Balance: $107.98
+Trade #59 → WIN | PnL: $+2.17 | Balance: $112.27
+Placed UP bet #60: $2.25 @ 0.5 on dogecoin (momentum_v2)
+Trade #60 → WIN | PnL: $+2.21 | Balance: $114.49
+Placed DOWN bet #61: $2.29 @ 0.5 on dogecoin (momentum_v2)
+Trade #61 → WIN | PnL: $+2.25 | Balance: $116.74
+Placed UP bet #62: $2.33 @ 0.5 on dogecoin (momentum_v2)
+Trade #62 → WIN | PnL: $+2.29 | Balance: $119.04
+Placed DOWN bet #63: $2.38 @ 0.5 on dogecoin (momentum_v2)
+Trade #63 → WIN | PnL: $+2.34 | Balance: $121.38
+Placed UP bet #64: $2.43 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #65: $2.38 @ 0.5 on dogecoin (momentum_v2)
+Trade #64 → LOSS | PnL: $-2.43 | Balance: $116.57
+Placed UP bet #66: $2.33 @ 0.5 on dogecoin (momentum_v2)
+Trade #65 → WIN | PnL: $+2.34 | Balance: $118.96
+Placed UP bet #67: $2.38 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #68: $2.33 @ 0.5 on dogecoin (momentum_v2)
+Trade #66 → WIN | PnL: $+2.29 | Balance: $118.88
+Placed DOWN bet #69: $2.38 @ 0.515 on dogecoin (momentum_v2)
+Trade #67 → LOSS | PnL: $-2.38 | Balance: $116.50
+Trade #68 → WIN | PnL: $+2.29 | Balance: $121.12
+Trade #69 → LOSS | PnL: $-2.38 | Balance: $121.12
+Placed DOWN bet #70: $2.42 @ 0.5 on dogecoin (momentum_v2)
+Placed DOWN bet #71: $2.37 @ 0.5 on dogecoin (momentum_v2)
+Trade #70 → WIN | PnL: $+2.38 | Balance: $121.13
+Trade #71 → WIN | PnL: $+2.33 | Balance: $125.83
+Placed UP bet #72: $2.52 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #73: $2.47 @ 0.5 on dogecoin (momentum_v2)
+Placed UP bet #74: $2.42 @ 0.5 on dogecoin (momentum_v2)
+Trade #72 → LOSS | PnL: $-2.52 | Balance: $118.42
+Trade #73 → LOSS | PnL: $-2.47 | Balance: $118.42
+Trade #74 → WIN | PnL: $+2.38 | Balance: $123.23
+Placed UP bet #75: $2.46 @ 0.5 on dogecoin (momentum_v2)
+Trade #75 → WIN | PnL: $+2.42 | Balance: $125.65
+2026-03-19 11:34:28,297 [INFO] === Starting front-tester ===
+2026-03-19 11:34:28,297 [INFO] Strategy: momentum_v2 | Coin: dogecoin
+2026-03-19 11:34:28,297 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-19 11:34:28,297 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-19 11:34:28,297 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v2_dogecoin.db
+2026-03-19 11:34:28,300 [INFO] Stats | Balance: $125.65 | Trades: 75 | W/L: 44/31 | Win Rate: 58.7% | PnL: $+25.65
+2026-03-19 11:34:28,300 [INFO] Waiting 32s for next window. Will precompute signal in 2s...
+2026-03-19 11:34:28,304 [INFO] Stats | Balance: $125.65 | Trades: 75 | W/L: 44/31 | Win Rate: 58.7% | PnL: $+25.65
+2026-03-19 11:34:30,561 [INFO] Pre-computing signal for next window...
+2026-03-19 11:34:34,437 [INFO] No signal — market is choppy or no pattern detected

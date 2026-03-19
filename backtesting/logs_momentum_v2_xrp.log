@@ -2301,3 +2301,174 @@
 2026-03-19 11:30:00,461 [INFO] No signal cached, skipping this window
 2026-03-19 11:30:00,461 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-19 11:30:00,467 [INFO] Stats | Balance: $110.18 | Trades: 78 | W/L: 43/35 | Win Rate: 55.1% | PnL: $+10.18
+2026-03-19 11:34:26,451 [INFO] Shutting down gracefully...
+2026-03-19 11:34:27,187 [INFO] Shutdown complete
+2026-03-19 11:34:27,190 [INFO] Stats | Balance: $110.18 | Trades: 78 | W/L: 43/35 | Win Rate: 55.1% | PnL: $+10.18
+Account initialized with $100.00
+Account reset to $100.00
+Placed UP bet #1: $2.00 @ 0.495 on xrp (momentum_v2)
+Placed UP bet #2: $1.96 @ 0.5 on xrp (momentum_v2)
+Placed UP bet #3: $1.92 @ 0.495 on xrp (momentum_v2)
+Trade #1 → WIN | PnL: $+2.01 | Balance: $98.13
+Placed DOWN bet #4: $1.96 @ 0.5 on xrp (momentum_v2)
+Trade #2 → LOSS | PnL: $-1.96 | Balance: $96.17
+Trade #3 → WIN | PnL: $+1.93 | Balance: $100.02
+Trade #4 → WIN | PnL: $+1.93 | Balance: $103.91
+Placed DOWN bet #5: $2.08 @ 0.485 on xrp (momentum_v2)
+Trade #5 → LOSS | PnL: $-2.08 | Balance: $101.83
+Placed UP bet #6: $2.04 @ 0.52 on xrp (momentum_v2)
+Trade #6 → LOSS | PnL: $-2.04 | Balance: $99.79
+Placed DOWN bet #7: $2.00 @ 0.495 on xrp (momentum_v2)
+Placed DOWN bet #8: $1.96 @ 0.51 on xrp (momentum_v2)
+Trade #7 → WIN | PnL: $+2.01 | Balance: $99.84
+Trade #8 → LOSS | PnL: $-1.96 | Balance: $99.84
+Placed UP bet #9: $2.00 @ 0.47 on xrp (momentum_v2)
+Placed UP bet #10: $1.96 @ 0.5 on xrp (momentum_v2)
+Placed UP bet #11: $1.92 @ 0.495 on xrp (momentum_v2)
+Trade #9 → WIN | PnL: $+2.22 | Balance: $98.18
+Placed UP bet #12: $1.96 @ 0.515 on xrp (momentum_v2)
+Trade #10 → LOSS | PnL: $-1.96 | Balance: $96.22
+Trade #11 → LOSS | PnL: $-1.92 | Balance: $96.22
+Trade #12 → WIN | PnL: $+1.82 | Balance: $100.00
+Placed UP bet #13: $2.00 @ 0.515 on xrp (momentum_v2)
+Placed UP bet #14: $1.96 @ 0.5 on xrp (momentum_v2)
+Placed UP bet #15: $1.92 @ 0.545 on xrp (momentum_v2)
+Trade #13 → LOSS | PnL: $-2.00 | Balance: $94.12
+Trade #14 → LOSS | PnL: $-1.96 | Balance: $94.12
+Placed DOWN bet #16: $1.88 @ 0.475 on xrp (momentum_v2)
+Trade #15 → WIN | PnL: $+1.57 | Balance: $95.73
+Trade #16 → LOSS | PnL: $-1.88 | Balance: $95.73
+Placed DOWN bet #17: $1.91 @ 0.49 on xrp (momentum_v2)
+Placed UP bet #18: $1.88 @ 0.5 on xrp (momentum_v2)
+Trade #17 → WIN | PnL: $+1.96 | Balance: $95.81
+Placed UP bet #19: $1.92 @ 0.505 on xrp (momentum_v2)
+Placed UP bet #20: $1.88 @ 0.535 on xrp (momentum_v2)
+Trade #18 → LOSS | PnL: $-1.88 | Balance: $92.01
+Trade #19 → LOSS | PnL: $-1.92 | Balance: $92.01
+Trade #20 → WIN | PnL: $+1.60 | Balance: $95.49
+Placed UP bet #21: $1.91 @ 0.515 on xrp (momentum_v2)
+Placed UP bet #22: $1.87 @ 0.525 on xrp (momentum_v2)
+Trade #21 → WIN | PnL: $+1.77 | Balance: $95.39
+Trade #22 → WIN | PnL: $+1.66 | Balance: $98.92
+Placed UP bet #23: $1.98 @ 0.52 on xrp (momentum_v2)
+Trade #23 → LOSS | PnL: $-1.98 | Balance: $96.94
+Placed UP bet #24: $1.94 @ 0.595 on xrp (momentum_v2)
+Placed DOWN bet #25: $1.90 @ 0.5 on xrp (momentum_v2)
+Trade #24 → WIN | PnL: $+1.29 | Balance: $96.34
+Trade #25 → LOSS | PnL: $-1.90 | Balance: $96.34
+Placed DOWN bet #26: $1.93 @ 0.56 on xrp (momentum_v2)
+Trade #26 → WIN | PnL: $+1.49 | Balance: $97.82
+Placed DOWN bet #27: $1.96 @ 0.5 on xrp (momentum_v2)
+Trade #27 → WIN | PnL: $+1.93 | Balance: $99.75
+Placed DOWN bet #28: $2.00 @ 0.525 on xrp (momentum_v2)
+Placed DOWN bet #29: $1.96 @ 0.5 on xrp (momentum_v2)
+Placed DOWN bet #30: $1.92 @ 0.52 on xrp (momentum_v2)
+Trade #28 → LOSS | PnL: $-2.00 | Balance: $93.87
+Placed DOWN bet #31: $1.88 @ 0.535 on xrp (momentum_v2)
+Trade #29 → LOSS | PnL: $-1.96 | Balance: $91.99
+Placed DOWN bet #32: $1.84 @ 0.525 on xrp (momentum_v2)
+Trade #30 → WIN | PnL: $+1.74 | Balance: $93.82
+Trade #31 → LOSS | PnL: $-1.88 | Balance: $93.82
+Trade #32 → WIN | PnL: $+1.64 | Balance: $97.29
+Placed UP bet #33: $1.95 @ 0.475 on xrp (momentum_v2)
+Placed DOWN bet #34: $1.91 @ 0.52 on xrp (momentum_v2)
+Trade #33 → LOSS | PnL: $-1.95 | Balance: $93.43
+Trade #34 → LOSS | PnL: $-1.91 | Balance: $93.43
+Placed UP bet #35: $1.87 @ 0.5 on xrp (momentum_v2)
+Placed UP bet #36: $1.83 @ 0.51 on xrp (momentum_v2)
+Trade #35 → WIN | PnL: $+1.84 | Balance: $93.44
+Placed DOWN bet #37: $1.87 @ 0.51 on xrp (momentum_v2)
+Trade #36 → WIN | PnL: $+1.73 | Balance: $95.13
+Trade #37 → WIN | PnL: $+1.77 | Balance: $98.77
+Placed UP bet #38: $1.98 @ 0.5 on xrp (momentum_v2)
+Trade #38 → WIN | PnL: $+1.95 | Balance: $100.72
+Placed UP bet #39: $2.01 @ 0.515 on xrp (momentum_v2)
+Trade #39 → WIN | PnL: $+1.86 | Balance: $102.58
+Placed UP bet #40: $2.05 @ 0.495 on xrp (momentum_v2)
+Placed DOWN bet #41: $2.01 @ 0.53 on xrp (momentum_v2)
+Trade #40 → WIN | PnL: $+2.06 | Balance: $102.63
+Placed DOWN bet #42: $2.05 @ 0.53 on xrp (momentum_v2)
+Placed DOWN bet #43: $2.01 @ 0.535 on xrp (momentum_v2)
+Trade #41 → LOSS | PnL: $-2.01 | Balance: $98.57
+Trade #42 → WIN | PnL: $+1.79 | Balance: $102.41
+Trade #43 → LOSS | PnL: $-2.01 | Balance: $102.41
+Placed DOWN bet #44: $2.05 @ 0.525 on xrp (momentum_v2)
+Placed DOWN bet #45: $2.01 @ 0.53 on xrp (momentum_v2)
+Trade #44 → LOSS | PnL: $-2.05 | Balance: $98.35
+Placed DOWN bet #46: $1.97 @ 0.535 on xrp (momentum_v2)
+Placed DOWN bet #47: $1.93 @ 0.53 on xrp (momentum_v2)
+Trade #45 → LOSS | PnL: $-2.01 | Balance: $94.45
+Trade #46 → WIN | PnL: $+1.68 | Balance: $98.10
+Trade #47 → LOSS | PnL: $-1.93 | Balance: $98.10
+Placed UP bet #48: $1.96 @ 0.505 on xrp (momentum_v2)
+Placed UP bet #49: $1.92 @ 0.495 on xrp (momentum_v2)
+Trade #48 → LOSS | PnL: $-1.96 | Balance: $94.22
+Trade #49 → WIN | PnL: $+1.93 | Balance: $98.07
+Placed UP bet #50: $1.96 @ 0.515 on xrp (momentum_v2)
+Placed UP bet #51: $1.92 @ 0.51 on xrp (momentum_v2)
+Placed DOWN bet #52: $1.88 @ 0.525 on xrp (momentum_v2)
+Trade #50 → WIN | PnL: $+1.82 | Balance: $96.08
+Placed DOWN bet #53: $1.92 @ 0.515 on xrp (momentum_v2)
+Trade #51 → WIN | PnL: $+1.81 | Balance: $97.90
+Trade #52 → LOSS | PnL: $-1.88 | Balance: $97.90
+Trade #53 → WIN | PnL: $+1.78 | Balance: $101.59
+Placed UP bet #54: $2.03 @ 0.495 on xrp (momentum_v2)
+Trade #54 → WIN | PnL: $+2.04 | Balance: $103.63
+Placed DOWN bet #55: $2.07 @ 0.515 on xrp (momentum_v2)
+Placed DOWN bet #56: $2.03 @ 0.52 on xrp (momentum_v2)
+Trade #55 → LOSS | PnL: $-2.07 | Balance: $99.53
+Trade #56 → WIN | PnL: $+1.84 | Balance: $103.41
+Placed DOWN bet #57: $2.07 @ 0.495 on xrp (momentum_v2)
+Trade #57 → WIN | PnL: $+2.08 | Balance: $105.49
+Placed UP bet #58: $2.11 @ 0.515 on xrp (momentum_v2)
+Trade #58 → WIN | PnL: $+1.95 | Balance: $107.44
+Placed DOWN bet #59: $2.15 @ 0.515 on xrp (momentum_v2)
+Placed DOWN bet #60: $2.11 @ 0.525 on xrp (momentum_v2)
+Placed DOWN bet #61: $2.06 @ 0.505 on xrp (momentum_v2)
+Trade #59 → LOSS | PnL: $-2.15 | Balance: $101.12
+Placed DOWN bet #62: $2.02 @ 0.52 on xrp (momentum_v2)
+Trade #60 → LOSS | PnL: $-2.11 | Balance: $99.10
+Trade #61 → LOSS | PnL: $-2.06 | Balance: $99.10
+Trade #62 → WIN | PnL: $+1.83 | Balance: $102.95
+Placed UP bet #63: $2.06 @ 0.54 on xrp (momentum_v2)
+Trade #63 → WIN | PnL: $+1.72 | Balance: $104.68
+Placed UP bet #64: $2.09 @ 0.495 on xrp (momentum_v2)
+Placed UP bet #65: $2.05 @ 0.5 on xrp (momentum_v2)
+Trade #64 → WIN | PnL: $+2.10 | Balance: $104.73
+Trade #65 → LOSS | PnL: $-2.05 | Balance: $104.73
+Placed UP bet #66: $2.09 @ 0.505 on xrp (momentum_v2)
+Placed UP bet #67: $2.05 @ 0.52 on xrp (momentum_v2)
+Trade #66 → WIN | PnL: $+2.02 | Balance: $104.69
+Placed DOWN bet #68: $2.09 @ 0.5 on xrp (momentum_v2)
+Trade #67 → WIN | PnL: $+1.86 | Balance: $106.51
+Placed UP bet #69: $2.13 @ 0.5 on xrp (momentum_v2)
+Placed DOWN bet #70: $2.09 @ 0.505 on xrp (momentum_v2)
+Trade #68 → LOSS | PnL: $-2.09 | Balance: $102.29
+Placed DOWN bet #71: $2.05 @ 0.5 on xrp (momentum_v2)
+Trade #69 → LOSS | PnL: $-2.13 | Balance: $100.24
+Trade #70 → WIN | PnL: $+2.02 | Balance: $104.35
+Trade #71 → LOSS | PnL: $-2.05 | Balance: $104.35
+Placed UP bet #72: $2.09 @ 0.495 on xrp (momentum_v2)
+Placed UP bet #73: $2.05 @ 0.505 on xrp (momentum_v2)
+Trade #72 → LOSS | PnL: $-2.09 | Balance: $100.21
+Trade #73 → WIN | PnL: $+1.98 | Balance: $104.24
+Placed UP bet #74: $2.08 @ 0.505 on xrp (momentum_v2)
+Placed DOWN bet #75: $2.04 @ 0.5 on xrp (momentum_v2)
+Trade #74 → WIN | PnL: $+2.01 | Balance: $104.20
+Trade #75 → WIN | PnL: $+2.01 | Balance: $108.25
+Placed DOWN bet #76: $2.16 @ 0.5 on xrp (momentum_v2)
+Trade #76 → LOSS | PnL: $-2.16 | Balance: $106.09
+Placed UP bet #77: $2.12 @ 0.5 on xrp (momentum_v2)
+Placed UP bet #78: $2.08 @ 0.505 on xrp (momentum_v2)
+Trade #77 → WIN | PnL: $+2.09 | Balance: $106.10
+Trade #78 → WIN | PnL: $+2.01 | Balance: $110.18
+2026-03-19 11:34:30,187 [INFO] === Starting front-tester ===
+2026-03-19 11:34:30,188 [INFO] Strategy: momentum_v2 | Coin: xrp
+2026-03-19 11:34:30,188 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-19 11:34:30,188 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-19 11:34:30,188 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v2_xrp.db
+2026-03-19 11:34:30,190 [INFO] Stats | Balance: $110.18 | Trades: 78 | W/L: 43/35 | Win Rate: 55.1% | PnL: $+10.18
+2026-03-19 11:34:30,190 [INFO] Waiting 30s for next window. Will precompute signal in 0s...
+2026-03-19 11:34:30,194 [INFO] Stats | Balance: $110.18 | Trades: 78 | W/L: 43/35 | Win Rate: 55.1% | PnL: $+10.18
+2026-03-19 11:34:30,194 [INFO] Pre-computing signal for next window...
+2026-03-19 11:34:33,100 [INFO] No signal — market is choppy or no pattern detected
