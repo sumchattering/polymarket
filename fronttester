@@ -291,27 +291,51 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
             local running="stopped"
             is_running "$name" && running="RUNNING"
 
+            # Check for finished status in DB
+            if [ "$running" = "stopped" ]; then
+                local finished=$("$VENV" -c "
+import sqlite3
+conn = sqlite3.connect('$dbfile')
+conn.row_factory = sqlite3.Row
+try:
+    r = conn.execute('SELECT status FROM account WHERE id=1').fetchone()
+    print(r['status'] if r and r['status'] else '')
+except: pass
+conn.close()
+" 2>/dev/null)
+                [ "$finished" = "finished" ] && running="FINISHED"
+            fi
+
             found=true
             "$VENV" -c "
 import sys; sys.path.insert(0, '$BACKTEST_DIR')
 import db
 from datetime import datetime, timezone
 conn = db.get_db('$dbfile')
-acct = conn.execute('SELECT created_at FROM account WHERE id=1').fetchone()
+try:
+    acct = conn.execute('SELECT created_at, last_heartbeat FROM account WHERE id=1').fetchone()
+except Exception:
+    acct = conn.execute('SELECT created_at FROM account WHERE id=1').fetchone()
 conn.close()
 stats = db.get_stats(db_path='$dbfile')
 wr = f\"{stats['win_rate']:.0f}%\" if stats['total_trades'] > 0 else '-'
 uptime = ''
 if acct and acct['created_at']:
-    started = datetime.fromisoformat(acct['created_at'])
-    delta = datetime.now(timezone.utc) - started
-    days = delta.days
-    hours = delta.seconds // 3600
-    if days > 0:
-        uptime = f'{days}d {hours}h'
-    else:
-        uptime = f'{hours}h'
-print(f'  {\"$name\":<30s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]}/{stats[\"losses\"]}  WR: {wr}  PnL: \${stats[\"total_pnl\"]:+.2f}  ({uptime})')
+    hb = acct['last_heartbeat'] if 'last_heartbeat' in acct.keys() else None
+    if hb:
+        started = datetime.fromisoformat(acct['created_at'])
+        if '$running' != 'RUNNING':
+            end = datetime.fromisoformat(hb)
+        else:
+            end = datetime.now(timezone.utc)
+        delta = end - started
+        days = delta.days
+        hours = delta.seconds // 3600
+        if days > 0:
+            uptime = f'  ({days}d {hours}h)'
+        else:
+            uptime = f'  ({hours}h)'
+print(f'  {\"$name\":<30s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]}/{stats[\"losses\"]}  WR: {wr}  PnL: \${stats[\"total_pnl\"]:+.2f}{uptime}')
 " 2>/dev/null
         done
         if [ "$found" = false ]; then

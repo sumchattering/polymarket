@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS account (
     initial_balance REAL NOT NULL,
     balance REAL NOT NULL,
     created_at TEXT NOT NULL,
-    updated_at TEXT NOT NULL
+    updated_at TEXT NOT NULL,
+    last_heartbeat TEXT
 );
 
 CREATE TABLE IF NOT EXISTS trades (
@@ -230,6 +231,25 @@ def take_snapshot(db_path=None):
     )
     conn.commit()
     conn.close()
+
+
+def heartbeat(db_path=None):
+    """Update last_heartbeat timestamp. Returns (created_at, last_heartbeat, runtime_seconds)."""
+    conn = get_db(db_path)
+    now = datetime.now(timezone.utc)
+    now_iso = now.isoformat()
+    # Add column if missing (existing DBs)
+    try:
+        conn.execute("ALTER TABLE account ADD COLUMN last_heartbeat TEXT")
+    except Exception:
+        pass
+    conn.execute("UPDATE account SET last_heartbeat = ? WHERE id = 1", (now_iso,))
+    conn.commit()
+    row = conn.execute("SELECT created_at, last_heartbeat FROM account WHERE id = 1").fetchone()
+    conn.close()
+    created = datetime.fromisoformat(row["created_at"])
+    runtime = (now - created).total_seconds()
+    return created, now, runtime
 
 
 def reset_account(initial_balance=100.0, db_path=None):

@@ -1642,3 +1642,68 @@ Trade #42 → WIN | PnL: $+2.36 | Balance: $129.79
 2026-03-19 11:34:37,388 [INFO] Stats | Balance: $129.79 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
 2026-03-19 11:34:37,388 [INFO] Pre-computing signal for next window...
 2026-03-19 11:34:40,966 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 11:35:00,145 [INFO] No signal cached, skipping this window
+2026-03-19 11:35:00,146 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 11:35:00,149 [INFO] Stats | Balance: $129.79 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:39:21,907 [INFO] Shutting down gracefully...
+2026-03-19 11:39:21,907 [INFO] Shutdown complete
+2026-03-19 11:39:21,909 [INFO] Stats | Balance: $129.79 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+Account exists with $129.79
+2026-03-19 11:39:24,607 [INFO] === Starting front-tester ===
+2026-03-19 11:39:24,607 [INFO] Strategy: momentum_v4 | Coin: xrp
+2026-03-19 11:39:24,607 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-19 11:39:24,607 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-19 11:39:24,607 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-19 11:39:24,610 [INFO] Stats | Balance: $129.79 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:39:24,610 [INFO] Waiting 36s for next window. Will precompute signal in 6s...
+2026-03-19 11:39:24,616 [INFO] Stats | Balance: $129.79 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:39:30,248 [INFO] Pre-computing signal for next window...
+2026-03-19 11:39:33,273 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4584
+2026-03-19 11:39:33,273 [INFO] Reasoning: RSI(21)=33 oversold | ADX=33 CHOP=25
+2026-03-19 11:40:00,533 [INFO] Market: XRP Up or Down - March 19, 7:40AM-7:45AM ET | UP: 0.520 DOWN: 0.480 | Elapsed: 0s
+2026-03-19 11:40:00,533 [INFO] Signal: UP (conf: 0.60) | Price: $1.4584 | Bet: $2.60 (2.0% of $129.79)
+2026-03-19 11:40:00,534 [INFO] Reasoning: RSI(21)=33 oversold | ADX=33 CHOP=25
+2026-03-19 11:40:00,538 [INFO] *** BET *** #43: UP $2.60 @ 0.520 on XRP Up or Down - March 19, 7:40AM-7:45AM ET
+2026-03-19 11:40:00,538 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 11:40:00,634 [INFO] Trade #43 (xrp-updown-5m-1773920400): not resolved yet
+2026-03-19 11:40:00,643 [INFO] Stats | Balance: $127.19 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:44:30,758 [INFO] Pre-computing signal for next window...
+2026-03-19 11:44:31,322 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4581
+2026-03-19 11:44:31,322 [INFO] Reasoning: RSI(21)=29 oversold | ADX=49 CHOP=24
+2026-03-19 11:45:00,825 [INFO] Market: XRP Up or Down - March 19, 7:45AM-7:50AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 0s
+2026-03-19 11:45:00,826 [INFO] Signal: UP (conf: 0.60) | Price: $1.4581 | Bet: $2.54 (2.0% of $127.19)
+2026-03-19 11:45:00,826 [INFO] Reasoning: RSI(21)=29 oversold | ADX=49 CHOP=24
+2026-03-19 11:45:00,828 [INFO] *** BET *** #44: UP $2.54 @ 0.515 on XRP Up or Down - March 19, 7:45AM-7:50AM ET
+2026-03-19 11:45:00,828 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 11:45:00,987 [INFO] Trade #43 (xrp-updown-5m-1773920400): not resolved yet
+2026-03-19 11:45:01,093 [INFO] Trade #44 (xrp-updown-5m-1773920700): not resolved yet
+2026-03-19 11:45:01,100 [INFO] Stats | Balance: $124.65 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:46:26,016 [INFO] Shutting down gracefully...
+2026-03-19 11:46:26,185 [INFO] Shutdown complete
+2026-03-19 11:46:26,188 [INFO] Stats | Balance: $124.65 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+Account exists with $129.79
+Placed UP bet #43: $2.60 @ 0.52 on xrp (momentum_v4)
+Placed UP bet #44: $2.54 @ 0.515 on xrp (momentum_v4)
+2026-03-19 11:46:28,887 [INFO] === Starting front-tester ===
+2026-03-19 11:46:28,887 [INFO] Strategy: momentum_v4 | Coin: xrp
+2026-03-19 11:46:28,887 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-19 11:46:28,888 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-19 11:46:28,888 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-19 11:46:28,891 [INFO] Stats | Balance: $124.65 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:46:28,891 [INFO] Waiting 212s for next window. Will precompute signal in 182s...
+2026-03-19 11:46:29,077 [INFO] Trade #43 (xrp-updown-5m-1773920400): not resolved yet
+2026-03-19 11:46:29,176 [INFO] Trade #44 (xrp-updown-5m-1773920700): not resolved yet
+2026-03-19 11:46:29,185 [INFO] Stats | Balance: $124.65 | Trades: 42 | W/L: 29/13 | Win Rate: 69.0% | PnL: $+29.79
+2026-03-19 11:49:30,546 [INFO] Pre-computing signal for next window...
+2026-03-19 11:49:33,688 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 11:50:00,843 [INFO] No signal cached, skipping this window
+2026-03-19 11:50:00,843 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 11:50:01,241 [INFO] Trade #43: market resolved DOWN, we bet UP → LOSS
+2026-03-19 11:50:01,418 [INFO] Trade #44 (xrp-updown-5m-1773920700): not resolved yet
+2026-03-19 11:50:01,428 [INFO] Stats | Balance: $124.65 | Trades: 43 | W/L: 29/14 | Win Rate: 67.4% | PnL: $+27.19
+2026-03-19 11:54:30,583 [INFO] Pre-computing signal for next window...
+2026-03-19 11:54:31,108 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 11:55:00,561 [INFO] No signal cached, skipping this window
+2026-03-19 11:55:00,562 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 11:55:00,982 [INFO] Trade #44: market resolved UP, we bet UP → WIN
+2026-03-19 11:55:00,991 [INFO] Stats | Balance: $129.55 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55

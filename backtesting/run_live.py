@@ -24,6 +24,7 @@ import price
 import market
 
 MAX_ENTRY_DELAY = 45
+MAX_RUNTIME_SECONDS = 7 * 24 * 3600  # 7 days
 
 running = True
 _db_path = None
@@ -303,6 +304,23 @@ def main():
 
     while running:
         try:
+            # Heartbeat + runtime check
+            created, now, runtime = db.heartbeat(_db_path)
+            if runtime >= MAX_RUNTIME_SECONDS:
+                days = runtime / 86400
+                log.info(f"=== FRONT-TEST COMPLETE — {days:.1f} days reached ===")
+                print_stats(args.strategy)
+                # Mark as finished in DB
+                conn = db.get_db(_db_path)
+                try:
+                    conn.execute("ALTER TABLE account ADD COLUMN status TEXT DEFAULT 'running'")
+                except Exception:
+                    pass
+                conn.execute("UPDATE account SET status = 'finished' WHERE id = 1")
+                conn.commit()
+                conn.close()
+                break
+
             if cached_signal:
                 place_bet_fast(cached_signal, args.strategy, args.coin)
             else:
