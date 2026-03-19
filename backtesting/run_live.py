@@ -66,18 +66,21 @@ def load_strategy(name):
 
 
 def get_bet_size(coin):
-    """Dynamic position sizing — scales up as balance grows.
+    """Dynamic position sizing — scales up as balance grows relative to starting capital.
 
-    $100-$200: 2%
-    $200-$400: 3%
-    $400-$800: 4%
-    $800+:     4% (cap)
+    < 2x starting: 2%
+    < 4x starting: 3%
+    >= 4x starting: 4% (cap)
     """
-    balance = db.get_balance(_db_path)
+    conn = db.get_db(_db_path)
+    row = conn.execute("SELECT balance, initial_balance FROM account WHERE id = 1").fetchone()
+    conn.close()
+    balance = row["balance"]
+    initial = row["initial_balance"]
 
-    if balance >= 400:
+    if balance >= initial * 4:
         pct = 0.04
-    elif balance >= 200:
+    elif balance >= initial * 2:
         pct = 0.03
     else:
         pct = 0.02
@@ -289,7 +292,7 @@ def main():
 
     log.info(f"=== Starting front-tester ===")
     log.info(f"Strategy: {args.strategy} | Coin: {args.coin}")
-    log.info(f"Sizing: 2% (<$200) → 3% (<$400) → 4% ($400+)")
+    log.info(f"Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance")
     log.info(f"Fee rate: {config.FEE_RATE*100:.2f}% | Min confidence: {config.MIN_CONFIDENCE}")
     log.info(f"DB: {_db_path or 'default'}")
     print_stats()

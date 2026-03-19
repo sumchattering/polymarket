@@ -157,6 +157,43 @@ cmd_restart() {
     cmd_start "$strategy" "$coin"
 }
 
+cmd_reload() {
+    local name="$1"
+    if [ -z "$name" ]; then
+        echo "Usage: fronttester reload <service_name>    (reload one)"
+        echo "       fronttester reload all               (reload all running)"
+        return 1
+    fi
+
+    if [ "$name" = "all" ]; then
+        local count=0
+        for dbfile in "$BACKTEST_DIR"/db_*.db; do
+            [ -f "$dbfile" ] || continue
+            local basename=$(basename "$dbfile" .db)
+            local svc="${basename#db_}"
+            if is_running "$svc"; then
+                cmd_reload "$svc"
+                count=$((count + 1))
+            fi
+        done
+        echo "Reloaded $count services"
+        return 0
+    fi
+
+    local plist=$(strategy_plist "$name")
+
+    if ! is_running "$name"; then
+        echo "Strategy '$name' is not running."
+        return 1
+    fi
+
+    # Unload and reload the plist — keeps DB and logs intact
+    launchctl unload "$plist" 2>/dev/null
+    sleep 1
+    launchctl load "$plist"
+    echo "Reloaded '$name' (DB and logs preserved)"
+}
+
 cmd_follow() {
     local strategy="$1"
     if [ -z "$strategy" ]; then
