@@ -216,9 +216,23 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
             "$VENV" -c "
 import sys; sys.path.insert(0, '$BACKTEST_DIR')
 import db
+from datetime import datetime, timezone
+conn = db.get_db('$dbfile')
+acct = conn.execute('SELECT created_at FROM account WHERE id=1').fetchone()
+conn.close()
 stats = db.get_stats(db_path='$dbfile')
 wr = f\"{stats['win_rate']:.0f}%\" if stats['total_trades'] > 0 else '-'
-print(f'  {\"$name\":<30s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]}/{stats[\"losses\"]}  WR: {wr}  PnL: \${stats[\"total_pnl\"]:+.2f}')
+uptime = ''
+if acct and acct['created_at']:
+    started = datetime.fromisoformat(acct['created_at'])
+    delta = datetime.now(timezone.utc) - started
+    days = delta.days
+    hours = delta.seconds // 3600
+    if days > 0:
+        uptime = f'{days}d {hours}h'
+    else:
+        uptime = f'{hours}h'
+print(f'  {\"$name\":<30s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]}/{stats[\"losses\"]}  WR: {wr}  PnL: \${stats[\"total_pnl\"]:+.2f}  ({uptime})')
 " 2>/dev/null
         done
         if [ "$found" = false ]; then
