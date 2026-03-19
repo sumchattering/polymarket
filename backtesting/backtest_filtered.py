@@ -1,22 +1,31 @@
 #!/usr/bin/env python3
 """
-Backtest Consec5 OR RSI 30/70 strategy with CHOP/ADX filters.
-Uses local SQLite candle data (no API calls).
+Fast vectorized backtester for all strategies.
+Auto-discovers strategies from strategies/ directory.
 
 Usage:
-    python backtesting/backtest_filtered.py
-    python backtesting/backtest_filtered.py --days 30 --coins doge xrp
+    python backtesting/backtest_filtered.py                              # all strategies, 90d, doge+xrp
+    python backtesting/backtest_filtered.py --strategy momentum_v4       # single strategy
+    python backtesting/backtest_filtered.py --days 30 --coins doge       # custom
+    python backtesting/backtest_filtered.py --dynamic                    # 2/3/4% sizing ladder
 """
 import sys
 import os
+import glob
 import sqlite3
 import argparse
+import time
+import importlib.util
 import numpy as np
 import pandas as pd
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "candles.db")
+STRATEGIES_DIR = os.path.join(os.path.dirname(__file__), "strategies")
+COIN_FULL = {"doge": "dogecoin", "xrp": "xrp", "btc": "bitcoin", "eth": "ethereum", "sol": "solana", "bnb": "bnb"}
 
-# Fee calculation (Polymarket crypto 1.56% effective)
+
+# ── Indicators (vectorized) ─────────────────────────────────────────────
+
 def calc_fee(shares, price):
     return shares * price * 0.25 * (price * (1 - price)) ** 2
 
@@ -24,305 +33,286 @@ def calc_rsi(series, period=14):
     delta = series.diff()
     gain = delta.clip(lower=0).rolling(window=period).mean()
     loss = (-delta.clip(upper=0)).rolling(window=period).mean()
-    rs = gain / loss
-    return 100 - (100 / (1 + rs))
+    return 100 - (100 / (1 + gain / loss))
 
 def calc_adx(df, period=14):
-    """Average Directional Index — measures trend strength."""
-    high = df["high"]
-    low = df["low"]
-    close = df["close"]
-
-    plus_dm = high.diff()
-    minus_dm = -low.diff()
+    h, l, c = df["high"], df["low"], df["close"]
+    plus_dm = h.diff(); minus_dm = -l.diff()
     plus_dm = plus_dm.where((plus_dm > minus_dm) & (plus_dm > 0), 0.0)
     minus_dm = minus_dm.where((minus_dm > plus_dm) & (minus_dm > 0), 0.0)
-
-    tr = pd.DataFrame({
-        "hl": high - low,
-        "hc": (high - close.shift()).abs(),
-        "lc": (low - close.shift()).abs(),
-    }).max(axis=1)
-
-    atr = tr.rolling(window=period).mean()
-    plus_di = 100 * (plus_dm.rolling(window=period).mean() / atr)
-    minus_di = 100 * (minus_dm.rolling(window=period).mean() / atr)
-
+    tr = pd.DataFrame({"hl": h-l, "hc": (h-c.shift()).abs(), "lc": (l-c.shift()).abs()}).max(axis=1)
+    atr = tr.rolling(period).mean()
+    plus_di = 100 * (plus_dm.rolling(period).mean() / atr)
+    minus_di = 100 * (minus_dm.rolling(period).mean() / atr)
     dx = 100 * (plus_di - minus_di).abs() / (plus_di + minus_di)
-    adx = dx.rolling(window=period).mean()
-    return adx
+    return dx.rolling(period).mean()
 
 def calc_chop(df, period=14):
-    """Choppiness Index — high = choppy, low = trending."""
-    high = df["high"]
-    low = df["low"]
-    close = df["close"]
+    h, l, c = df["high"], df["low"], df["close"]
+    tr = pd.DataFrame({"hl": h-l, "hc": (h-c.shift()).abs(), "lc": (l-c.shift()).abs()}).max(axis=1)
+    atr_sum = tr.rolling(period).sum()
+    return 100 * np.log10(atr_sum / (h.rolling(period).max() - l.rolling(period).min())) / np.log10(period)
 
-    tr = pd.DataFrame({
-        "hl": high - low,
-        "hc": (high - close.shift()).abs(),
-        "lc": (low - close.shift()).abs(),
-    }).max(axis=1)
 
-    atr_sum = tr.rolling(window=period).sum()
-    high_max = high.rolling(window=period).max()
-    low_min = low.rolling(window=period).min()
-
-    chop = 100 * np.log10(atr_sum / (high_max - low_min)) / np.log10(period)
-    return chop
-
+# ── Data ─────────────────────────────────────────────────────────────────
 
 def load_candles(coin, days=None):
     conn = sqlite3.connect(DB_PATH)
     if days:
-        import time
         cutoff = int((time.time() - days * 86400) * 1000)
         df = pd.read_sql_query(
             "SELECT * FROM candles_1m WHERE symbol = ? AND timestamp >= ? ORDER BY timestamp",
-            conn, params=(coin, cutoff)
-        )
+            conn, params=(coin, cutoff))
     else:
         df = pd.read_sql_query(
-            "SELECT * FROM candles_1m WHERE symbol = ? ORDER BY timestamp",
-            conn, params=(coin,)
-        )
+            "SELECT * FROM candles_1m WHERE symbol = ? ORDER BY timestamp", conn, params=(coin,))
     conn.close()
-    df["open_time"] = pd.to_datetime(df["timestamp"], unit="ms")
     return df
 
-
 def build_5m_windows(df_1m):
-    """Group 1m candles into 5m windows aligned to 300s boundaries."""
     df_1m = df_1m.copy()
     df_1m["window"] = (df_1m["timestamp"] // 300000) * 300000
+    w = df_1m.groupby("window").agg(
+        open=("open","first"), high=("high","max"), low=("low","min"),
+        close=("close","last"), volume=("volume","sum"), count=("open","count")).reset_index()
+    w = w[w["count"] == 5].copy()
+    w["went_up"] = w["close"] >= w["open"]
+    return w
 
-    windows = df_1m.groupby("window").agg(
-        open=("open", "first"),
-        high=("high", "max"),
-        low=("low", "min"),
-        close=("close", "last"),
-        volume=("volume", "sum"),
-        count=("open", "count"),
-    ).reset_index()
-
-    # Only keep complete 5-candle windows
-    windows = windows[windows["count"] == 5].copy()
-    windows["went_up"] = windows["close"] >= windows["open"]
-    windows["open_time"] = pd.to_datetime(windows["window"], unit="ms")
-    return windows
-
-
-def generate_signals(df_1m, df_5m, filter_mode="none"):
-    """
-    Generate signals using Consec5 OR RSI 30/70 strategy.
-    filter_mode: "none", "adx", "chop", "both", "relaxed"
-    """
-    # Pre-compute indicators on 1m data
+def prepare_data(coin, days):
+    """Load candles, compute indicators, merge to 5m windows."""
+    df_1m = load_candles(coin, days)
+    if df_1m.empty:
+        return None
+    df_5m = build_5m_windows(df_1m)
     df_1m = df_1m.copy()
-    df_1m["rsi_14"] = calc_rsi(df_1m["close"], 14)
+
+    # Compute all indicators we might need
+    for p in [7, 10, 14, 21, 28]:
+        df_1m[f"rsi_{p}"] = calc_rsi(df_1m["close"], p)
     df_1m["adx_14"] = calc_adx(df_1m, 14)
     df_1m["chop_14"] = calc_chop(df_1m, 14)
 
-    signals = []
-    skipped_by_filter = 0
+    # Consec5: 5 consecutive candles same direction
+    candle_up = (df_1m["close"] > df_1m["open"]).astype(int)
+    candle_down = (df_1m["close"] < df_1m["open"]).astype(int)
+    df_1m["consec5_up"] = candle_up.rolling(5).sum() == 5
+    df_1m["consec5_down"] = candle_down.rolling(5).sum() == 5
 
-    for i in range(len(df_5m)):
-        window_ts = df_5m.iloc[i]["window"]
+    # Merge: get last 1m candle before each 5m window
+    df_5m_s = df_5m.sort_values("window").copy()
+    df_5m_s["lookup_ts"] = df_5m_s["window"] - 60000
 
-        # Get 1m candles BEFORE this window
-        mask = df_1m["timestamp"] < window_ts
-        recent = df_1m[mask].tail(20)  # enough for indicators
+    ind_cols = ["timestamp"] + [f"rsi_{p}" for p in [7,10,14,21,28]] + ["adx_14", "chop_14", "consec5_up", "consec5_down"]
+    m = pd.merge_asof(
+        df_5m_s[["window", "went_up", "lookup_ts"]],
+        df_1m.sort_values("timestamp")[ind_cols],
+        left_on="lookup_ts", right_on="timestamp", direction="backward")
+    m["hour"] = pd.to_datetime(m["window"], unit="ms").dt.hour
+    m["month"] = pd.to_datetime(m["window"], unit="ms").dt.strftime("%Y-%m")
+    return m
 
-        if len(recent) < 14:
+
+# ── Strategy configs ─────────────────────────────────────────────────────
+# Each strategy is defined by its signal + filter params.
+# We read from files but map to vectorized configs.
+
+STRATEGY_PARAMS = {
+    "momentum_v2": {"rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
+                     "consec5": True, "skip_hours": {},
+                     "desc": "Consec5+RSI(14) 30/70 + ADX/CHOP"},
+    "momentum_v3": {"rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
+                     "consec5": False, "skip_hours": {},
+                     "desc": "RSI(14) 30/70 + ADX/CHOP"},
+    "momentum_v4": {"rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
+                     "consec5": False, "skip_hours": {},
+                     "desc": "RSI(21) 35/65 + ADX/CHOP"},
+    "momentum_v5": {"rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
+                     "consec5": False,
+                     "skip_hours": {"dogecoin": {6,10,14}, "xrp": {3,5,8,9,10,14}},
+                     "desc": "RSI(21) 35/65 + ADX/CHOP + time filter"},
+}
+
+
+def get_strategy_params(name):
+    """Get params for a known strategy, or None."""
+    return STRATEGY_PARAMS.get(name)
+
+
+def discover_strategies():
+    """Find all strategy files."""
+    strats = {}
+    for path in sorted(glob.glob(os.path.join(STRATEGIES_DIR, "*.py"))):
+        name = os.path.basename(path).replace(".py", "")
+        if name.startswith("__"):
             continue
-
-        last_row = recent.iloc[-1]
-
-        # Check filter conditions
-        adx_val = last_row["adx_14"] if not pd.isna(last_row["adx_14"]) else 0
-        chop_val = last_row["chop_14"] if not pd.isna(last_row["chop_14"]) else 100
-
-        if filter_mode == "adx" and adx_val < 25:
-            skipped_by_filter += 1
-            continue
-        elif filter_mode == "chop" and chop_val > 50:
-            skipped_by_filter += 1
-            continue
-        elif filter_mode == "both" and (adx_val < 25 or chop_val > 50):
-            skipped_by_filter += 1
-            continue
-        elif filter_mode == "relaxed" and (adx_val < 20 or chop_val > 55):
-            skipped_by_filter += 1
-            continue
-
-        direction = None
-        reason = ""
-
-        # Signal 1: Consecutive 5 candles same direction → continuation
-        last_5 = recent.tail(5)
-        if len(last_5) == 5:
-            all_up = all(last_5["close"].values > last_5["open"].values)
-            all_down = all(last_5["close"].values < last_5["open"].values)
-            if all_up:
-                direction = "UP"
-                reason = "Consec5 UP"
-            elif all_down:
-                direction = "DOWN"
-                reason = "Consec5 DOWN"
-
-        # Signal 2: RSI extreme → reversal (only if no consec signal)
-        if direction is None:
-            rsi = last_row["rsi_14"]
-            if not pd.isna(rsi):
-                if rsi < 30:
-                    direction = "UP"
-                    reason = f"RSI {rsi:.0f} oversold"
-                elif rsi > 70:
-                    direction = "DOWN"
-                    reason = f"RSI {rsi:.0f} overbought"
-
-        if direction:
-            signals.append((direction, i, reason, adx_val, chop_val))
-
-    return signals, skipped_by_filter
+        strats[name] = path
+    return strats
 
 
-def run_backtest(coin, days, bet_size=5.0, initial_balance=100.0):
-    """Run backtest for one coin with all filter modes."""
-    df_1m = load_candles(coin, days)
-    if df_1m.empty:
-        print(f"  {coin}: no data")
-        return None
+# ── Vectorized evaluation ────────────────────────────────────────────────
 
-    df_5m = build_5m_windows(df_1m)
+def _build_signal_masks(m, params, coin_full):
+    """Build UP/DOWN signal masks from strategy params. Returns (up_mask, down_mask)."""
+    filt = (m["adx_14"] > params["adx"]) & (m["chop_14"] < params["chop"])
 
-    filter_modes = {
-        "No filter": "none",
-        "ADX > 25": "adx",
-        "CHOP < 50": "chop",
-        "ADX>25 & CHOP<50": "both",
-        "ADX>20 & CHOP<55": "relaxed",
+    skip = params["skip_hours"]
+    if isinstance(skip, dict):
+        skip = skip.get(coin_full, set())
+    if skip:
+        filt = filt & (~m["hour"].isin(skip))
+
+    rsi_col = params["rsi_col"]
+
+    if params.get("consec5"):
+        # Consec5 has priority, RSI fills in when no consec signal
+        consec_up = filt & m["consec5_up"]
+        consec_down = filt & m["consec5_down"]
+        rsi_up = filt & (m[rsi_col] < params["rsi_lo"]) & ~consec_up & ~consec_down
+        rsi_down = filt & (m[rsi_col] > params["rsi_hi"]) & ~consec_up & ~consec_down
+        up_mask = consec_up | rsi_up
+        down_mask = consec_down | rsi_down
+    else:
+        up_mask = filt & (m[rsi_col] < params["rsi_lo"])
+        down_mask = filt & (m[rsi_col] > params["rsi_hi"])
+
+    return up_mask, down_mask
+
+
+def eval_fast(m, params, coin_full):
+    """Evaluate strategy on merged dataframe using vectorized ops. Returns stats dict."""
+    up_mask, down_mask = _build_signal_masks(m, params, coin_full)
+
+    total = int(up_mask.sum() + down_mask.sum())
+    if total == 0:
+        return {"trades": 0, "wins": 0, "losses": 0, "wr": 0}
+
+    wins = int(m[up_mask]["went_up"].sum() + (~m[down_mask]["went_up"]).sum())
+    return {"trades": total, "wins": wins, "losses": total - wins, "wr": wins / total * 100}
+
+
+def simulate_pnl(m, params, coin_full, initial_balance=100.0, bet_size=5.0, dynamic_sizing=False):
+    """Simulate with balance tracking."""
+    up_mask, down_mask = _build_signal_masks(m, params, coin_full)
+
+    signal = pd.Series(0, index=m.index)
+    signal[up_mask] = 1
+    signal[down_mask] = -1
+    trades = m[signal != 0].copy()
+    trades["signal"] = signal[signal != 0].values
+    trades["won"] = ((trades["signal"] == 1) & trades["went_up"]) | \
+                    ((trades["signal"] == -1) & ~trades["went_up"])
+
+    balance = initial_balance
+    peak = initial_balance
+    min_bal = initial_balance
+    wins = losses = 0
+
+    for won in trades["won"].values:
+        if dynamic_sizing:
+            if balance >= 400: bs = balance * 0.04
+            elif balance >= 200: bs = balance * 0.03
+            else: bs = balance * 0.02
+        else:
+            bs = bet_size
+        bs = min(bs, balance)
+        if bs < 0.50:
+            break
+
+        if won:
+            shares = bs / 0.505
+            fee = calc_fee(shares, 0.505)
+            balance += shares - bs - fee
+            wins += 1
+        else:
+            balance -= bs
+            losses += 1
+
+        balance = max(balance, 0)
+        peak = max(peak, balance)
+        min_bal = min(min_bal, balance)
+
+    total = wins + losses
+    days_span = (m["window"].max() - m["window"].min()) / 86400000
+    return {
+        "trades": total, "wins": wins, "losses": losses,
+        "wr": (wins / total * 100) if total > 0 else 0,
+        "pnl": balance - initial_balance, "final": balance,
+        "min_bal": min_bal, "peak": peak,
+        "max_dd_pct": ((peak - min_bal) / peak * 100) if peak > 0 else 0,
+        "trades_per_day": total / max(days_span, 1),
     }
 
-    results = {}
 
-    for label, mode in filter_modes.items():
-        signals, skipped = generate_signals(df_1m, df_5m, mode)
-
-        if not signals:
-            results[label] = {"trades": 0, "wr": 0, "pnl": 0, "final": initial_balance, "max_dd_pct": 0, "skipped": skipped}
-            continue
-
-        balance = initial_balance
-        peak = initial_balance
-        min_balance = initial_balance
-        wins = 0
-        losses = 0
-
-        for direction, idx, reason, adx_val, chop_val in signals:
-            if balance < bet_size:
-                break
-
-            went_up = df_5m.iloc[idx]["went_up"]
-            won = (direction == "UP") == went_up
-
-            entry_price = 0.505
-            if won:
-                shares = bet_size / entry_price
-                fee = calc_fee(shares, entry_price)
-                pnl = (shares * 1.0) - bet_size - fee
-                wins += 1
-            else:
-                pnl = -bet_size
-                losses += 1
-
-            balance += pnl
-            balance = max(balance, 0)
-            peak = max(peak, balance)
-            min_balance = min(min_balance, balance)
-
-        total = wins + losses
-        wr = (wins / total * 100) if total > 0 else 0
-        max_dd_pct = ((peak - min_balance) / peak * 100) if peak > 0 else 0
-        total_pnl = balance - initial_balance
-
-        results[label] = {
-            "trades": total,
-            "wins": wins,
-            "losses": losses,
-            "wr": wr,
-            "pnl": total_pnl,
-            "final": balance,
-            "min_bal": min_balance,
-            "max_dd_pct": max_dd_pct,
-            "skipped": skipped,
-        }
-
-    return results
-
+# ── Main ─────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--days", type=int, default=30)
-    parser.add_argument("--coins", nargs="+", default=["btc", "eth", "sol", "doge", "xrp", "bnb"])
-    parser.add_argument("--bet", type=float, default=5.0)
+    parser.add_argument("--days", type=int, default=90)
+    parser.add_argument("--coins", nargs="+", default=["doge", "xrp"])
+    parser.add_argument("--strategy", default=None, help="e.g. momentum_v4, or omit for all")
     parser.add_argument("--balance", type=float, default=100.0)
+    parser.add_argument("--bet", type=float, default=5.0)
+    parser.add_argument("--dynamic", action="store_true", help="2%%/3%%/4%% sizing ladder")
     args = parser.parse_args()
 
-    print(f"Backtesting Consec5 OR RSI 30/70 with CHOP/ADX filters")
-    print(f"Period: {args.days} days | Bet: ${args.bet} | Start: ${args.balance}")
-    print(f"Coins: {', '.join(args.coins)}")
+    available = discover_strategies()
+    if args.strategy:
+        if args.strategy not in available:
+            print(f"Not found: {args.strategy}. Available: {', '.join(available.keys())}")
+            return
+        strats = {args.strategy: available[args.strategy]}
+    else:
+        strats = available
+
+    sizing = "2%→3%→4% ladder" if args.dynamic else f"flat ${args.bet}"
+    print(f"Backtesting | {args.days} days | ${args.balance} start | {sizing}")
+    print(f"Coins: {', '.join(args.coins)} | Strategies: {', '.join(strats.keys())}")
     print()
 
-    all_results = {}
     for coin in args.coins:
-        print(f"Running {coin.upper()}...")
-        results = run_backtest(coin, args.days, args.bet, args.balance)
-        if results:
-            all_results[coin] = results
+        t0 = time.time()
+        m = prepare_data(coin, args.days)
+        if m is None:
+            print(f"  {coin}: no data"); continue
+        days_actual = (m["window"].max() - m["window"].min()) / 86400000
+        coin_full = COIN_FULL.get(coin, coin)
+        print(f"{'=' * 105}")
+        print(f"  {coin.upper()} — {len(m):,} windows, {days_actual:.0f} days (loaded in {time.time()-t0:.1f}s)")
+        print(f"{'=' * 105}")
+        print(f"  {'Strategy':<20} {'Trades':>6} {'Wins':>5} {'WR%':>6} {'Tr/Day':>7} {'PnL':>9} {'Final$':>8} {'Min$':>7} {'DD%':>5}")
+        print(f"  {'-' * 85}")
 
-    # Print comparison table
-    print()
-    print("=" * 120)
-    print(f"{'COIN':<6} {'FILTER':<18} {'TRADES':>6} {'WINS':>5} {'WR%':>6} {'PnL':>9} {'FINAL$':>8} {'MIN$':>7} {'DD%':>6} {'SKIP':>5}")
-    print("=" * 120)
-
-    for coin in args.coins:
-        if coin not in all_results:
-            continue
-        results = all_results[coin]
-        first = True
-        for label, r in results.items():
-            coin_label = coin.upper() if first else ""
-            first = False
-            if r["trades"] == 0:
-                print(f"{coin_label:<6} {label:<18} {'—no trades—':>6}")
+        for name in strats:
+            params = get_strategy_params(name)
+            if not params:
+                print(f"  {name:<20} — no vectorized params defined, skipping")
                 continue
 
-            wr_str = f"{r['wr']:.1f}%"
-            profitable = "***" if r["wr"] > 50.8 else "   "
-            print(
-                f"{coin_label:<6} {label:<18} {r['trades']:>6} {r['wins']:>5} {wr_str:>6} "
-                f"${r['pnl']:>+8.0f} ${r['final']:>7.0f} ${r['min_bal']:>6.0f} {r['max_dd_pct']:>5.0f}% {r['skipped']:>5} {profitable}"
-            )
-        print("-" * 120)
+            # WR from full eval (not affected by balance busting)
+            e = eval_fast(m, params, coin_full)
+            # PnL from sequential simulation
+            r = simulate_pnl(m, params, coin_full, args.balance, args.bet, args.dynamic)
+            if e["trades"] == 0:
+                print(f"  {name:<20} — no trades —"); continue
 
-    # Summary: best filter per coin
-    print()
-    print("BEST FILTER PER COIN (highest win rate with 50+ trades):")
-    print("-" * 70)
-    for coin in args.coins:
-        if coin not in all_results:
-            continue
-        best_label = None
-        best_wr = 0
-        for label, r in all_results[coin].items():
-            if r["trades"] >= 50 and r["wr"] > best_wr:
-                best_wr = r["wr"]
-                best_label = label
-        if best_label:
-            r = all_results[coin][best_label]
-            print(f"  {coin.upper():<5}: {best_label:<18} WR={r['wr']:.1f}% | {r['trades']} trades | ${r['pnl']:+.0f} PnL | {r['max_dd_pct']:.0f}% DD")
+            tpd = e["trades"] / max(days_actual, 1)
+            star = " ***" if e["wr"] > 50.8 else ""
+            print(f"  {name:<20} {e['trades']:>6} {e['wins']:>5} {e['wr']:>5.1f}% "
+                  f"{tpd:>6.1f} ${r['pnl']:>+8.0f} ${r['final']:>7.0f} "
+                  f"${r['min_bal']:>6.0f} {r['max_dd_pct']:>4.0f}%{star}")
+
+        # Monthly breakdown for all strategies
+        print()
+        for name in strats:
+            params = get_strategy_params(name)
+            if not params: continue
+            print(f"  {name} monthly:")
+            for month, grp in m.groupby("month"):
+                r = eval_fast(grp, params, coin_full)
+                if r["trades"] > 0:
+                    print(f"    {month}: {r['trades']:>5} trades, {r['wr']:.1f}% WR")
+        print()
 
 
 if __name__ == "__main__":
