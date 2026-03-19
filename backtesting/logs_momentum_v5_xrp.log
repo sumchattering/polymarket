@@ -1020,3 +1020,7 @@
 2026-03-19 06:40:00,936 [INFO] Stats | Balance: $107.05 | Trades: 26 | W/L: 16/10 | Win Rate: 61.5% | PnL: $+9.23
 2026-03-19 06:44:30,512 [INFO] Pre-computing signal for next window...
 2026-03-19 06:44:31,172 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 06:45:00,797 [INFO] No signal cached, skipping this window
+2026-03-19 06:45:00,797 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 06:45:00,898 [INFO] Trade #27 (xrp-updown-5m-1773902400): not resolved yet
+2026-03-19 06:45:00,907 [INFO] Stats | Balance: $107.05 | Trades: 26 | W/L: 16/10 | Win Rate: 61.5% | PnL: $+9.23

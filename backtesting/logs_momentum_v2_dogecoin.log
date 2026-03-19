@@ -1899,3 +1899,7 @@
 2026-03-19 06:40:00,947 [INFO] Stats | Balance: $114.41 | Trades: 61 | W/L: 35/26 | Win Rate: 57.4% | PnL: $+16.74
 2026-03-19 06:44:30,512 [INFO] Pre-computing signal for next window...
 2026-03-19 06:44:31,172 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 06:45:00,797 [INFO] No signal cached, skipping this window
+2026-03-19 06:45:00,797 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 06:45:01,167 [INFO] Trade #62: market resolved UP, we bet UP → WIN
+2026-03-19 06:45:01,174 [INFO] Stats | Balance: $119.04 | Trades: 62 | W/L: 36/26 | Win Rate: 58.1% | PnL: $+19.04

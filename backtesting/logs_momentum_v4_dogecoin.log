@@ -1208,3 +1208,8 @@
 2026-03-19 06:40:00,921 [INFO] Stats | Balance: $102.73 | Trades: 34 | W/L: 19/15 | Win Rate: 55.9% | PnL: $+6.97
 2026-03-19 06:44:30,512 [INFO] Pre-computing signal for next window...
 2026-03-19 06:44:31,582 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 06:45:01,049 [INFO] No signal cached, skipping this window
+2026-03-19 06:45:01,049 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 06:45:01,446 [INFO] Trade #35: market resolved UP, we bet UP → WIN
+2026-03-19 06:45:01,609 [INFO] Trade #36 (doge-updown-5m-1773902400): not resolved yet
+2026-03-19 06:45:01,619 [INFO] Stats | Balance: $106.98 | Trades: 35 | W/L: 20/15 | Win Rate: 57.1% | PnL: $+9.08
