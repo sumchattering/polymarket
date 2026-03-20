@@ -26,7 +26,7 @@ COINS = {
     "bnb": "BNB/USDT",
 }
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "candles.db")
+DB_PATH = os.path.join(os.path.expanduser("~"), ".polymarket", "data", "candles.db")
 
 
 def init_db(db_path):

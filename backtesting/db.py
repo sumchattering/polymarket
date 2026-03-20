@@ -6,7 +6,7 @@ import sqlite3
 import os
 from datetime import datetime, timezone
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "polymarket_simulation.db")
+DB_PATH = os.path.join(os.path.expanduser("~"), ".polymarket", "data", "polymarket_simulation.db")
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS account (

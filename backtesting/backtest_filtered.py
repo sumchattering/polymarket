@@ -19,7 +19,7 @@ import importlib.util
 import numpy as np
 import pandas as pd
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "candles.db")
+DB_PATH = os.path.join(os.path.expanduser("~"), ".polymarket", "data", "candles.db")
 STRATEGIES_DIR = os.path.join(os.path.dirname(__file__), "..", "strategies")
 COIN_FULL = {"doge": "dogecoin", "xrp": "xrp", "btc": "bitcoin", "eth": "ethereum", "sol": "solana", "bnb": "bnb"}
 
@@ -343,7 +343,7 @@ def simulate_pnl(m, params, coin_full, initial_balance=100.0, bet_size=5.0, dyna
 
 # -- Expected WR cache ------------------------------------------------------
 
-EXPECTED_WR_PATH = os.path.join(os.path.dirname(__file__), "expected_wr.json")
+EXPECTED_WR_PATH = os.path.join(os.path.expanduser("~"), ".polymarket", "data", "expected_wr.json")
 
 def cache_expected_wrs(days=90):
     """Compute expected WRs and trades/day for all strategy+coin combos and save to JSON."""

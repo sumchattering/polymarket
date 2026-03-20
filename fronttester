@@ -16,13 +16,17 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BACKTEST_DIR="$SCRIPT_DIR/backtesting"
 VENV="$BACKTEST_DIR/.venv/bin/python"
+DATA_DIR="$HOME/.polymarket/data"
+LOG_DIR="$HOME/.polymarket/logs"
 PLIST_DIR="$HOME/Library/LaunchAgents"
 PLIST_PREFIX="com.polymarket.fronttester"
 MAX_RUNTIME_DAYS=8
 
+mkdir -p "$DATA_DIR" "$LOG_DIR"
+
 strategy_plist() { echo "$PLIST_DIR/${PLIST_PREFIX}.${1}.plist"; }
-strategy_db()    { echo "$BACKTEST_DIR/db_${1}.db"; }
-strategy_log()   { echo "$BACKTEST_DIR/logs_${1}.log"; }
+strategy_db()    { echo "$DATA_DIR/db_${1}.db"; }
+strategy_log()   { echo "$LOG_DIR/logs_${1}.log"; }
 
 is_running() {
     launchctl list 2>/dev/null | grep -q "${PLIST_PREFIX}.${1}"
@@ -176,7 +180,7 @@ cmd_reload() {
 
     if [ "$name" = "all" ]; then
         local count=0
-        for dbfile in "$BACKTEST_DIR"/db_*.db; do
+        for dbfile in "$DATA_DIR"/db_*.db; do
             [ -f "$dbfile" ] || continue
             local basename=$(basename "$dbfile" .db)
             local svc="${basename#db_}"
@@ -299,7 +303,7 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
         echo "  Each strategy runs for a maximum of $MAX_RUNTIME_DAYS days."
         echo ""
 
-        local expected_file="$BACKTEST_DIR/expected_wr.json"
+        local expected_file="$DATA_DIR/expected_wr.json"
         local has_expected=false
         [ -f "$expected_file" ] && has_expected=true
 
@@ -309,7 +313,7 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
 
         local found=false
         # Find all service DBs (db_*.db files)
-        for dbfile in "$BACKTEST_DIR"/db_*.db; do
+        for dbfile in "$DATA_DIR"/db_*.db; do
             [ -f "$dbfile" ] || continue
             local basename=$(basename "$dbfile" .db)
             local name="${basename#db_}"  # strip "db_" prefix
