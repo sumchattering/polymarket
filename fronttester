@@ -307,9 +307,9 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
         local has_expected=false
         [ -f "$expected_file" ] && has_expected=true
 
-        printf "  %-34s %10s  %9s  %7s  %9s  %9s  %10s  %7s\n" \
-            "Strategy" "Status" "Balance" "W/L" "WR (exp)" "PnL" "Tr/d (exp)" "Uptime"
-        printf "  %s\n" "$(printf '%0.s-' {1..107})"
+        printf "  %-34s %10s  %9s  %7s  %9s  %9s  %10s  %7s  %6s  %6s\n" \
+            "Strategy" "Status" "Balance" "W/L" "WR (exp)" "PnL" "Tr/d (exp)" "Uptime" "LT" "LH"
+        printf "  %s\n" "$(printf '%0.s-' {1..123})"
 
         local found=false
         # Find all service DBs (db_*.db files)
@@ -371,11 +371,11 @@ if acct and acct['created_at']:
         if has_trades:
             conn2 = db.get_db('$dbfile')
             first = conn2.execute('SELECT placed_at FROM trades ORDER BY placed_at ASC LIMIT 1').fetchone()
-            last = conn2.execute('SELECT placed_at FROM trades ORDER BY placed_at DESC LIMIT 1').fetchone()
+            last_trade_row = conn2.execute('SELECT placed_at FROM trades ORDER BY placed_at DESC LIMIT 1').fetchone()
             conn2.close()
-            if first and last:
+            if first and last_trade_row:
                 t0 = datetime.fromisoformat(first['placed_at'])
-                t1 = datetime.fromisoformat(last['placed_at'])
+                t1 = datetime.fromisoformat(last_trade_row['placed_at'])
                 span = max((t1 - t0).total_seconds() / 86400, 0.01)
                 tpd = f\"{stats['total_trades'] / span:.0f}\"
 
@@ -397,7 +397,38 @@ wl = f\"{stats['wins']}/{stats['losses']}\" if has_trades else 'n/a'
 bal = f\"\${stats['balance']:.2f}\"
 pnl_val = stats['total_pnl']
 pnl = f'+\${pnl_val:.2f}' if pnl_val >= 0 else f'-\${abs(pnl_val):.2f}'
-print(f'  {\"$name\":<34s} [{\"$running\":>8s}]  {bal:>9s}  {wl:>7s}  {wr:>4s} ({exp_wr:>3s})  {pnl:>9s}  {tpd:>3s} ({exp_tpd:>3s})  {uptime:>7s}')
+
+# Last trade time
+lt = 'n/a'
+if has_trades:
+    conn3 = db.get_db('$dbfile')
+    lt_row = conn3.execute('SELECT placed_at FROM trades ORDER BY placed_at DESC LIMIT 1').fetchone()
+    conn3.close()
+    if lt_row:
+        lt_dt = datetime.fromisoformat(lt_row['placed_at'])
+        ago = (datetime.now(timezone.utc) - lt_dt).total_seconds()
+        if ago < 3600:
+            lt = f'{int(ago/60)}m'
+        elif ago < 86400:
+            lt = f'{int(ago/3600)}h'
+        else:
+            lt = f'{int(ago/86400)}d'
+
+# Last heartbeat
+lh = 'n/a'
+if acct and acct['created_at']:
+    hb_val = acct['last_heartbeat'] if 'last_heartbeat' in acct.keys() else None
+    if hb_val:
+        hb_dt = datetime.fromisoformat(hb_val)
+        ago = (datetime.now(timezone.utc) - hb_dt).total_seconds()
+        if ago < 3600:
+            lh = f'{int(ago/60)}m'
+        elif ago < 86400:
+            lh = f'{int(ago/3600)}h'
+        else:
+            lh = f'{int(ago/86400)}d'
+
+print(f'  {\"$name\":<34s} [{\"$running\":>8s}]  {bal:>9s}  {wl:>7s}  {wr:>4s} ({exp_wr:>3s})  {pnl:>9s}  {tpd:>3s} ({exp_tpd:>3s})  {uptime:>7s}  {lt:>5s}  {lh:>5s}')
 " 2>/dev/null
         done
         if [ "$found" = false ]; then
