@@ -182,6 +182,12 @@ STRATEGY_PARAMS = {
         "rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
         "consec5": False, "skip_hours": {}, "timeframe": "15m", "indicator_candle_mins": 5,
         "desc": "RSI(21) 35/65 + ADX/CHOP on 5m candles [15m]"},
+    "random_control": {
+        "random": True, "timeframe": "5m",
+        "desc": "Random control (bet every window)"},
+    "random_control_15m": {
+        "random": True, "timeframe": "15m",
+        "desc": "Random control 15m (bet every window)"},
 }
 
 
@@ -260,6 +266,14 @@ def _build_single_masks(m, params, coin_full):
 
 
 def _build_signal_masks(m, params, coin_full):
+    if params.get("random"):
+        # Random control: assign random UP/DOWN to every window
+        rng = np.random.RandomState(42)  # fixed seed for reproducibility
+        rand = rng.randint(0, 2, size=len(m))
+        up_mask = pd.Series(rand == 0, index=m.index)
+        down_mask = pd.Series(rand == 1, index=m.index)
+        return up_mask, down_mask
+
     up_mask, down_mask = _build_single_masks(m, params, coin_full)
 
     for extra in params.get("extra_entries", []):
