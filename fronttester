@@ -308,8 +308,8 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
         local has_expected=false
         [ -f "$expected_file" ] && has_expected=true
 
-        printf "  %-34s %10s  %9s  %7s  %9s  %9s  %10s  %7s  %6s  %6s\n" \
-            "Strategy" "Status" "Balance" "W/L" "WR (exp)" "PnL" "Tr/d (exp)" "Uptime" "LT" "LH"
+        printf "  %-34s %10s  %9s  %5s  %9s  %9s  %10s  %7s  %6s  %6s\n" \
+            "Strategy" "Status" "Balance" "Tots" "WR (exp)" "PnL" "Tr/d (exp)" "Uptime" "LT" "LH"
         printf "  %s\n" "$(printf '%0.s-' {1..123})"
 
         local found=false
@@ -394,7 +394,7 @@ if '$has_expected' == 'true':
     except Exception:
         pass
 
-wl = f\"{stats['wins']}/{stats['losses']}\" if has_trades else 'n/a'
+tots = f\"{stats['total_trades']}\" if has_trades else 'n/a'
 bal = f\"\${stats['balance']:.2f}\"
 pnl_val = stats['total_pnl']
 pnl = f'+\${pnl_val:.2f}' if pnl_val >= 0 else f'-\${abs(pnl_val):.2f}'
@@ -429,7 +429,7 @@ if acct and acct['created_at']:
         else:
             lh = f'{int(ago/86400)}d'
 
-print(f'  {\"$name\":<34s} [{\"$running\":>8s}]  {bal:>9s}  {wl:>7s}  {wr:>4s} ({exp_wr:>3s})  {pnl:>9s}  {tpd:>3s} ({exp_tpd:>3s})  {uptime:>7s}  {lt:>5s}  {lh:>5s}')
+print(f'  {\"$name\":<34s} [{\"$running\":>8s}]  {bal:>9s}  {tots:>5s}  {wr:>4s} ({exp_wr:>3s})  {pnl:>9s}  {tpd:>3s} ({exp_tpd:>3s})  {uptime:>7s}  {lt:>5s}  {lh:>5s}')
 " 2>/dev/null
         done
         if [ "$found" = false ]; then
