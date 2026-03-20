@@ -301,6 +301,7 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
     else
         echo "=== Front-tester Status ==="
         echo "  Each strategy runs for a maximum of $MAX_RUNTIME_DAYS days."
+        echo "  Position sizing: 2% (<2x balance) -> 3% (<4x) -> 4% (4x+)"
         echo ""
 
         local expected_file="$DATA_DIR/expected_wr.json"
