@@ -3,10 +3,10 @@
 #
 # Usage:
 #   fronttester start <strategy> [coin]   Start a strategy (fresh $100)
-#   fronttester stop <strategy>           Stop a running strategy
+#   fronttester stop <service_name>       Stop a running strategy
 #   fronttester restart <strategy> [coin] Stop + start fresh
-#   fronttester follow <strategy>         Tail live logs
-#   fronttester status [strategy]         Show balance & stats
+#   fronttester follow <service_name>     Tail live logs
+#   fronttester status [service_name]     Show balance & stats
 #   fronttester list                      List all strategies
 #
 # Coins: dogecoin, xrp, ethereum, solana, bitcoin, bnb
@@ -27,6 +27,16 @@ is_running() {
     launchctl list 2>/dev/null | grep -q "${PLIST_PREFIX}.${1}"
 }
 
+# Parse service name into strategy + coin
+# Service name format: {strategy}_{coin}
+# Known coins are checked from the end
+parse_service_name() {
+    local name="$1"
+    local coin="${name##*_}"
+    local strategy="${name%_${coin}}"
+    echo "$strategy" "$coin"
+}
+
 cmd_start() {
     local strategy="$1"
     local coin="${2:-dogecoin}"
@@ -34,7 +44,7 @@ cmd_start() {
         echo "Usage: fronttester start <strategy> [coin]"
         echo ""
         echo "Available strategies:"
-        for f in "$BACKTEST_DIR/strategies/"*.py; do
+        for f in "$SCRIPT_DIR/strategies/"*.py; do
             [ -f "$f" ] || continue
             local name=$(basename "$f" .py)
             [ "$name" = "__init__" ] && continue
@@ -45,13 +55,12 @@ cmd_start() {
         return 1
     fi
 
-    if [ ! -f "$BACKTEST_DIR/strategies/${strategy}.py" ]; then
+    if [ ! -f "$SCRIPT_DIR/strategies/${strategy}.py" ]; then
         echo "Strategy not found: ${strategy}"
         echo "Run 'fronttester list' to see available strategies."
         return 1
     fi
 
-    # Use strategy_coin as the service name for per-coin isolation
     local service_name="${strategy}_${coin}"
 
     if is_running "$service_name"; then
@@ -59,7 +68,6 @@ cmd_start() {
         echo ""
         echo "  fronttester follow $service_name    — view live logs"
         echo "  fronttester status $service_name    — check stats"
-        echo "  fronttester restart $strategy $coin — restart fresh"
         echo "  fronttester stop $service_name      — stop it"
         return 0
     fi
@@ -187,10 +195,16 @@ cmd_reload() {
         return 1
     fi
 
-    # Parse strategy and coin from service name (e.g. momentum_v4_dogecoin)
-    # Coin is the last segment after the last underscore
-    local coin="${name##*_}"
-    local strategy="${name%_*}"
+    # Parse strategy and coin from service name
+    local parsed=($(parse_service_name "$name"))
+    local strategy="${parsed[0]}"
+    local coin="${parsed[1]}"
+
+    # Validate strategy file exists
+    if [ ! -f "$SCRIPT_DIR/strategies/${strategy}.py" ]; then
+        echo "Error: strategy file '${strategy}.py' not found for service '$name'"
+        return 1
+    fi
 
     local db_path=$(strategy_db "$name")
     local log_path=$(strategy_log "$name")
@@ -335,7 +349,7 @@ if acct and acct['created_at']:
             uptime = f'  ({days}d {hours}h)'
         else:
             uptime = f'  ({hours}h)'
-print(f'  {\"$name\":<30s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]}/{stats[\"losses\"]}  WR: {wr}  PnL: \${stats[\"total_pnl\"]:+.2f}{uptime}')
+print(f'  {\"$name\":<36s} [{\"$running\":>8s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]:>3}/{stats[\"losses\"]:<3}  WR: {wr:>4}  PnL: \${stats[\"total_pnl\"]:+.2f}{uptime}')
 " 2>/dev/null
         done
         if [ "$found" = false ]; then
@@ -348,7 +362,7 @@ print(f'  {\"$name\":<30s} [{\"$running\":>7s}]  \${stats[\"balance\"]:>8.2f}  W
 cmd_list() {
     echo "Available strategies:"
     echo ""
-    for f in "$BACKTEST_DIR/strategies/"*.py; do
+    for f in "$SCRIPT_DIR/strategies/"*.py; do
         [ -f "$f" ] || continue
         local name=$(basename "$f" .py)
         [ "$name" = "__init__" ] && continue

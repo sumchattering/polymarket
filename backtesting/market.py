@@ -12,34 +12,49 @@ from datetime import datetime, timezone
 GAMMA_API = "https://gamma-api.polymarket.com"
 
 
-def get_current_5m_market(coin="btc"):
-    """
-    Get the currently active 5-minute up/down market.
-    The slug follows the pattern: {coin}-updown-5m-{unix_timestamp}
-    where the timestamp is the start of the 5-minute window (floored to 300s).
-    """
-    now = int(time.time())
-    window_start = (now // 300) * 300
-    slug = f"{coin}-updown-5m-{window_start}"
-    return _fetch_market_by_slug(slug, window_start)
+# Timeframe configs: name -> (seconds, slug_suffix)
+TIMEFRAMES = {
+    "5m":  (300,  "5m"),
+    "15m": (900,  "15m"),
+    "4h":  (14400, "4h"),
+}
 
+
+def get_current_market(coin="btc", timeframe="5m"):
+    """Get the currently active market for any timeframe."""
+    secs, slug_tf = TIMEFRAMES[timeframe]
+    now = int(time.time())
+    window_start = (now // secs) * secs
+    slug = f"{coin}-updown-{slug_tf}-{window_start}"
+    return _fetch_market_by_slug(slug, window_start, secs)
+
+
+def get_next_market(coin="btc", timeframe="5m"):
+    """Get the next upcoming market."""
+    secs, slug_tf = TIMEFRAMES[timeframe]
+    now = int(time.time())
+    next_window = ((now // secs) + 1) * secs
+    slug = f"{coin}-updown-{slug_tf}-{next_window}"
+    return _fetch_market_by_slug(slug, next_window, secs)
+
+
+def get_market_at(coin="btc", timestamp=None, timeframe="5m"):
+    """Get the market for a specific timestamp."""
+    secs, slug_tf = TIMEFRAMES[timeframe]
+    window_start = (timestamp // secs) * secs
+    slug = f"{coin}-updown-{slug_tf}-{window_start}"
+    return _fetch_market_by_slug(slug, window_start, secs)
+
+
+# Backwards compatible aliases
+def get_current_5m_market(coin="btc"):
+    return get_current_market(coin, "5m")
 
 def get_next_5m_market(coin="btc"):
-    """Get the next upcoming 5-minute market (hasn't started yet)."""
-    now = int(time.time())
-    next_window = ((now // 300) + 1) * 300
-    slug = f"{coin}-updown-5m-{next_window}"
-    return _fetch_market_by_slug(slug, next_window)
+    return get_next_market(coin, "5m")
 
 
-def get_market_at(coin="btc", timestamp=None):
-    """Get the 5-minute market for a specific timestamp."""
-    window_start = (timestamp // 300) * 300
-    slug = f"{coin}-updown-5m-{window_start}"
-    return _fetch_market_by_slug(slug, window_start)
-
-
-def _fetch_market_by_slug(slug, window_start):
+def _fetch_market_by_slug(slug, window_start, window_secs=300):
     """Fetch market data from Gamma API by slug."""
     url = f"{GAMMA_API}/events?slug={slug}"
     try:
@@ -84,7 +99,7 @@ def _fetch_market_by_slug(slug, window_start):
     except (json.JSONDecodeError, ValueError):
         pass
 
-    window_end = window_start + 300
+    window_end = window_start + window_secs
     now = int(time.time())
     elapsed = now - window_start
     remaining = max(0, window_end - now)

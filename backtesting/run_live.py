@@ -26,8 +26,11 @@ import market
 MAX_ENTRY_DELAY = 45
 MAX_RUNTIME_SECONDS = 7 * 24 * 3600  # 7 days
 
+TIMEFRAME_SECONDS = {"5m": 300, "15m": 900, "4h": 14400}
+
 running = True
 _db_path = None
+_timeframe = "5m"
 
 
 def signal_handler(sig, frame):
@@ -56,14 +59,15 @@ def setup_logging(log_path=None):
 
 def load_strategy(name):
     import importlib.util
-    path = os.path.join(os.path.dirname(__file__), "strategies", f"{name}.py")
+    path = os.path.join(os.path.dirname(__file__), "..", "strategies", f"{name}.py")
     if not os.path.exists(path):
         log.error(f"Strategy not found: {path}")
         sys.exit(1)
     spec = importlib.util.spec_from_file_location(name, path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.generate_signal
+    timeframe = getattr(mod, "TIMEFRAME", "5m")
+    return mod.generate_signal, timeframe
 
 
 def get_bet_size(coin):
@@ -144,9 +148,9 @@ def precompute_signal(strategy_fn, coin="dogecoin"):
     try:
         symbol = price.symbol_for_coin(coin)
         current_price = price.get_current_price(symbol)
-        ohlcv = price.get_ohlcv(symbol, "1m", limit=60)
+        ohlcv = price.get_ohlcv(symbol, "1m", limit=120)
 
-        result = strategy_fn(coin, "5m", current_price, ohlcv)
+        result = strategy_fn(coin, _timeframe, current_price, ohlcv)
         if result is None:
             return None
 
@@ -178,7 +182,7 @@ def place_bet_fast(cached_signal, strategy_name, coin="dogecoin"):
         return False
 
     slug_prefix = coin_slug(coin)
-    mkt = market.get_current_5m_market(slug_prefix)
+    mkt = market.get_current_market(slug_prefix, _timeframe)
     if not mkt:
         log.warning(f"No active market found for {slug_prefix}")
         return False
@@ -209,7 +213,7 @@ def place_bet_fast(cached_signal, strategy_name, coin="dogecoin"):
         strategy=strategy_name,
         market_slug=mkt["slug"],
         coin=coin,
-        timeframe="5m",
+        timeframe=_timeframe,
         direction=direction,
         confidence=confidence,
         entry_price=entry_price,
@@ -235,9 +239,10 @@ def print_stats(strategy=None):
 
 
 def wait_for_next_window_with_precompute(strategy_fn, strategy_name, coin="dogecoin"):
-    """Wait for the next 5-min window. Pre-compute signal ~30s before."""
+    """Wait for the next window. Pre-compute signal ~30s before."""
+    window_secs = TIMEFRAME_SECONDS[_timeframe]
     now = int(time.time())
-    next_window = ((now // 300) + 1) * 300
+    next_window = ((now // window_secs) + 1) * window_secs
     wait = next_window - now
     precompute_at = next_window - 30
 
@@ -283,16 +288,17 @@ def main():
     parser.add_argument("--log", default=None)
     args = parser.parse_args()
 
+    global _timeframe
     _db_path = args.db
     setup_logging(args.log)
 
     db.init_db(args.balance, _db_path)
     if args.reset:
         db.reset_account(args.balance, _db_path)
-    strategy_fn = load_strategy(args.strategy)
+    strategy_fn, _timeframe = load_strategy(args.strategy)
 
     log.info(f"=== Starting front-tester ===")
-    log.info(f"Strategy: {args.strategy} | Coin: {args.coin}")
+    log.info(f"Strategy: {args.strategy} | Coin: {args.coin} | Timeframe: {_timeframe}")
     log.info(f"Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance")
     log.info(f"Fee rate: {config.FEE_RATE*100:.2f}% | Min confidence: {config.MIN_CONFIDENCE}")
     log.info(f"DB: {_db_path or 'default'}")

@@ -1707,3 +1707,796 @@ Placed UP bet #44: $2.54 @ 0.515 on xrp (momentum_v4)
 2026-03-19 11:55:00,562 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-19 11:55:00,982 [INFO] Trade #44: market resolved UP, we bet UP → WIN
 2026-03-19 11:55:00,991 [INFO] Stats | Balance: $129.55 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 11:59:30,197 [INFO] Pre-computing signal for next window...
+2026-03-19 11:59:30,743 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:00:00,205 [INFO] No signal cached, skipping this window
+2026-03-19 12:00:00,205 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:00:00,211 [INFO] Stats | Balance: $129.55 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 12:04:31,010 [INFO] Pre-computing signal for next window...
+2026-03-19 12:04:31,583 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:05:01,009 [INFO] No signal cached, skipping this window
+2026-03-19 12:05:01,009 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 12:05:01,014 [INFO] Stats | Balance: $129.55 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 12:09:30,936 [INFO] Pre-computing signal for next window...
+2026-03-19 12:09:31,550 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:10:00,953 [INFO] No signal cached, skipping this window
+2026-03-19 12:10:00,953 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:10:00,961 [INFO] Stats | Balance: $129.55 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 12:14:30,695 [INFO] Pre-computing signal for next window...
+2026-03-19 12:14:31,331 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:15:00,798 [INFO] No signal cached, skipping this window
+2026-03-19 12:15:00,798 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:15:00,802 [INFO] Stats | Balance: $129.55 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 12:19:30,149 [INFO] Pre-computing signal for next window...
+2026-03-19 12:19:31,218 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4531
+2026-03-19 12:19:31,218 [INFO] Reasoning: RSI(21)=28 oversold | ADX=70 CHOP=41
+2026-03-19 12:20:00,729 [INFO] Market: XRP Up or Down - March 19, 8:20AM-8:25AM ET | UP: 0.515 DOWN: 0.485 | Elapsed: 0s
+2026-03-19 12:20:00,729 [INFO] Signal: UP (conf: 0.60) | Price: $1.4531 | Bet: $2.59 (2.0% of $129.55)
+2026-03-19 12:20:00,729 [INFO] Reasoning: RSI(21)=28 oversold | ADX=70 CHOP=41
+2026-03-19 12:20:00,732 [INFO] *** BET *** #45: UP $2.59 @ 0.515 on XRP Up or Down - March 19, 8:20AM-8:25AM ET
+2026-03-19 12:20:00,732 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:20:00,825 [INFO] Trade #45 (xrp-updown-5m-1773922800): not resolved yet
+2026-03-19 12:20:00,834 [INFO] Stats | Balance: $126.96 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 12:24:30,074 [INFO] Pre-computing signal for next window...
+2026-03-19 12:24:30,616 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:25:00,045 [INFO] No signal cached, skipping this window
+2026-03-19 12:25:00,045 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:25:00,159 [INFO] Trade #45 (xrp-updown-5m-1773922800): not resolved yet
+2026-03-19 12:25:00,166 [INFO] Stats | Balance: $126.96 | Trades: 44 | W/L: 30/14 | Win Rate: 68.2% | PnL: $+29.55
+2026-03-19 12:29:30,391 [INFO] Pre-computing signal for next window...
+2026-03-19 12:29:31,009 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4488
+2026-03-19 12:29:31,009 [INFO] Reasoning: RSI(21)=25 oversold | ADX=60 CHOP=37
+2026-03-19 12:30:00,618 [INFO] Market: XRP Up or Down - March 19, 8:30AM-8:35AM ET | UP: 0.530 DOWN: 0.470 | Elapsed: 0s
+2026-03-19 12:30:00,618 [INFO] Signal: UP (conf: 0.60) | Price: $1.4488 | Bet: $2.54 (2.0% of $126.96)
+2026-03-19 12:30:00,618 [INFO] Reasoning: RSI(21)=25 oversold | ADX=60 CHOP=37
+2026-03-19 12:30:00,622 [INFO] *** BET *** #46: UP $2.54 @ 0.530 on XRP Up or Down - March 19, 8:30AM-8:35AM ET
+2026-03-19 12:30:00,622 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:30:00,954 [INFO] Trade #45: market resolved DOWN, we bet UP → LOSS
+2026-03-19 12:30:01,058 [INFO] Trade #46 (xrp-updown-5m-1773923400): not resolved yet
+2026-03-19 12:30:01,065 [INFO] Stats | Balance: $124.42 | Trades: 45 | W/L: 30/15 | Win Rate: 66.7% | PnL: $+26.96
+2026-03-19 12:34:30,256 [INFO] Pre-computing signal for next window...
+2026-03-19 12:34:30,893 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4486
+2026-03-19 12:34:30,893 [INFO] Reasoning: RSI(21)=27 oversold | ADX=51 CHOP=40
+2026-03-19 12:35:00,350 [INFO] Market: XRP Up or Down - March 19, 8:35AM-8:40AM ET | UP: 0.540 DOWN: 0.460 | Elapsed: 0s
+2026-03-19 12:35:00,350 [INFO] Signal: UP (conf: 0.60) | Price: $1.4486 | Bet: $2.49 (2.0% of $124.42)
+2026-03-19 12:35:00,350 [INFO] Reasoning: RSI(21)=27 oversold | ADX=51 CHOP=40
+2026-03-19 12:35:00,353 [INFO] *** BET *** #47: UP $2.49 @ 0.540 on XRP Up or Down - March 19, 8:35AM-8:40AM ET
+2026-03-19 12:35:00,353 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:35:00,476 [INFO] Trade #46 (xrp-updown-5m-1773923400): not resolved yet
+2026-03-19 12:35:00,563 [INFO] Trade #47 (xrp-updown-5m-1773923700): not resolved yet
+2026-03-19 12:35:00,574 [INFO] Stats | Balance: $121.93 | Trades: 45 | W/L: 30/15 | Win Rate: 66.7% | PnL: $+26.96
+2026-03-19 12:39:30,682 [INFO] Pre-computing signal for next window...
+2026-03-19 12:39:31,295 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:40:00,781 [INFO] No signal cached, skipping this window
+2026-03-19 12:40:00,781 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:40:01,176 [INFO] Trade #46: market resolved DOWN, we bet UP → LOSS
+2026-03-19 12:40:01,283 [INFO] Trade #47 (xrp-updown-5m-1773923700): not resolved yet
+2026-03-19 12:40:01,292 [INFO] Stats | Balance: $121.93 | Trades: 46 | W/L: 30/16 | Win Rate: 65.2% | PnL: $+24.42
+2026-03-19 12:44:30,777 [INFO] Pre-computing signal for next window...
+2026-03-19 12:44:31,302 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:45:00,841 [INFO] No signal cached, skipping this window
+2026-03-19 12:45:00,841 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:45:01,382 [INFO] Trade #47: market resolved UP, we bet UP → WIN
+2026-03-19 12:45:01,390 [INFO] Stats | Balance: $126.50 | Trades: 47 | W/L: 31/16 | Win Rate: 66.0% | PnL: $+26.50
+2026-03-19 12:49:30,536 [INFO] Pre-computing signal for next window...
+2026-03-19 12:49:31,062 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 12:50:00,425 [INFO] No signal cached, skipping this window
+2026-03-19 12:50:00,425 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:50:00,431 [INFO] Stats | Balance: $126.50 | Trades: 47 | W/L: 31/16 | Win Rate: 66.0% | PnL: $+26.50
+2026-03-19 12:54:30,915 [INFO] Pre-computing signal for next window...
+2026-03-19 12:54:31,471 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4375
+2026-03-19 12:54:31,471 [INFO] Reasoning: RSI(21)=20 oversold | ADX=47 CHOP=19
+2026-03-19 12:55:00,955 [INFO] Market: XRP Up or Down - March 19, 8:55AM-9:00AM ET | UP: 0.535 DOWN: 0.465 | Elapsed: 0s
+2026-03-19 12:55:00,955 [INFO] Signal: UP (conf: 0.60) | Price: $1.4375 | Bet: $2.53 (2.0% of $126.50)
+2026-03-19 12:55:00,955 [INFO] Reasoning: RSI(21)=20 oversold | ADX=47 CHOP=19
+2026-03-19 12:55:00,958 [INFO] *** BET *** #48: UP $2.53 @ 0.535 on XRP Up or Down - March 19, 8:55AM-9:00AM ET
+2026-03-19 12:55:00,958 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 12:55:01,046 [INFO] Trade #48 (xrp-updown-5m-1773924900): not resolved yet
+2026-03-19 12:55:01,054 [INFO] Stats | Balance: $123.97 | Trades: 47 | W/L: 31/16 | Win Rate: 66.0% | PnL: $+26.50
+2026-03-19 12:59:30,120 [INFO] Pre-computing signal for next window...
+2026-03-19 12:59:30,830 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4377
+2026-03-19 12:59:30,831 [INFO] Reasoning: RSI(21)=21 oversold | ADX=58 CHOP=30
+2026-03-19 13:00:00,418 [INFO] Market: XRP Up or Down - March 19, 9:00AM-9:05AM ET | UP: 0.530 DOWN: 0.470 | Elapsed: 0s
+2026-03-19 13:00:00,418 [INFO] Signal: UP (conf: 0.60) | Price: $1.4377 | Bet: $2.48 (2.0% of $123.97)
+2026-03-19 13:00:00,418 [INFO] Reasoning: RSI(21)=21 oversold | ADX=58 CHOP=30
+2026-03-19 13:00:00,422 [INFO] *** BET *** #49: UP $2.48 @ 0.530 on XRP Up or Down - March 19, 9:00AM-9:05AM ET
+2026-03-19 13:00:00,422 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:00:00,570 [INFO] Trade #48 (xrp-updown-5m-1773924900): not resolved yet
+2026-03-19 13:00:00,743 [INFO] Trade #49 (xrp-updown-5m-1773925200): not resolved yet
+2026-03-19 13:00:00,750 [INFO] Stats | Balance: $121.49 | Trades: 47 | W/L: 31/16 | Win Rate: 66.0% | PnL: $+26.50
+2026-03-19 13:04:30,541 [INFO] Pre-computing signal for next window...
+2026-03-19 13:04:31,230 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4395
+2026-03-19 13:04:31,231 [INFO] Reasoning: RSI(21)=31 oversold | ADX=62 CHOP=44
+2026-03-19 13:05:00,675 [INFO] Market: XRP Up or Down - March 19, 9:05AM-9:10AM ET | UP: 0.495 DOWN: 0.505 | Elapsed: 0s
+2026-03-19 13:05:00,675 [INFO] Signal: UP (conf: 0.60) | Price: $1.4395 | Bet: $2.43 (2.0% of $121.49)
+2026-03-19 13:05:00,675 [INFO] Reasoning: RSI(21)=31 oversold | ADX=62 CHOP=44
+2026-03-19 13:05:00,678 [INFO] *** BET *** #50: UP $2.43 @ 0.495 on XRP Up or Down - March 19, 9:05AM-9:10AM ET
+2026-03-19 13:05:00,678 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:05:01,010 [INFO] Trade #48: market resolved DOWN, we bet UP → LOSS
+2026-03-19 13:05:01,184 [INFO] Trade #49 (xrp-updown-5m-1773925200): not resolved yet
+2026-03-19 13:05:01,292 [INFO] Trade #50 (xrp-updown-5m-1773925500): not resolved yet
+2026-03-19 13:05:01,301 [INFO] Stats | Balance: $119.06 | Trades: 48 | W/L: 31/17 | Win Rate: 64.6% | PnL: $+23.97
+2026-03-19 13:09:30,400 [INFO] Pre-computing signal for next window...
+2026-03-19 13:09:30,986 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:10:00,568 [INFO] No signal cached, skipping this window
+2026-03-19 13:10:00,569 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:10:00,993 [INFO] Trade #49: market resolved UP, we bet UP → WIN
+2026-03-19 13:10:01,074 [INFO] Trade #50 (xrp-updown-5m-1773925500): not resolved yet
+2026-03-19 13:10:01,085 [INFO] Stats | Balance: $123.70 | Trades: 49 | W/L: 32/17 | Win Rate: 65.3% | PnL: $+26.13
+2026-03-19 13:14:30,965 [INFO] Pre-computing signal for next window...
+2026-03-19 13:14:31,598 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:15:00,905 [INFO] No signal cached, skipping this window
+2026-03-19 13:15:00,905 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:15:01,346 [INFO] Trade #50: market resolved UP, we bet UP → WIN
+2026-03-19 13:15:01,356 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:19:30,453 [INFO] Pre-computing signal for next window...
+2026-03-19 13:19:31,058 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:20:00,457 [INFO] No signal cached, skipping this window
+2026-03-19 13:20:00,458 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:20:00,463 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:24:30,888 [INFO] Pre-computing signal for next window...
+2026-03-19 13:24:31,410 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:25:00,790 [INFO] No signal cached, skipping this window
+2026-03-19 13:25:00,790 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:25:00,796 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:29:30,812 [INFO] Pre-computing signal for next window...
+2026-03-19 13:29:31,343 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:30:00,584 [INFO] No signal cached, skipping this window
+2026-03-19 13:30:00,584 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:30:00,590 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:34:30,764 [INFO] Pre-computing signal for next window...
+2026-03-19 13:34:31,396 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:35:00,881 [INFO] No signal cached, skipping this window
+2026-03-19 13:35:00,881 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:35:00,889 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:39:30,858 [INFO] Pre-computing signal for next window...
+2026-03-19 13:39:31,440 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:40:00,868 [INFO] No signal cached, skipping this window
+2026-03-19 13:40:00,868 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:40:00,872 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:44:30,659 [INFO] Pre-computing signal for next window...
+2026-03-19 13:44:31,201 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:45:00,601 [INFO] No signal cached, skipping this window
+2026-03-19 13:45:00,601 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:45:00,607 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:49:30,021 [INFO] Pre-computing signal for next window...
+2026-03-19 13:49:30,659 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:50:00,092 [INFO] No signal cached, skipping this window
+2026-03-19 13:50:00,092 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:50:00,098 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:54:30,869 [INFO] Pre-computing signal for next window...
+2026-03-19 13:54:31,389 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 13:55:00,887 [INFO] No signal cached, skipping this window
+2026-03-19 13:55:00,887 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 13:55:00,892 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 13:59:31,001 [INFO] Pre-computing signal for next window...
+2026-03-19 13:59:31,535 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:00:00,916 [INFO] No signal cached, skipping this window
+2026-03-19 14:00:00,916 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:00:00,922 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:04:30,999 [INFO] Pre-computing signal for next window...
+2026-03-19 14:04:31,576 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:05:00,959 [INFO] No signal cached, skipping this window
+2026-03-19 14:05:00,959 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:05:00,966 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:09:30,895 [INFO] Pre-computing signal for next window...
+2026-03-19 14:09:31,457 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:10:00,886 [INFO] No signal cached, skipping this window
+2026-03-19 14:10:00,886 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:10:00,891 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:14:30,830 [INFO] Pre-computing signal for next window...
+2026-03-19 14:14:31,348 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:15:00,697 [INFO] No signal cached, skipping this window
+2026-03-19 14:15:00,697 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:15:00,701 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:19:30,202 [INFO] Pre-computing signal for next window...
+2026-03-19 14:19:30,826 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:20:00,181 [INFO] No signal cached, skipping this window
+2026-03-19 14:20:00,181 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:20:00,187 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:24:30,717 [INFO] Pre-computing signal for next window...
+2026-03-19 14:24:31,261 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:25:00,718 [INFO] No signal cached, skipping this window
+2026-03-19 14:25:00,718 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:25:00,724 [INFO] Stats | Balance: $128.57 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:29:31,086 [INFO] Pre-computing signal for next window...
+2026-03-19 14:29:31,676 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4409
+2026-03-19 14:29:31,677 [INFO] Reasoning: RSI(21)=34 oversold | ADX=38 CHOP=41
+2026-03-19 14:30:01,016 [INFO] Market: XRP Up or Down - March 19, 10:30AM-10:35AM ET | UP: 0.495 DOWN: 0.505 | Elapsed: 1s
+2026-03-19 14:30:01,016 [INFO] Signal: UP (conf: 0.60) | Price: $1.4409 | Bet: $2.57 (2.0% of $128.57)
+2026-03-19 14:30:01,016 [INFO] Reasoning: RSI(21)=34 oversold | ADX=38 CHOP=41
+2026-03-19 14:30:01,019 [INFO] *** BET *** #51: UP $2.57 @ 0.495 on XRP Up or Down - March 19, 10:30AM-10:35AM ET
+2026-03-19 14:30:01,019 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 14:30:01,105 [INFO] Trade #51 (xrp-updown-5m-1773930600): not resolved yet
+2026-03-19 14:30:01,112 [INFO] Stats | Balance: $126.00 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:34:30,837 [INFO] Pre-computing signal for next window...
+2026-03-19 14:34:31,558 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4425
+2026-03-19 14:34:31,558 [INFO] Reasoning: RSI(21)=32 oversold | ADX=47 CHOP=48
+2026-03-19 14:35:01,087 [INFO] Market: XRP Up or Down - March 19, 10:35AM-10:40AM ET | UP: 0.510 DOWN: 0.490 | Elapsed: 1s
+2026-03-19 14:35:01,087 [INFO] Signal: UP (conf: 0.60) | Price: $1.4425 | Bet: $2.52 (2.0% of $126.00)
+2026-03-19 14:35:01,087 [INFO] Reasoning: RSI(21)=32 oversold | ADX=47 CHOP=48
+2026-03-19 14:35:01,091 [INFO] *** BET *** #52: UP $2.52 @ 0.510 on XRP Up or Down - March 19, 10:35AM-10:40AM ET
+2026-03-19 14:35:01,091 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 14:35:01,174 [INFO] Trade #51 (xrp-updown-5m-1773930600): not resolved yet
+2026-03-19 14:35:01,337 [INFO] Trade #52 (xrp-updown-5m-1773930900): not resolved yet
+2026-03-19 14:35:01,348 [INFO] Stats | Balance: $123.48 | Trades: 50 | W/L: 33/17 | Win Rate: 66.0% | PnL: $+28.57
+2026-03-19 14:39:30,583 [INFO] Pre-computing signal for next window...
+2026-03-19 14:39:32,750 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:40:01,062 [INFO] No signal cached, skipping this window
+2026-03-19 14:40:01,063 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 14:40:01,476 [INFO] Trade #51: market resolved UP, we bet UP → WIN
+2026-03-19 14:40:01,761 [INFO] Trade #52 (xrp-updown-5m-1773930900): not resolved yet
+2026-03-19 14:40:01,771 [INFO] Stats | Balance: $128.63 | Trades: 51 | W/L: 34/17 | Win Rate: 66.7% | PnL: $+31.15
+2026-03-19 14:44:30,613 [INFO] Pre-computing signal for next window...
+2026-03-19 14:44:31,255 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:45:00,763 [INFO] No signal cached, skipping this window
+2026-03-19 14:45:00,763 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:45:01,122 [INFO] Trade #52: market resolved DOWN, we bet UP → LOSS
+2026-03-19 14:45:01,132 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 14:49:30,136 [INFO] Pre-computing signal for next window...
+2026-03-19 14:49:30,684 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:50:00,186 [INFO] No signal cached, skipping this window
+2026-03-19 14:50:00,186 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:50:00,193 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 14:54:30,245 [INFO] Pre-computing signal for next window...
+2026-03-19 14:54:30,789 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 14:55:00,187 [INFO] No signal cached, skipping this window
+2026-03-19 14:55:00,187 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 14:55:00,195 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 14:59:30,590 [INFO] Pre-computing signal for next window...
+2026-03-19 14:59:31,160 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:00:00,494 [INFO] No signal cached, skipping this window
+2026-03-19 15:00:00,494 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:00:00,502 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:04:30,573 [INFO] Pre-computing signal for next window...
+2026-03-19 15:04:31,171 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:05:00,554 [INFO] No signal cached, skipping this window
+2026-03-19 15:05:00,555 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:05:00,559 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:09:30,858 [INFO] Pre-computing signal for next window...
+2026-03-19 15:09:31,473 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:10:00,884 [INFO] No signal cached, skipping this window
+2026-03-19 15:10:00,884 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:10:00,890 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:14:30,292 [INFO] Pre-computing signal for next window...
+2026-03-19 15:14:30,838 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:15:00,245 [INFO] No signal cached, skipping this window
+2026-03-19 15:15:00,245 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:15:00,254 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:19:30,472 [INFO] Pre-computing signal for next window...
+2026-03-19 15:19:31,007 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:20:00,423 [INFO] No signal cached, skipping this window
+2026-03-19 15:20:00,423 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:20:00,429 [INFO] Stats | Balance: $128.63 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:24:30,338 [INFO] Pre-computing signal for next window...
+2026-03-19 15:24:30,916 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4320
+2026-03-19 15:24:30,916 [INFO] Reasoning: RSI(21)=27 oversold | ADX=39 CHOP=25
+2026-03-19 15:25:00,520 [INFO] Market: XRP Up or Down - March 19, 11:25AM-11:30AM ET | UP: 0.495 DOWN: 0.505 | Elapsed: 0s
+2026-03-19 15:25:00,520 [INFO] Signal: UP (conf: 0.60) | Price: $1.4320 | Bet: $2.57 (2.0% of $128.63)
+2026-03-19 15:25:00,520 [INFO] Reasoning: RSI(21)=27 oversold | ADX=39 CHOP=25
+2026-03-19 15:25:00,523 [INFO] *** BET *** #53: UP $2.57 @ 0.495 on XRP Up or Down - March 19, 11:25AM-11:30AM ET
+2026-03-19 15:25:00,523 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:25:00,794 [INFO] Trade #53 (xrp-updown-5m-1773933900): not resolved yet
+2026-03-19 15:25:00,805 [INFO] Stats | Balance: $126.06 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:29:30,291 [INFO] Pre-computing signal for next window...
+2026-03-19 15:29:30,847 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4311
+2026-03-19 15:29:30,847 [INFO] Reasoning: RSI(21)=23 oversold | ADX=65 CHOP=27
+2026-03-19 15:30:00,415 [INFO] Market: XRP Up or Down - March 19, 11:30AM-11:35AM ET | UP: 0.520 DOWN: 0.480 | Elapsed: 0s
+2026-03-19 15:30:00,415 [INFO] Signal: UP (conf: 0.60) | Price: $1.4311 | Bet: $2.52 (2.0% of $126.06)
+2026-03-19 15:30:00,415 [INFO] Reasoning: RSI(21)=23 oversold | ADX=65 CHOP=27
+2026-03-19 15:30:00,417 [INFO] *** BET *** #54: UP $2.52 @ 0.520 on XRP Up or Down - March 19, 11:30AM-11:35AM ET
+2026-03-19 15:30:00,418 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:30:00,580 [INFO] Trade #53 (xrp-updown-5m-1773933900): not resolved yet
+2026-03-19 15:30:00,756 [INFO] Trade #54 (xrp-updown-5m-1773934200): not resolved yet
+2026-03-19 15:30:00,766 [INFO] Stats | Balance: $123.54 | Trades: 52 | W/L: 34/18 | Win Rate: 65.4% | PnL: $+28.63
+2026-03-19 15:34:31,017 [INFO] Pre-computing signal for next window...
+2026-03-19 15:34:31,627 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4291
+2026-03-19 15:34:31,627 [INFO] Reasoning: RSI(21)=23 oversold | ADX=83 CHOP=47
+2026-03-19 15:35:01,236 [INFO] Market: XRP Up or Down - March 19, 11:35AM-11:40AM ET | UP: 0.485 DOWN: 0.515 | Elapsed: 1s
+2026-03-19 15:35:01,236 [INFO] Signal: UP (conf: 0.60) | Price: $1.4291 | Bet: $2.47 (2.0% of $123.54)
+2026-03-19 15:35:01,236 [INFO] Reasoning: RSI(21)=23 oversold | ADX=83 CHOP=47
+2026-03-19 15:35:01,239 [INFO] *** BET *** #55: UP $2.47 @ 0.485 on XRP Up or Down - March 19, 11:35AM-11:40AM ET
+2026-03-19 15:35:01,239 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 15:35:01,654 [INFO] Trade #53: market resolved DOWN, we bet UP → LOSS
+2026-03-19 15:35:01,744 [INFO] Trade #54 (xrp-updown-5m-1773934200): not resolved yet
+2026-03-19 15:35:01,824 [INFO] Trade #55 (xrp-updown-5m-1773934500): not resolved yet
+2026-03-19 15:35:01,832 [INFO] Stats | Balance: $121.07 | Trades: 53 | W/L: 34/19 | Win Rate: 64.2% | PnL: $+26.06
+2026-03-19 15:39:30,780 [INFO] Pre-computing signal for next window...
+2026-03-19 15:39:31,380 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:40:00,723 [INFO] No signal cached, skipping this window
+2026-03-19 15:40:00,724 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:40:01,063 [INFO] Trade #54: market resolved DOWN, we bet UP → LOSS
+2026-03-19 15:40:01,147 [INFO] Trade #55 (xrp-updown-5m-1773934500): not resolved yet
+2026-03-19 15:40:01,157 [INFO] Stats | Balance: $121.07 | Trades: 54 | W/L: 34/20 | Win Rate: 63.0% | PnL: $+23.54
+2026-03-19 15:44:30,289 [INFO] Pre-computing signal for next window...
+2026-03-19 15:44:30,911 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:45:00,291 [INFO] No signal cached, skipping this window
+2026-03-19 15:45:00,291 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:45:00,697 [INFO] Trade #55: market resolved UP, we bet UP → WIN
+2026-03-19 15:45:00,706 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 15:49:30,553 [INFO] Pre-computing signal for next window...
+2026-03-19 15:49:31,175 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:50:00,599 [INFO] No signal cached, skipping this window
+2026-03-19 15:50:00,599 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:50:00,604 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 15:54:30,949 [INFO] Pre-computing signal for next window...
+2026-03-19 15:54:31,474 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 15:55:00,889 [INFO] No signal cached, skipping this window
+2026-03-19 15:55:00,889 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 15:55:00,896 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 15:59:30,542 [INFO] Pre-computing signal for next window...
+2026-03-19 15:59:31,238 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:00:00,725 [INFO] No signal cached, skipping this window
+2026-03-19 16:00:00,726 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:00:00,733 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:04:30,595 [INFO] Pre-computing signal for next window...
+2026-03-19 16:04:31,133 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:05:00,656 [INFO] No signal cached, skipping this window
+2026-03-19 16:05:00,657 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:05:00,665 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:09:30,228 [INFO] Pre-computing signal for next window...
+2026-03-19 16:09:30,857 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:10:00,405 [INFO] No signal cached, skipping this window
+2026-03-19 16:10:00,405 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:10:00,412 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:14:30,955 [INFO] Pre-computing signal for next window...
+2026-03-19 16:14:31,566 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:15:00,908 [INFO] No signal cached, skipping this window
+2026-03-19 16:15:00,908 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:15:00,918 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:19:30,623 [INFO] Pre-computing signal for next window...
+2026-03-19 16:19:31,194 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:20:00,656 [INFO] No signal cached, skipping this window
+2026-03-19 16:20:00,656 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:20:00,667 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:24:30,535 [INFO] Pre-computing signal for next window...
+2026-03-19 16:24:31,213 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:25:00,406 [INFO] No signal cached, skipping this window
+2026-03-19 16:25:00,406 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:25:00,415 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:29:30,416 [INFO] Pre-computing signal for next window...
+2026-03-19 16:29:31,123 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:30:00,421 [INFO] No signal cached, skipping this window
+2026-03-19 16:30:00,422 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:30:00,430 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:34:30,497 [INFO] Pre-computing signal for next window...
+2026-03-19 16:34:31,115 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:35:00,148 [INFO] No signal cached, skipping this window
+2026-03-19 16:35:00,148 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:35:00,158 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:35:41,594 [INFO] Shutting down gracefully...
+2026-03-19 16:35:42,155 [INFO] Shutdown complete
+2026-03-19 16:35:42,159 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+Account exists with $124.65
+Trade #43 → LOSS | PnL: $-2.60 | Balance: $124.65
+Trade #44 → WIN | PnL: $+2.35 | Balance: $129.55
+Placed UP bet #45: $2.59 @ 0.515 on xrp (momentum_v4)
+Placed UP bet #46: $2.54 @ 0.53 on xrp (momentum_v4)
+Trade #45 → LOSS | PnL: $-2.59 | Balance: $124.42
+Placed UP bet #47: $2.49 @ 0.54 on xrp (momentum_v4)
+Trade #46 → LOSS | PnL: $-2.54 | Balance: $121.93
+Trade #47 → WIN | PnL: $+2.08 | Balance: $126.50
+Placed UP bet #48: $2.53 @ 0.535 on xrp (momentum_v4)
+Placed UP bet #49: $2.48 @ 0.53 on xrp (momentum_v4)
+Placed UP bet #50: $2.43 @ 0.495 on xrp (momentum_v4)
+Trade #48 → LOSS | PnL: $-2.53 | Balance: $119.06
+Trade #49 → WIN | PnL: $+2.16 | Balance: $123.70
+Trade #50 → WIN | PnL: $+2.44 | Balance: $128.57
+Placed UP bet #51: $2.57 @ 0.495 on xrp (momentum_v4)
+Placed UP bet #52: $2.52 @ 0.51 on xrp (momentum_v4)
+Trade #51 → WIN | PnL: $+2.58 | Balance: $128.63
+Trade #52 → LOSS | PnL: $-2.52 | Balance: $128.63
+Placed UP bet #53: $2.57 @ 0.495 on xrp (momentum_v4)
+Placed UP bet #54: $2.52 @ 0.52 on xrp (momentum_v4)
+Placed UP bet #55: $2.47 @ 0.485 on xrp (momentum_v4)
+Trade #53 → LOSS | PnL: $-2.57 | Balance: $121.07
+Trade #54 → LOSS | PnL: $-2.52 | Balance: $121.07
+Trade #55 → WIN | PnL: $+2.58 | Balance: $126.13
+2026-03-19 16:35:45,341 [INFO] === Starting front-tester ===
+2026-03-19 16:35:45,341 [INFO] Strategy: momentum_v4 | Coin: xrp | Timeframe: 5m
+2026-03-19 16:35:45,341 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-19 16:35:45,341 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-19 16:35:45,341 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-19 16:35:45,345 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:35:45,345 [INFO] Waiting 255s for next window. Will precompute signal in 225s...
+2026-03-19 16:35:45,349 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:39:30,934 [INFO] Pre-computing signal for next window...
+2026-03-19 16:39:34,809 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:40:00,667 [INFO] No signal cached, skipping this window
+2026-03-19 16:40:00,667 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:40:00,675 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:44:30,821 [INFO] Pre-computing signal for next window...
+2026-03-19 16:44:31,383 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:45:00,686 [INFO] No signal cached, skipping this window
+2026-03-19 16:45:00,686 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:45:00,696 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:49:31,011 [INFO] Pre-computing signal for next window...
+2026-03-19 16:49:31,599 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:50:00,864 [INFO] No signal cached, skipping this window
+2026-03-19 16:50:00,865 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:50:00,876 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:54:30,283 [INFO] Pre-computing signal for next window...
+2026-03-19 16:54:30,924 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 16:55:00,339 [INFO] No signal cached, skipping this window
+2026-03-19 16:55:00,339 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 16:55:00,349 [INFO] Stats | Balance: $126.13 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 16:59:30,715 [INFO] Pre-computing signal for next window...
+2026-03-19 16:59:31,279 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4273
+2026-03-19 16:59:31,279 [INFO] Reasoning: RSI(21)=32 oversold | ADX=45 CHOP=33
+2026-03-19 17:00:00,894 [INFO] Market: XRP Up or Down - March 19, 1:00PM-1:05PM ET | UP: 0.505 DOWN: 0.495 | Elapsed: 0s
+2026-03-19 17:00:00,894 [INFO] Signal: UP (conf: 0.60) | Price: $1.4273 | Bet: $2.52 (2.0% of $126.13)
+2026-03-19 17:00:00,894 [INFO] Reasoning: RSI(21)=32 oversold | ADX=45 CHOP=33
+2026-03-19 17:00:00,899 [INFO] *** BET *** #56: UP $2.52 @ 0.505 on XRP Up or Down - March 19, 1:00PM-1:05PM ET
+2026-03-19 17:00:00,899 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:00:00,995 [INFO] Trade #56 (xrp-updown-5m-1773939600): not resolved yet
+2026-03-19 17:00:01,006 [INFO] Stats | Balance: $123.61 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 17:04:30,283 [INFO] Pre-computing signal for next window...
+2026-03-19 17:04:30,882 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4250
+2026-03-19 17:04:30,882 [INFO] Reasoning: RSI(21)=27 oversold | ADX=57 CHOP=42
+2026-03-19 17:05:00,115 [INFO] Market: XRP Up or Down - March 19, 1:05PM-1:10PM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 17:05:00,115 [INFO] Signal: UP (conf: 0.60) | Price: $1.4250 | Bet: $2.47 (2.0% of $123.61)
+2026-03-19 17:05:00,115 [INFO] Reasoning: RSI(21)=27 oversold | ADX=57 CHOP=42
+2026-03-19 17:05:00,120 [INFO] *** BET *** #57: UP $2.47 @ 0.500 on XRP Up or Down - March 19, 1:05PM-1:10PM ET
+2026-03-19 17:05:00,120 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:05:00,282 [INFO] Trade #56 (xrp-updown-5m-1773939600): not resolved yet
+2026-03-19 17:05:00,410 [INFO] Trade #57 (xrp-updown-5m-1773939900): not resolved yet
+2026-03-19 17:05:00,420 [INFO] Stats | Balance: $121.14 | Trades: 55 | W/L: 35/20 | Win Rate: 63.6% | PnL: $+26.13
+2026-03-19 17:09:30,418 [INFO] Pre-computing signal for next window...
+2026-03-19 17:09:31,010 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:10:00,134 [INFO] No signal cached, skipping this window
+2026-03-19 17:10:00,134 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:10:00,508 [INFO] Trade #56: market resolved DOWN, we bet UP → LOSS
+2026-03-19 17:10:00,671 [INFO] Trade #57 (xrp-updown-5m-1773939900): not resolved yet
+2026-03-19 17:10:00,682 [INFO] Stats | Balance: $121.14 | Trades: 56 | W/L: 35/21 | Win Rate: 62.5% | PnL: $+23.61
+2026-03-19 17:14:30,812 [INFO] Pre-computing signal for next window...
+2026-03-19 17:14:31,435 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:15:00,378 [INFO] No signal cached, skipping this window
+2026-03-19 17:15:00,378 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:15:00,575 [INFO] Trade #57 (xrp-updown-5m-1773939900): not resolved yet
+2026-03-19 17:15:00,590 [INFO] Stats | Balance: $121.14 | Trades: 56 | W/L: 35/21 | Win Rate: 62.5% | PnL: $+23.61
+2026-03-19 17:19:31,017 [INFO] Pre-computing signal for next window...
+2026-03-19 17:19:31,610 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:20:01,079 [INFO] No signal cached, skipping this window
+2026-03-19 17:20:01,079 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 17:20:01,488 [INFO] Trade #57: market resolved DOWN, we bet UP → LOSS
+2026-03-19 17:20:01,502 [INFO] Stats | Balance: $121.14 | Trades: 57 | W/L: 35/22 | Win Rate: 61.4% | PnL: $+21.14
+2026-03-19 17:24:30,418 [INFO] Pre-computing signal for next window...
+2026-03-19 17:24:31,080 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:25:00,419 [INFO] No signal cached, skipping this window
+2026-03-19 17:25:00,420 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:25:00,428 [INFO] Stats | Balance: $121.14 | Trades: 57 | W/L: 35/22 | Win Rate: 61.4% | PnL: $+21.14
+2026-03-19 17:29:30,502 [INFO] Pre-computing signal for next window...
+2026-03-19 17:29:31,101 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4334
+2026-03-19 17:29:31,101 [INFO] Reasoning: RSI(21)=72 overbought | ADX=52 CHOP=28
+2026-03-19 17:30:00,503 [INFO] Market: XRP Up or Down - March 19, 1:30PM-1:35PM ET | UP: 0.495 DOWN: 0.505 | Elapsed: 0s
+2026-03-19 17:30:00,504 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4334 | Bet: $2.42 (2.0% of $121.14)
+2026-03-19 17:30:00,504 [INFO] Reasoning: RSI(21)=72 overbought | ADX=52 CHOP=28
+2026-03-19 17:30:00,512 [INFO] *** BET *** #58: DOWN $2.42 @ 0.505 on XRP Up or Down - March 19, 1:30PM-1:35PM ET
+2026-03-19 17:30:00,512 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:30:00,624 [INFO] Trade #58 (xrp-updown-5m-1773941400): not resolved yet
+2026-03-19 17:30:00,634 [INFO] Stats | Balance: $118.72 | Trades: 57 | W/L: 35/22 | Win Rate: 61.4% | PnL: $+21.14
+2026-03-19 17:34:30,822 [INFO] Pre-computing signal for next window...
+2026-03-19 17:34:31,408 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4330
+2026-03-19 17:34:31,408 [INFO] Reasoning: RSI(21)=69 overbought | ADX=65 CHOP=49
+2026-03-19 17:35:00,841 [INFO] Market: XRP Up or Down - March 19, 1:35PM-1:40PM ET | UP: 0.475 DOWN: 0.525 | Elapsed: 0s
+2026-03-19 17:35:00,841 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4330 | Bet: $2.37 (2.0% of $118.72)
+2026-03-19 17:35:00,841 [INFO] Reasoning: RSI(21)=69 overbought | ADX=65 CHOP=49
+2026-03-19 17:35:00,845 [INFO] *** BET *** #59: DOWN $2.37 @ 0.525 on XRP Up or Down - March 19, 1:35PM-1:40PM ET
+2026-03-19 17:35:00,845 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:35:00,935 [INFO] Trade #58 (xrp-updown-5m-1773941400): not resolved yet
+2026-03-19 17:35:01,202 [INFO] Trade #59 (xrp-updown-5m-1773941700): not resolved yet
+2026-03-19 17:35:01,213 [INFO] Stats | Balance: $116.35 | Trades: 57 | W/L: 35/22 | Win Rate: 61.4% | PnL: $+21.14
+2026-03-19 17:39:30,646 [INFO] Pre-computing signal for next window...
+2026-03-19 17:39:31,208 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:40:00,368 [INFO] No signal cached, skipping this window
+2026-03-19 17:40:00,368 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:40:00,922 [INFO] Trade #58: market resolved DOWN, we bet DOWN → WIN
+2026-03-19 17:40:01,117 [INFO] Trade #59 (xrp-updown-5m-1773941700): not resolved yet
+2026-03-19 17:40:01,128 [INFO] Stats | Balance: $121.10 | Trades: 58 | W/L: 36/22 | Win Rate: 62.1% | PnL: $+23.47
+2026-03-19 17:44:31,107 [INFO] Pre-computing signal for next window...
+2026-03-19 17:44:31,708 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:45:00,989 [INFO] No signal cached, skipping this window
+2026-03-19 17:45:00,989 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:45:01,316 [INFO] Trade #59: market resolved DOWN, we bet DOWN → WIN
+2026-03-19 17:45:01,324 [INFO] Stats | Balance: $125.58 | Trades: 59 | W/L: 37/22 | Win Rate: 62.7% | PnL: $+25.58
+2026-03-19 17:49:30,764 [INFO] Pre-computing signal for next window...
+2026-03-19 17:49:31,351 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:50:00,356 [INFO] No signal cached, skipping this window
+2026-03-19 17:50:00,356 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:50:00,366 [INFO] Stats | Balance: $125.58 | Trades: 59 | W/L: 37/22 | Win Rate: 62.7% | PnL: $+25.58
+2026-03-19 17:54:31,097 [INFO] Pre-computing signal for next window...
+2026-03-19 17:54:31,630 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 17:55:00,776 [INFO] No signal cached, skipping this window
+2026-03-19 17:55:00,776 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 17:55:00,782 [INFO] Stats | Balance: $125.58 | Trades: 59 | W/L: 37/22 | Win Rate: 62.7% | PnL: $+25.58
+2026-03-19 17:59:30,810 [INFO] Pre-computing signal for next window...
+2026-03-19 17:59:31,401 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4386
+2026-03-19 17:59:31,402 [INFO] Reasoning: RSI(21)=69 overbought | ADX=44 CHOP=32
+2026-03-19 18:00:00,994 [INFO] Market: XRP Up or Down - March 19, 2:00PM-2:05PM ET | UP: 0.485 DOWN: 0.515 | Elapsed: 0s
+2026-03-19 18:00:00,994 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4386 | Bet: $2.51 (2.0% of $125.58)
+2026-03-19 18:00:00,994 [INFO] Reasoning: RSI(21)=69 overbought | ADX=44 CHOP=32
+2026-03-19 18:00:00,997 [INFO] *** BET *** #60: DOWN $2.51 @ 0.515 on XRP Up or Down - March 19, 2:00PM-2:05PM ET
+2026-03-19 18:00:00,997 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:00:01,154 [INFO] Trade #60 (xrp-updown-5m-1773943200): not resolved yet
+2026-03-19 18:00:01,164 [INFO] Stats | Balance: $123.07 | Trades: 59 | W/L: 37/22 | Win Rate: 62.7% | PnL: $+25.58
+2026-03-19 18:04:30,927 [INFO] Pre-computing signal for next window...
+2026-03-19 18:04:31,693 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:05:00,892 [INFO] No signal cached, skipping this window
+2026-03-19 18:05:00,892 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:05:01,084 [INFO] Trade #60 (xrp-updown-5m-1773943200): not resolved yet
+2026-03-19 18:05:01,094 [INFO] Stats | Balance: $123.07 | Trades: 59 | W/L: 37/22 | Win Rate: 62.7% | PnL: $+25.58
+2026-03-19 18:09:30,472 [INFO] Pre-computing signal for next window...
+2026-03-19 18:09:31,160 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:10:00,494 [INFO] No signal cached, skipping this window
+2026-03-19 18:10:00,495 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:10:00,936 [INFO] Trade #60: market resolved DOWN, we bet DOWN → WIN
+2026-03-19 18:10:00,951 [INFO] Stats | Balance: $127.90 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:14:30,224 [INFO] Pre-computing signal for next window...
+2026-03-19 18:14:30,828 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:15:00,132 [INFO] No signal cached, skipping this window
+2026-03-19 18:15:00,133 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:15:00,143 [INFO] Stats | Balance: $127.90 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:19:30,001 [INFO] Pre-computing signal for next window...
+2026-03-19 18:19:30,568 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:20:00,730 [INFO] No signal cached, skipping this window
+2026-03-19 18:20:00,730 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:20:00,736 [INFO] Stats | Balance: $127.90 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:24:30,403 [INFO] Pre-computing signal for next window...
+2026-03-19 18:24:30,977 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:25:00,341 [INFO] No signal cached, skipping this window
+2026-03-19 18:25:00,341 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:25:00,349 [INFO] Stats | Balance: $127.90 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:29:30,735 [INFO] Pre-computing signal for next window...
+2026-03-19 18:29:31,258 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:30:00,668 [INFO] No signal cached, skipping this window
+2026-03-19 18:30:00,669 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:30:00,677 [INFO] Stats | Balance: $127.90 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:34:30,944 [INFO] Pre-computing signal for next window...
+2026-03-19 18:34:31,504 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4313
+2026-03-19 18:34:31,504 [INFO] Reasoning: RSI(21)=28 oversold | ADX=32 CHOP=27
+2026-03-19 18:35:00,916 [INFO] Market: XRP Up or Down - March 19, 2:35PM-2:40PM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 18:35:00,916 [INFO] Signal: UP (conf: 0.60) | Price: $1.4313 | Bet: $2.56 (2.0% of $127.90)
+2026-03-19 18:35:00,916 [INFO] Reasoning: RSI(21)=28 oversold | ADX=32 CHOP=27
+2026-03-19 18:35:00,920 [INFO] *** BET *** #61: UP $2.56 @ 0.500 on XRP Up or Down - March 19, 2:35PM-2:40PM ET
+2026-03-19 18:35:00,920 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:35:01,001 [INFO] Trade #61 (xrp-updown-5m-1773945300): not resolved yet
+2026-03-19 18:35:01,014 [INFO] Stats | Balance: $125.34 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:39:30,053 [INFO] Pre-computing signal for next window...
+2026-03-19 18:39:30,623 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:40:00,923 [INFO] No signal cached, skipping this window
+2026-03-19 18:40:00,923 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:40:01,020 [INFO] Trade #61 (xrp-updown-5m-1773945300): not resolved yet
+2026-03-19 18:40:01,030 [INFO] Stats | Balance: $125.34 | Trades: 60 | W/L: 38/22 | Win Rate: 63.3% | PnL: $+27.90
+2026-03-19 18:44:31,090 [INFO] Pre-computing signal for next window...
+2026-03-19 18:44:31,697 [INFO] Cached signal: UP (confidence: 0.60) | Price: $1.4323
+2026-03-19 18:44:31,697 [INFO] Reasoning: RSI(21)=31 oversold | ADX=41 CHOP=49
+2026-03-19 18:45:00,980 [INFO] Market: XRP Up or Down - March 19, 2:45PM-2:50PM ET | UP: 0.505 DOWN: 0.495 | Elapsed: 0s
+2026-03-19 18:45:00,981 [INFO] Signal: UP (conf: 0.60) | Price: $1.4323 | Bet: $2.51 (2.0% of $125.34)
+2026-03-19 18:45:00,981 [INFO] Reasoning: RSI(21)=31 oversold | ADX=41 CHOP=49
+2026-03-19 18:45:00,986 [INFO] *** BET *** #62: UP $2.51 @ 0.505 on XRP Up or Down - March 19, 2:45PM-2:50PM ET
+2026-03-19 18:45:00,986 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:45:01,326 [INFO] Trade #61: market resolved UP, we bet UP → WIN
+2026-03-19 18:45:01,408 [INFO] Trade #62 (xrp-updown-5m-1773945900): not resolved yet
+2026-03-19 18:45:01,417 [INFO] Stats | Balance: $127.91 | Trades: 61 | W/L: 39/22 | Win Rate: 63.9% | PnL: $+30.42
+2026-03-19 18:49:30,944 [INFO] Pre-computing signal for next window...
+2026-03-19 18:49:31,471 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:50:00,967 [INFO] No signal cached, skipping this window
+2026-03-19 18:50:00,967 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:50:01,072 [INFO] Trade #62 (xrp-updown-5m-1773945900): not resolved yet
+2026-03-19 18:50:01,089 [INFO] Stats | Balance: $127.91 | Trades: 61 | W/L: 39/22 | Win Rate: 63.9% | PnL: $+30.42
+2026-03-19 18:54:30,238 [INFO] Pre-computing signal for next window...
+2026-03-19 18:54:30,765 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 18:55:00,211 [INFO] No signal cached, skipping this window
+2026-03-19 18:55:00,212 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 18:55:00,663 [INFO] Trade #62: market resolved DOWN, we bet UP → LOSS
+2026-03-19 18:55:00,677 [INFO] Stats | Balance: $127.91 | Trades: 62 | W/L: 39/23 | Win Rate: 62.9% | PnL: $+27.91
+2026-03-19 18:59:30,401 [INFO] Pre-computing signal for next window...
+2026-03-19 18:59:30,926 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4377
+2026-03-19 18:59:30,926 [INFO] Reasoning: RSI(21)=68 overbought | ADX=34 CHOP=28
+2026-03-19 19:00:00,275 [INFO] Market: XRP Up or Down - March 19, 3:00PM-3:05PM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 19:00:00,276 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4377 | Bet: $2.56 (2.0% of $127.91)
+2026-03-19 19:00:00,276 [INFO] Reasoning: RSI(21)=68 overbought | ADX=34 CHOP=28
+2026-03-19 19:00:00,280 [INFO] *** BET *** #63: DOWN $2.56 @ 0.500 on XRP Up or Down - March 19, 3:00PM-3:05PM ET
+2026-03-19 19:00:00,280 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:00:00,369 [INFO] Trade #63 (xrp-updown-5m-1773946800): not resolved yet
+2026-03-19 19:00:00,379 [INFO] Stats | Balance: $125.35 | Trades: 62 | W/L: 39/23 | Win Rate: 62.9% | PnL: $+27.91
+2026-03-19 19:04:30,482 [INFO] Pre-computing signal for next window...
+2026-03-19 19:04:31,042 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4428
+2026-03-19 19:04:31,043 [INFO] Reasoning: RSI(21)=76 overbought | ADX=46 CHOP=22
+2026-03-19 19:05:00,352 [INFO] Market: XRP Up or Down - March 19, 3:05PM-3:10PM ET | UP: 0.500 DOWN: 0.500 | Elapsed: 0s
+2026-03-19 19:05:00,352 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4428 | Bet: $2.51 (2.0% of $125.35)
+2026-03-19 19:05:00,352 [INFO] Reasoning: RSI(21)=76 overbought | ADX=46 CHOP=22
+2026-03-19 19:05:00,355 [INFO] *** BET *** #64: DOWN $2.51 @ 0.500 on XRP Up or Down - March 19, 3:05PM-3:10PM ET
+2026-03-19 19:05:00,355 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:05:00,439 [INFO] Trade #63 (xrp-updown-5m-1773946800): not resolved yet
+2026-03-19 19:05:00,543 [INFO] Trade #64 (xrp-updown-5m-1773947100): not resolved yet
+2026-03-19 19:05:00,554 [INFO] Stats | Balance: $122.84 | Trades: 62 | W/L: 39/23 | Win Rate: 62.9% | PnL: $+27.91
+2026-03-19 19:09:30,156 [INFO] Pre-computing signal for next window...
+2026-03-19 19:09:30,718 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4469
+2026-03-19 19:09:30,718 [INFO] Reasoning: RSI(21)=74 overbought | ADX=69 CHOP=32
+2026-03-19 19:10:01,204 [INFO] Market: XRP Up or Down - March 19, 3:10PM-3:15PM ET | UP: 0.475 DOWN: 0.525 | Elapsed: 1s
+2026-03-19 19:10:01,205 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4469 | Bet: $2.46 (2.0% of $122.84)
+2026-03-19 19:10:01,205 [INFO] Reasoning: RSI(21)=74 overbought | ADX=69 CHOP=32
+2026-03-19 19:10:01,210 [INFO] *** BET *** #65: DOWN $2.46 @ 0.525 on XRP Up or Down - March 19, 3:10PM-3:15PM ET
+2026-03-19 19:10:01,210 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 19:10:01,548 [INFO] Trade #63: market resolved UP, we bet DOWN → LOSS
+2026-03-19 19:10:01,637 [INFO] Trade #64 (xrp-updown-5m-1773947100): not resolved yet
+2026-03-19 19:10:01,737 [INFO] Trade #65 (xrp-updown-5m-1773947400): not resolved yet
+2026-03-19 19:10:01,749 [INFO] Stats | Balance: $120.38 | Trades: 63 | W/L: 39/24 | Win Rate: 61.9% | PnL: $+25.35
+2026-03-19 19:14:30,983 [INFO] Pre-computing signal for next window...
+2026-03-19 19:14:31,622 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4473
+2026-03-19 19:14:31,622 [INFO] Reasoning: RSI(21)=69 overbought | ADX=73 CHOP=42
+2026-03-19 19:15:01,037 [INFO] Market: XRP Up or Down - March 19, 3:15PM-3:20PM ET | UP: 0.465 DOWN: 0.535 | Elapsed: 1s
+2026-03-19 19:15:01,037 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4473 | Bet: $2.41 (2.0% of $120.38)
+2026-03-19 19:15:01,037 [INFO] Reasoning: RSI(21)=69 overbought | ADX=73 CHOP=42
+2026-03-19 19:15:01,040 [INFO] *** BET *** #66: DOWN $2.41 @ 0.535 on XRP Up or Down - March 19, 3:15PM-3:20PM ET
+2026-03-19 19:15:01,040 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 19:15:01,358 [INFO] Trade #64: market resolved UP, we bet DOWN → LOSS
+2026-03-19 19:15:01,468 [INFO] Trade #65 (xrp-updown-5m-1773947400): not resolved yet
+2026-03-19 19:15:01,559 [INFO] Trade #66 (xrp-updown-5m-1773947700): not resolved yet
+2026-03-19 19:15:01,572 [INFO] Stats | Balance: $117.97 | Trades: 64 | W/L: 39/25 | Win Rate: 60.9% | PnL: $+22.84
+2026-03-19 19:19:31,029 [INFO] Pre-computing signal for next window...
+2026-03-19 19:19:31,595 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:20:00,990 [INFO] No signal cached, skipping this window
+2026-03-19 19:20:00,990 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:20:01,356 [INFO] Trade #65: market resolved UP, we bet DOWN → LOSS
+2026-03-19 19:20:01,446 [INFO] Trade #66 (xrp-updown-5m-1773947700): not resolved yet
+2026-03-19 19:20:01,457 [INFO] Stats | Balance: $117.97 | Trades: 65 | W/L: 39/26 | Win Rate: 60.0% | PnL: $+20.38
+2026-03-19 19:24:30,097 [INFO] Pre-computing signal for next window...
+2026-03-19 19:24:30,657 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:25:00,881 [INFO] No signal cached, skipping this window
+2026-03-19 19:25:00,881 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:25:01,231 [INFO] Trade #66: market resolved UP, we bet DOWN → LOSS
+2026-03-19 19:25:01,244 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:29:31,063 [INFO] Pre-computing signal for next window...
+2026-03-19 19:29:31,627 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:30:00,876 [INFO] No signal cached, skipping this window
+2026-03-19 19:30:00,876 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:30:00,888 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:34:30,448 [INFO] Pre-computing signal for next window...
+2026-03-19 19:34:31,019 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:35:00,011 [INFO] No signal cached, skipping this window
+2026-03-19 19:35:00,011 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:35:00,026 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:39:30,140 [INFO] Pre-computing signal for next window...
+2026-03-19 19:39:30,700 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:40:00,882 [INFO] No signal cached, skipping this window
+2026-03-19 19:40:00,883 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:40:00,894 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:44:30,702 [INFO] Pre-computing signal for next window...
+2026-03-19 19:44:31,283 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:45:00,493 [INFO] No signal cached, skipping this window
+2026-03-19 19:45:00,493 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:45:00,504 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:49:30,719 [INFO] Pre-computing signal for next window...
+2026-03-19 19:49:31,392 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:50:00,631 [INFO] No signal cached, skipping this window
+2026-03-19 19:50:00,631 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:50:00,645 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:54:30,518 [INFO] Pre-computing signal for next window...
+2026-03-19 19:54:31,047 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 19:55:00,264 [INFO] No signal cached, skipping this window
+2026-03-19 19:55:00,264 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 19:55:00,274 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 19:59:30,968 [INFO] Pre-computing signal for next window...
+2026-03-19 19:59:31,513 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:00:00,837 [INFO] No signal cached, skipping this window
+2026-03-19 20:00:00,837 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:00:00,847 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:04:30,715 [INFO] Pre-computing signal for next window...
+2026-03-19 20:04:31,284 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:05:00,340 [INFO] No signal cached, skipping this window
+2026-03-19 20:05:00,340 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:05:00,350 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:09:30,464 [INFO] Pre-computing signal for next window...
+2026-03-19 20:09:31,115 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:10:00,466 [INFO] No signal cached, skipping this window
+2026-03-19 20:10:00,466 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:10:00,478 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:14:30,604 [INFO] Pre-computing signal for next window...
+2026-03-19 20:14:31,240 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:15:00,626 [INFO] No signal cached, skipping this window
+2026-03-19 20:15:00,627 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:15:00,637 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:19:30,684 [INFO] Pre-computing signal for next window...
+2026-03-19 20:19:31,715 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:20:01,008 [INFO] No signal cached, skipping this window
+2026-03-19 20:20:01,008 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 20:20:01,016 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:24:30,858 [INFO] Pre-computing signal for next window...
+2026-03-19 20:24:31,419 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:25:00,900 [INFO] No signal cached, skipping this window
+2026-03-19 20:25:00,901 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:25:00,913 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:29:30,140 [INFO] Pre-computing signal for next window...
+2026-03-19 20:29:30,766 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:30:01,132 [INFO] No signal cached, skipping this window
+2026-03-19 20:30:01,132 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-19 20:30:01,146 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:34:30,512 [INFO] Pre-computing signal for next window...
+2026-03-19 20:34:31,078 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:35:00,320 [INFO] No signal cached, skipping this window
+2026-03-19 20:35:00,320 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:35:00,331 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-19 20:39:30,507 [INFO] Pre-computing signal for next window...
+2026-03-19 20:39:31,079 [INFO] No signal — market is choppy or no pattern detected
+2026-03-19 20:40:00,450 [INFO] No signal cached, skipping this window
+2026-03-19 20:40:00,451 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-19 20:40:00,458 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:15:03,619 [INFO] === Starting front-tester ===
+2026-03-20 03:15:03,619 [INFO] Strategy: momentum_v4 | Coin: xrp | Timeframe: 5m
+2026-03-20 03:15:03,619 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:15:03,619 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:15:03,620 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-20 03:15:03,628 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:15:03,628 [INFO] Waiting 297s for next window. Will precompute signal in 267s...
+2026-03-20 03:15:03,639 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:19:30,001 [INFO] Pre-computing signal for next window...
+2026-03-20 03:19:33,029 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:20:00,384 [INFO] No signal cached, skipping this window
+2026-03-20 03:20:00,385 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:20:00,390 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:24:30,853 [INFO] Pre-computing signal for next window...
+2026-03-20 03:24:31,390 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:25:01,052 [INFO] No signal cached, skipping this window
+2026-03-20 03:25:01,052 [INFO] Waiting 299s for next window. Will precompute signal in 269s...
+2026-03-20 03:25:01,061 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:29:30,309 [INFO] Pre-computing signal for next window...
+2026-03-20 03:29:30,876 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:30:00,215 [INFO] No signal cached, skipping this window
+2026-03-20 03:30:00,215 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:30:00,229 [INFO] Stats | Balance: $117.97 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:34:30,328 [INFO] Pre-computing signal for next window...
+2026-03-20 03:34:30,935 [INFO] Cached signal: DOWN (confidence: 0.60) | Price: $1.4557
+2026-03-20 03:34:30,936 [INFO] Reasoning: RSI(21)=67 overbought | ADX=42 CHOP=45
+2026-03-20 03:35:00,834 [INFO] Market: XRP Up or Down - March 19, 11:35PM-11:40PM ET | UP: 0.465 DOWN: 0.535 | Elapsed: 0s
+2026-03-20 03:35:00,834 [INFO] Signal: DOWN (conf: 0.60) | Price: $1.4557 | Bet: $2.36 (2.0% of $117.97)
+2026-03-20 03:35:00,834 [INFO] Reasoning: RSI(21)=67 overbought | ADX=42 CHOP=45
+2026-03-20 03:35:00,838 [INFO] *** BET *** #67: DOWN $2.36 @ 0.535 on XRP Up or Down - March 19, 11:35PM-11:40PM ET
+2026-03-20 03:35:00,838 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:35:00,944 [INFO] Trade #67 (xrp-updown-5m-1773977700): not resolved yet
+2026-03-20 03:35:00,956 [INFO] Stats | Balance: $115.61 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:39:30,347 [INFO] Pre-computing signal for next window...
+2026-03-20 03:39:30,895 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:40:00,826 [INFO] No signal cached, skipping this window
+2026-03-20 03:40:00,827 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:40:00,923 [INFO] Trade #67 (xrp-updown-5m-1773977700): not resolved yet
+2026-03-20 03:40:00,934 [INFO] Stats | Balance: $115.61 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:41:10,800 [INFO] Shutting down gracefully...
+2026-03-20 03:41:11,489 [INFO] Shutdown complete
+2026-03-20 03:41:11,492 [INFO] Stats | Balance: $115.61 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+Account exists with $117.97
+Placed DOWN bet #67: $2.36 @ 0.535 on xrp (momentum_v4)
+2026-03-20 03:41:14,874 [INFO] === Starting front-tester ===
+2026-03-20 03:41:14,874 [INFO] Strategy: momentum_v4 | Coin: xrp | Timeframe: 5m
+2026-03-20 03:41:14,874 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:41:14,874 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:41:14,874 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-20 03:41:14,878 [INFO] Stats | Balance: $115.61 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:41:14,878 [INFO] Waiting 226s for next window. Will precompute signal in 196s...
+2026-03-20 03:41:14,977 [INFO] Trade #67 (xrp-updown-5m-1773977700): not resolved yet
+2026-03-20 03:41:14,987 [INFO] Stats | Balance: $115.61 | Trades: 66 | W/L: 39/27 | Win Rate: 59.1% | PnL: $+17.97
+2026-03-20 03:44:30,757 [INFO] Pre-computing signal for next window...
+2026-03-20 03:44:35,661 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:45:00,689 [INFO] No signal cached, skipping this window
+2026-03-20 03:45:00,689 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:45:01,019 [INFO] Trade #67: market resolved DOWN, we bet DOWN → WIN
+2026-03-20 03:45:01,029 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:46:42,984 [INFO] Shutting down gracefully...
+2026-03-20 03:46:43,397 [INFO] Shutdown complete
+2026-03-20 03:46:43,403 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+Account exists with $115.61
+Trade #67 → WIN | PnL: $+2.01 | Balance: $119.99
+2026-03-20 03:46:46,465 [INFO] === Starting front-tester ===
+2026-03-20 03:46:46,465 [INFO] Strategy: momentum_v4 | Coin: xrp | Timeframe: 5m
+2026-03-20 03:46:46,465 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:46:46,465 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:46:46,465 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-20 03:46:46,469 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:46:46,469 [INFO] Waiting 194s for next window. Will precompute signal in 164s...
+2026-03-20 03:46:46,473 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:49:30,943 [INFO] Pre-computing signal for next window...
+2026-03-20 03:49:34,240 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:50:00,189 [INFO] No signal cached, skipping this window
+2026-03-20 03:50:00,189 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:50:00,193 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99

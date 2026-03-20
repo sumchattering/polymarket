@@ -20,11 +20,13 @@ import numpy as np
 import pandas as pd
 
 DB_PATH = os.path.join(os.path.dirname(__file__), "candles.db")
-STRATEGIES_DIR = os.path.join(os.path.dirname(__file__), "strategies")
+STRATEGIES_DIR = os.path.join(os.path.dirname(__file__), "..", "strategies")
 COIN_FULL = {"doge": "dogecoin", "xrp": "xrp", "btc": "bitcoin", "eth": "ethereum", "sol": "solana", "bnb": "bnb"}
 
+TIMEFRAME_MS = {"5m": 300_000, "15m": 900_000, "4h": 14_400_000}
 
-# ── Indicators (vectorized) ─────────────────────────────────────────────
+
+# -- Indicators (vectorized) ------------------------------------------------
 
 def calc_fee(shares, price):
     return shares * price * 0.25 * (price * (1 - price)) ** 2
@@ -59,7 +61,7 @@ def calc_atr(df, period=14):
     return tr.rolling(period).mean()
 
 
-# ── Data ─────────────────────────────────────────────────────────────────
+# -- Data -------------------------------------------------------------------
 
 def load_candles(coin, days=None):
     conn = sqlite3.connect(DB_PATH)
@@ -74,83 +76,120 @@ def load_candles(coin, days=None):
     conn.close()
     return df
 
-def build_5m_windows(df_1m):
-    df_1m = df_1m.copy()
-    df_1m["window"] = (df_1m["timestamp"] // 300000) * 300000
-    w = df_1m.groupby("window").agg(
+def build_windows(df_1m, window_ms=300_000):
+    """Build market windows of specified size from 1m candles."""
+    df = df_1m.copy()
+    candles_per_window = window_ms // 60_000
+    df["window"] = (df["timestamp"] // window_ms) * window_ms
+    w = df.groupby("window").agg(
         open=("open","first"), high=("high","max"), low=("low","min"),
         close=("close","last"), volume=("volume","sum"), count=("open","count")).reset_index()
-    w = w[w["count"] == 5].copy()
+    w = w[w["count"] == candles_per_window].copy()
     w["went_up"] = w["close"] >= w["open"]
     return w
 
-def prepare_data(coin, days):
-    """Load candles, compute indicators, merge to 5m windows."""
-    df_1m = load_candles(coin, days)
-    if df_1m.empty:
-        return None
-    df_5m = build_5m_windows(df_1m)
-    df_1m = df_1m.copy()
+def aggregate_candles(df_1m, candle_mins=5):
+    """Aggregate 1m candles into larger candles (e.g. 5m)."""
+    df = df_1m.copy()
+    agg_ms = candle_mins * 60_000
+    df["agg_window"] = (df["timestamp"] // agg_ms) * agg_ms
+    agg = df.groupby("agg_window").agg(
+        open=("open","first"), high=("high","max"), low=("low","min"),
+        close=("close","last"), volume=("volume","sum"), count=("open","count")).reset_index()
+    agg = agg[agg["count"] == candle_mins].copy()
+    agg = agg.rename(columns={"agg_window": "timestamp"})
+    return agg
 
-    # Compute all indicators we might need
+def compute_indicators(df):
+    """Compute all indicators on a candle DataFrame."""
+    df = df.copy()
     for p in [7, 10, 14, 21, 28]:
-        df_1m[f"rsi_{p}"] = calc_rsi(df_1m["close"], p)
-    df_1m["adx_14"] = calc_adx(df_1m, 14)
-    df_1m["chop_14"] = calc_chop(df_1m, 14)
-    df_1m["atr_14"] = calc_atr(df_1m, 14)
-    df_1m["ema_20"] = df_1m["close"].ewm(span=20, adjust=False).mean()
-    df_1m["stretch_atr_20"] = (df_1m["close"] - df_1m["ema_20"]) / df_1m["atr_14"]
+        df[f"rsi_{p}"] = calc_rsi(df["close"], p)
+    df["adx_14"] = calc_adx(df, 14)
+    df["chop_14"] = calc_chop(df, 14)
+    df["atr_14"] = calc_atr(df, 14)
+    df["ema_20"] = df["close"].ewm(span=20, adjust=False).mean()
+    df["stretch_atr_20"] = (df["close"] - df["ema_20"]) / df["atr_14"]
 
-    # Consec5: 5 consecutive candles same direction
-    candle_up = (df_1m["close"] > df_1m["open"]).astype(int)
-    candle_down = (df_1m["close"] < df_1m["open"]).astype(int)
-    df_1m["consec5_up"] = candle_up.rolling(5).sum() == 5
-    df_1m["consec5_down"] = candle_down.rolling(5).sum() == 5
+    candle_up = (df["close"] > df["open"]).astype(int)
+    candle_down = (df["close"] < df["open"]).astype(int)
+    df["consec5_up"] = candle_up.rolling(5).sum() == 5
+    df["consec5_down"] = candle_down.rolling(5).sum() == 5
+    return df
 
-    # Merge: get last 1m candle before each 5m window
-    df_5m_s = df_5m.sort_values("window").copy()
-    df_5m_s["lookup_ts"] = df_5m_s["window"] - 60000
+def merge_indicators_to_windows(df_windows, df_ind, candle_ms=60_000):
+    """Merge indicator values (last candle before window) to market windows."""
+    df_ws = df_windows.sort_values("window").copy()
+    df_ws["lookup_ts"] = df_ws["window"] - candle_ms
 
     ind_cols = ["timestamp"] + [f"rsi_{p}" for p in [7,10,14,21,28]] + [
         "adx_14", "chop_14", "atr_14", "ema_20", "stretch_atr_20", "consec5_up", "consec5_down"
     ]
     m = pd.merge_asof(
-        df_5m_s[["window", "went_up", "lookup_ts"]],
-        df_1m.sort_values("timestamp")[ind_cols],
+        df_ws[["window", "went_up", "lookup_ts"]],
+        df_ind.sort_values("timestamp")[ind_cols],
         left_on="lookup_ts", right_on="timestamp", direction="backward")
     m["hour"] = pd.to_datetime(m["window"], unit="ms").dt.hour
     m["month"] = pd.to_datetime(m["window"], unit="ms").dt.strftime("%Y-%m")
     return m
 
+def prepare_data(coin, days, timeframe="5m", indicator_candle_mins=1):
+    """Load candles, compute indicators, merge to market windows."""
+    df_1m = load_candles(coin, days)
+    if df_1m.empty:
+        return None
 
-# ── Strategy configs ─────────────────────────────────────────────────────
-# Each strategy is defined by its signal + filter params.
-# We read from files but map to vectorized configs.
+    window_ms = TIMEFRAME_MS[timeframe]
+    df_windows = build_windows(df_1m, window_ms)
+
+    # Build indicator candles (1m or aggregated)
+    if indicator_candle_mins == 1:
+        df_ind = compute_indicators(df_1m)
+        candle_ms = 60_000
+    else:
+        df_agg = aggregate_candles(df_1m, indicator_candle_mins)
+        df_ind = compute_indicators(df_agg)
+        candle_ms = indicator_candle_mins * 60_000
+
+    return merge_indicators_to_windows(df_windows, df_ind, candle_ms)
+
+
+# -- Strategy configs -------------------------------------------------------
 
 STRATEGY_PARAMS = {
-    "momentum_v2": {"rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
-                     "consec5": True, "skip_hours": {},
-                     "desc": "Consec5+RSI(14) 30/70 + ADX/CHOP"},
-    "momentum_v3": {"rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
-                     "consec5": False, "skip_hours": {},
-                     "desc": "RSI(14) 30/70 + ADX/CHOP"},
-    "momentum_v4": {"rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
-                     "consec5": False, "skip_hours": {},
-                     "desc": "RSI(21) 35/65 + ADX/CHOP"},
-    "momentum_v5": {"rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
-                     "consec5": False,
-                     "skip_hours": {"dogecoin": {6,10,14}, "xrp": {3,5,8,9,10,14}},
-                     "desc": "RSI(21) 35/65 + ADX/CHOP + time filter"},
+    "momentum_v2": {
+        "rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
+        "consec5": True, "skip_hours": {}, "timeframe": "5m",
+        "desc": "Consec5+RSI(14) 30/70 + ADX/CHOP"},
+    "momentum_v3": {
+        "rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
+        "consec5": False, "skip_hours": {}, "timeframe": "5m",
+        "desc": "RSI(14) 30/70 + ADX/CHOP"},
+    "momentum_v4": {
+        "rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
+        "consec5": False, "skip_hours": {}, "timeframe": "5m",
+        "desc": "RSI(21) 35/65 + ADX/CHOP"},
+    "momentum_v5": {
+        "rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
+        "consec5": False, "timeframe": "5m",
+        "skip_hours": {"dogecoin": {6,10,14}, "xrp": {3,5,8,9,10,14}},
+        "desc": "RSI(21) 35/65 + ADX/CHOP + time filter"},
+    "momentum_v4_15m": {
+        "rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
+        "consec5": False, "skip_hours": {}, "timeframe": "15m",
+        "desc": "RSI(21) 35/65 + ADX/CHOP [15m]"},
+    "momentum_v4_candle5": {
+        "rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
+        "consec5": False, "skip_hours": {}, "timeframe": "15m", "indicator_candle_mins": 5,
+        "desc": "RSI(21) 35/65 + ADX/CHOP on 5m candles [15m]"},
 }
 
 
 def get_strategy_params(name):
-    """Get params for a known strategy, or None."""
     return STRATEGY_PARAMS.get(name)
 
 
 def discover_strategies():
-    """Find all strategy files."""
     strats = {}
     for path in sorted(glob.glob(os.path.join(STRATEGIES_DIR, "*.py"))):
         name = os.path.basename(path).replace(".py", "")
@@ -160,7 +199,7 @@ def discover_strategies():
     return strats
 
 
-# ── Vectorized evaluation ────────────────────────────────────────────────
+# -- Vectorized evaluation --------------------------------------------------
 
 def _resolve_params(params, coin_full):
     overrides = params.get("coin_overrides", {}).get(coin_full)
@@ -170,7 +209,6 @@ def _resolve_params(params, coin_full):
 
 
 def _build_single_masks(m, params, coin_full):
-    """Build a single pair of UP/DOWN masks from one strategy config."""
     params = _resolve_params(params, coin_full)
 
     filt = pd.Series(True, index=m.index)
@@ -208,7 +246,6 @@ def _build_single_masks(m, params, coin_full):
         stretch_down = m[stretch_col] >= min_stretch
 
     if params.get("consec5"):
-        # Consec5 has priority, RSI fills in when no consec signal
         consec_up = filt & m["consec5_up"]
         consec_down = filt & m["consec5_down"]
         rsi_up = filt & (m[rsi_col] < params["rsi_lo"]) & stretch_up & ~consec_up & ~consec_down
@@ -223,7 +260,6 @@ def _build_single_masks(m, params, coin_full):
 
 
 def _build_signal_masks(m, params, coin_full):
-    """Build UP/DOWN signal masks from strategy params. Returns (up_mask, down_mask)."""
     up_mask, down_mask = _build_single_masks(m, params, coin_full)
 
     for extra in params.get("extra_entries", []):
@@ -243,7 +279,6 @@ def _build_signal_masks(m, params, coin_full):
 
 
 def eval_fast(m, params, coin_full):
-    """Evaluate strategy on merged dataframe using vectorized ops. Returns stats dict."""
     up_mask, down_mask = _build_signal_masks(m, params, coin_full)
 
     total = int(up_mask.sum() + down_mask.sum())
@@ -255,7 +290,6 @@ def eval_fast(m, params, coin_full):
 
 
 def simulate_pnl(m, params, coin_full, initial_balance=100.0, bet_size=5.0, dynamic_sizing=False):
-    """Simulate with balance tracking."""
     up_mask, down_mask = _build_signal_masks(m, params, coin_full)
 
     signal = pd.Series(0, index=m.index)
@@ -307,7 +341,7 @@ def simulate_pnl(m, params, coin_full, initial_balance=100.0, bet_size=5.0, dyna
     }
 
 
-# ── Main ─────────────────────────────────────────────────────────────────
+# -- Main -------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser()
@@ -328,48 +362,69 @@ def main():
     else:
         strats = available
 
-    sizing = "2%→3%→4% ladder" if args.dynamic else f"flat ${args.bet}"
+    # Only include strategies that have vectorized params
+    strat_names = [n for n in strats if get_strategy_params(n)]
+    if not strat_names:
+        print("No strategies with backtest params found.")
+        return
+
+    sizing = "2%->3%->4% ladder" if args.dynamic else f"flat ${args.bet}"
     print(f"Backtesting | {args.days} days | ${args.balance} start | {sizing}")
-    print(f"Coins: {', '.join(args.coins)} | Strategies: {', '.join(strats.keys())}")
+    print(f"Coins: {', '.join(args.coins)} | Strategies: {', '.join(strat_names)}")
     print()
 
+    # Cache prepared data by (coin, timeframe, indicator_candle_mins)
+    data_cache = {}
+
     for coin in args.coins:
-        t0 = time.time()
-        m = prepare_data(coin, args.days)
-        if m is None:
-            print(f"  {coin}: no data"); continue
-        days_actual = (m["window"].max() - m["window"].min()) / 86400000
         coin_full = COIN_FULL.get(coin, coin)
         print(f"{'=' * 105}")
-        print(f"  {coin.upper()} — {len(m):,} windows, {days_actual:.0f} days (loaded in {time.time()-t0:.1f}s)")
+        print(f"  {coin.upper()}")
         print(f"{'=' * 105}")
-        print(f"  {'Strategy':<20} {'Trades':>6} {'Wins':>5} {'WR%':>6} {'Tr/Day':>7} {'PnL':>9} {'Final$':>8} {'Min$':>7} {'DD%':>5}")
-        print(f"  {'-' * 85}")
+        print(f"  {'Strategy':<25} {'TF':>3} {'Trades':>6} {'Wins':>5} {'WR%':>6} {'Tr/Day':>7} {'PnL':>9} {'Final$':>8} {'Min$':>7} {'DD%':>5}")
+        print(f"  {'-' * 95}")
 
-        for name in strats:
+        for name in strat_names:
             params = get_strategy_params(name)
-            if not params:
-                print(f"  {name:<20} — no vectorized params defined, skipping")
+            tf = params.get("timeframe", "5m")
+            ind_mins = params.get("indicator_candle_mins", 1)
+            cache_key = (coin, tf, ind_mins)
+
+            if cache_key not in data_cache:
+                t0 = time.time()
+                m = prepare_data(coin, args.days, timeframe=tf, indicator_candle_mins=ind_mins)
+                if m is not None:
+                    days_actual = (m["window"].max() - m["window"].min()) / 86400000
+                    data_cache[cache_key] = (m, days_actual)
+                else:
+                    data_cache[cache_key] = (None, 0)
+
+            m, days_actual = data_cache[cache_key]
+            if m is None:
+                print(f"  {name:<25} {tf:>3} — no data —")
                 continue
 
-            # WR from full eval (not affected by balance busting)
             e = eval_fast(m, params, coin_full)
-            # PnL from sequential simulation
             r = simulate_pnl(m, params, coin_full, args.balance, args.bet, args.dynamic)
             if e["trades"] == 0:
-                print(f"  {name:<20} — no trades —"); continue
+                print(f"  {name:<25} {tf:>3} — no trades —")
+                continue
 
             tpd = e["trades"] / max(days_actual, 1)
             star = " ***" if e["wr"] > 50.8 else ""
-            print(f"  {name:<20} {e['trades']:>6} {e['wins']:>5} {e['wr']:>5.1f}% "
+            print(f"  {name:<25} {tf:>3} {e['trades']:>6} {e['wins']:>5} {e['wr']:>5.1f}% "
                   f"{tpd:>6.1f} ${r['pnl']:>+8.0f} ${r['final']:>7.0f} "
                   f"${r['min_bal']:>6.0f} {r['max_dd_pct']:>4.0f}%{star}")
 
-        # Monthly breakdown for all strategies
+        # Monthly breakdown
         print()
-        for name in strats:
+        for name in strat_names:
             params = get_strategy_params(name)
-            if not params: continue
+            tf = params.get("timeframe", "5m")
+            ind_mins = params.get("indicator_candle_mins", 1)
+            cache_key = (coin, tf, ind_mins)
+            m, _ = data_cache.get(cache_key, (None, 0))
+            if m is None: continue
             print(f"  {name} monthly:")
             for month, grp in m.groupby("month"):
                 r = eval_fast(grp, params, coin_full)
