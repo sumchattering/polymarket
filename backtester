@@ -1,0 +1,13 @@
+#!/bin/bash
+# backtest — run backtests across all strategies
+#
+# Usage:
+#   ./backtest                                    # all strategies, 90d, doge+xrp
+#   ./backtest --strategy momentum_v4             # single strategy
+#   ./backtest --days 30 --coins doge xrp btc     # custom
+#   ./backtest --dynamic                          # 2/3/4% sizing ladder
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+VENV="$SCRIPT_DIR/backtesting/.venv/bin/python"
+
+exec "$VENV" "$SCRIPT_DIR/backtesting/backtest_filtered.py" "$@"

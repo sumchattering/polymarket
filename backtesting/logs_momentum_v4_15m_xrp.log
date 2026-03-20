@@ -1,0 +1,92 @@
+Account initialized with $100.00
+Account reset to $100.00
+Traceback (most recent call last):
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 348, in <module>
+    main()
+    ~~~~^^
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 298, in main
+    strategy_fn, _timeframe = load_strategy(args.strategy)
+                              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 68, in load_strategy
+    spec.loader.exec_module(mod)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/strategies/momentum_v4_15m.py", line 12, in <module>
+    from momentum_v4 import generate_signal  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'momentum_v4'
+Account exists with $100.00
+Account reset to $100.00
+Traceback (most recent call last):
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 348, in <module>
+    main()
+    ~~~~^^
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 298, in main
+    strategy_fn, _timeframe = load_strategy(args.strategy)
+                              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 68, in load_strategy
+    spec.loader.exec_module(mod)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/strategies/momentum_v4_15m.py", line 12, in <module>
+    from momentum_v4 import generate_signal  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'momentum_v4'
+Account exists with $100.00
+Account reset to $100.00
+Traceback (most recent call last):
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 348, in <module>
+    main()
+    ~~~~^^
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 298, in main
+    strategy_fn, _timeframe = load_strategy(args.strategy)
+                              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/run_live.py", line 68, in load_strategy
+    spec.loader.exec_module(mod)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/users/sumeruchatterjee/projects/polymarket/backtesting/strategies/momentum_v4_15m.py", line 12, in <module>
+    from momentum_v4 import generate_signal  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'momentum_v4'
+2026-03-20 03:41:59,164 [INFO] === Starting front-tester ===
+2026-03-20 03:41:59,164 [INFO] Strategy: momentum_v4_15m | Coin: xrp | Timeframe: 15m
+2026-03-20 03:41:59,165 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:41:59,165 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:41:59,165 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_15m_xrp.db
+2026-03-20 03:41:59,168 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-20 03:41:59,168 [INFO] Waiting 181s for next window. Will precompute signal in 151s...
+2026-03-20 03:41:59,172 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-20 03:42:00,750 [INFO] Shutting down gracefully...
+2026-03-20 03:42:01,173 [INFO] Shutdown complete
+2026-03-20 03:42:01,176 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+Account exists with $100.00
+Account reset to $100.00
+2026-03-20 03:42:04,013 [INFO] === Starting front-tester ===
+2026-03-20 03:42:04,013 [INFO] Strategy: momentum_v4_15m | Coin: xrp | Timeframe: 15m
+2026-03-20 03:42:04,013 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:42:04,013 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:42:04,013 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_15m_xrp.db
+2026-03-20 03:42:04,016 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-20 03:42:04,016 [INFO] Waiting 176s for next window. Will precompute signal in 146s...
+2026-03-20 03:42:04,020 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-20 03:44:30,926 [INFO] Pre-computing signal for next window...
+2026-03-20 03:44:37,298 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:45:00,148 [INFO] No signal cached, skipping this window
+2026-03-20 03:45:00,148 [INFO] Waiting 900s for next window. Will precompute signal in 870s...
+2026-03-20 03:45:00,152 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-20 03:46:34,659 [INFO] Shutting down gracefully...
+2026-03-20 03:46:34,903 [INFO] Shutdown complete
+2026-03-20 03:46:34,907 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+Account exists with $100.00
+2026-03-20 03:46:37,981 [INFO] === Starting front-tester ===
+2026-03-20 03:46:37,981 [INFO] Strategy: momentum_v4_15m | Coin: xrp | Timeframe: 15m
+2026-03-20 03:46:37,981 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:46:37,981 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:46:37,981 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_15m_xrp.db
+2026-03-20 03:46:37,985 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
+2026-03-20 03:46:37,985 [INFO] Waiting 803s for next window. Will precompute signal in 773s...
+2026-03-20 03:46:37,989 [INFO] Stats | Balance: $100.00 | Trades: 0 | W/L: 0/0 | Win Rate: 0.0% | PnL: $+0.00
