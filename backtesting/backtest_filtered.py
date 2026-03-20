@@ -341,6 +341,62 @@ def simulate_pnl(m, params, coin_full, initial_balance=100.0, bet_size=5.0, dyna
     }
 
 
+# -- Expected WR cache ------------------------------------------------------
+
+EXPECTED_WR_PATH = os.path.join(os.path.dirname(__file__), "expected_wr.json")
+
+def cache_expected_wrs(days=90):
+    """Compute expected WRs and trades/day for all strategy+coin combos and save to JSON."""
+    import json
+    all_coins = list(COIN_FULL.keys())
+    strat_names = list(STRATEGY_PARAMS.keys())
+    data_cache = {}
+    results = {}
+
+    for coin in all_coins:
+        coin_full = COIN_FULL[coin]
+        for name in strat_names:
+            params = STRATEGY_PARAMS[name]
+            tf = params.get("timeframe", "5m")
+            ind_mins = params.get("indicator_candle_mins", 1)
+            cache_key = (coin, tf, ind_mins)
+
+            if cache_key not in data_cache:
+                m = prepare_data(coin, days, timeframe=tf, indicator_candle_mins=ind_mins)
+                if m is not None:
+                    days_span = (m["window"].max() - m["window"].min()) / 86400000
+                    data_cache[cache_key] = (m, max(days_span, 1))
+                else:
+                    data_cache[cache_key] = (None, 0)
+
+            m, days_span = data_cache[cache_key]
+            if m is None:
+                continue
+
+            e = eval_fast(m, params, coin_full)
+            if e["trades"] > 0:
+                key = f"{name}_{coin_full}"
+                results[key] = {
+                    "wr": round(e["wr"], 1),
+                    "trades_per_day": round(e["trades"] / days_span, 1),
+                }
+
+    with open(EXPECTED_WR_PATH, "w") as f:
+        json.dump(results, f, indent=2)
+    print(f"Cached expected stats for {len(results)} strategy+coin combos -> {EXPECTED_WR_PATH}")
+    return results
+
+
+def load_expected_wrs():
+    """Load cached expected WRs. Returns dict or empty dict."""
+    import json
+    try:
+        with open(EXPECTED_WR_PATH) as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
 # -- Main -------------------------------------------------------------------
 
 def main():
@@ -351,7 +407,12 @@ def main():
     parser.add_argument("--balance", type=float, default=100.0)
     parser.add_argument("--bet", type=float, default=5.0)
     parser.add_argument("--dynamic", action="store_true", help="2%%/3%%/4%% sizing ladder")
+    parser.add_argument("--cache-expected", action="store_true", help="Pre-compute expected WRs for fronttester")
     args = parser.parse_args()
+
+    if args.cache_expected:
+        cache_expected_wrs(args.days)
+        return
 
     available = discover_strategies()
     if args.strategy:
@@ -431,6 +492,9 @@ def main():
                 if r["trades"] > 0:
                     print(f"    {month}: {r['trades']:>5} trades, {r['wr']:.1f}% WR")
         print()
+
+    # Auto-save expected WRs for all coins (not just displayed ones)
+    cache_expected_wrs(args.days)
 
 
 if __name__ == "__main__":

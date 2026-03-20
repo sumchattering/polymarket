@@ -2295,3 +2295,42 @@ Trade #58 → WIN | PnL: $+1.67 | Balance: $90.38
 2026-03-20 03:50:00,632 [INFO] No signal cached, skipping this window
 2026-03-20 03:50:00,632 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-20 03:50:00,638 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 03:54:30,190 [INFO] Pre-computing signal for next window...
+2026-03-20 03:54:30,743 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:55:00,906 [INFO] No signal cached, skipping this window
+2026-03-20 03:55:00,907 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:55:00,915 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 03:59:26,986 [INFO] Shutting down gracefully...
+2026-03-20 03:59:27,402 [INFO] Shutdown complete
+2026-03-20 03:59:27,405 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+Account exists with $90.38
+2026-03-20 03:59:30,608 [INFO] === Starting front-tester ===
+2026-03-20 03:59:30,608 [INFO] Strategy: momentum_v5 | Coin: dogecoin | Timeframe: 5m
+2026-03-20 03:59:30,608 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:59:30,608 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:59:30,608 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v5_dogecoin.db
+2026-03-20 03:59:30,612 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 03:59:30,612 [INFO] Waiting 30s for next window. Will precompute signal in 0s...
+2026-03-20 03:59:30,617 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 03:59:30,617 [INFO] Pre-computing signal for next window...
+2026-03-20 03:59:35,447 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 04:00:00,936 [INFO] No signal cached, skipping this window
+2026-03-20 04:00:00,937 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 04:00:00,942 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 04:00:47,650 [INFO] Shutting down gracefully...
+2026-03-20 04:00:48,075 [INFO] Shutdown complete
+2026-03-20 04:00:48,079 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+Account exists with $90.38
+2026-03-20 04:00:51,094 [INFO] === Starting front-tester ===
+2026-03-20 04:00:51,094 [INFO] Strategy: momentum_v5 | Coin: dogecoin | Timeframe: 5m
+2026-03-20 04:00:51,094 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 04:00:51,094 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 04:00:51,094 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v5_dogecoin.db
+2026-03-20 04:00:51,098 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 04:00:51,098 [INFO] Waiting 249s for next window. Will precompute signal in 219s...
+2026-03-20 04:00:51,103 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62
+2026-03-20 04:04:30,669 [INFO] Pre-computing signal for next window...
+2026-03-20 04:04:44,776 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 04:05:00,624 [INFO] No signal cached, skipping this window
+2026-03-20 04:05:00,624 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 04:05:00,629 [INFO] Stats | Balance: $90.38 | Trades: 58 | W/L: 27/31 | Win Rate: 46.6% | PnL: $-9.62

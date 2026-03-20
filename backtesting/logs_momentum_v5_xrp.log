@@ -2247,3 +2247,25 @@ Account exists with $109.02
 2026-03-20 03:50:00,497 [INFO] No signal cached, skipping this window
 2026-03-20 03:50:00,498 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-20 03:50:00,502 [INFO] Stats | Balance: $109.02 | Trades: 53 | W/L: 30/23 | Win Rate: 56.6% | PnL: $+9.02
+2026-03-20 03:54:30,192 [INFO] Pre-computing signal for next window...
+2026-03-20 03:54:30,735 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:55:00,907 [INFO] No signal cached, skipping this window
+2026-03-20 03:55:00,907 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:55:00,916 [INFO] Stats | Balance: $109.02 | Trades: 53 | W/L: 30/23 | Win Rate: 56.6% | PnL: $+9.02
+2026-03-20 03:59:28,974 [INFO] Shutting down gracefully...
+2026-03-20 03:59:29,402 [INFO] Shutdown complete
+2026-03-20 03:59:29,407 [INFO] Stats | Balance: $109.02 | Trades: 53 | W/L: 30/23 | Win Rate: 56.6% | PnL: $+9.02
+Account exists with $109.02
+2026-03-20 04:02:37,834 [INFO] === Starting front-tester ===
+2026-03-20 04:02:37,835 [INFO] Strategy: momentum_v5 | Coin: xrp | Timeframe: 5m
+2026-03-20 04:02:37,835 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 04:02:37,835 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 04:02:37,835 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v5_xrp.db
+2026-03-20 04:02:37,839 [INFO] Stats | Balance: $109.02 | Trades: 53 | W/L: 30/23 | Win Rate: 56.6% | PnL: $+9.02
+2026-03-20 04:02:37,839 [INFO] Waiting 143s for next window. Will precompute signal in 113s...
+2026-03-20 04:02:37,843 [INFO] Stats | Balance: $109.02 | Trades: 53 | W/L: 30/23 | Win Rate: 56.6% | PnL: $+9.02
+2026-03-20 04:04:30,669 [INFO] Pre-computing signal for next window...
+2026-03-20 04:04:34,666 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 04:05:00,508 [INFO] No signal cached, skipping this window
+2026-03-20 04:05:00,509 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 04:05:00,515 [INFO] Stats | Balance: $109.02 | Trades: 53 | W/L: 30/23 | Win Rate: 56.6% | PnL: $+9.02

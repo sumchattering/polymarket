@@ -18,6 +18,7 @@ BACKTEST_DIR="$SCRIPT_DIR/backtesting"
 VENV="$BACKTEST_DIR/.venv/bin/python"
 PLIST_DIR="$HOME/Library/LaunchAgents"
 PLIST_PREFIX="com.polymarket.fronttester"
+MAX_RUNTIME_DAYS=8
 
 strategy_plist() { echo "$PLIST_DIR/${PLIST_PREFIX}.${1}.plist"; }
 strategy_db()    { echo "$BACKTEST_DIR/db_${1}.db"; }
@@ -245,7 +246,7 @@ cmd_reload() {
 EOF
 
     launchctl unload "$plist" 2>/dev/null
-    sleep 1
+    sleep 2
     launchctl load "$plist"
     echo "Reloaded '$name' (DB and logs preserved)"
 }
@@ -295,7 +296,17 @@ print(f'  Open Bets:   {stats[\"open_positions\"]}')
         fi
     else
         echo "=== Front-tester Status ==="
+        echo "  Each strategy runs for a maximum of $MAX_RUNTIME_DAYS days."
         echo ""
+
+        local expected_file="$BACKTEST_DIR/expected_wr.json"
+        local has_expected=false
+        [ -f "$expected_file" ] && has_expected=true
+
+        printf "  %-34s %10s  %9s  %7s  %9s  %9s  %10s  %7s\n" \
+            "Strategy" "Status" "Balance" "W/L" "WR (exp)" "PnL" "Tr/d (exp)" "Uptime"
+        printf "  %s\n" "$(printf '%0.s-' {1..107})"
+
         local found=false
         # Find all service DBs (db_*.db files)
         for dbfile in "$BACKTEST_DIR"/db_*.db; do
@@ -322,7 +333,7 @@ conn.close()
 
             found=true
             "$VENV" -c "
-import sys; sys.path.insert(0, '$BACKTEST_DIR')
+import sys, json; sys.path.insert(0, '$BACKTEST_DIR')
 import db
 from datetime import datetime, timezone
 conn = db.get_db('$dbfile')
@@ -332,8 +343,12 @@ except Exception:
     acct = conn.execute('SELECT created_at FROM account WHERE id=1').fetchone()
 conn.close()
 stats = db.get_stats(db_path='$dbfile')
-wr = f\"{stats['win_rate']:.0f}%\" if stats['total_trades'] > 0 else '-'
+has_trades = stats['total_trades'] > 0
+wr = f\"{stats['win_rate']:.0f}%\" if has_trades else 'n/a'
+
+# Compute uptime and trades/day
 uptime = ''
+tpd = 'n/a'
 if acct and acct['created_at']:
     hb = acct['last_heartbeat'] if 'last_heartbeat' in acct.keys() else None
     if hb:
@@ -343,13 +358,42 @@ if acct and acct['created_at']:
         else:
             end = datetime.now(timezone.utc)
         delta = end - started
-        days = delta.days
-        hours = delta.seconds // 3600
-        if days > 0:
-            uptime = f'  ({days}d {hours}h)'
+        d = delta.days
+        h = delta.seconds // 3600
+        if d > 0:
+            uptime = f'{d}d {h}h'
         else:
-            uptime = f'  ({hours}h)'
-print(f'  {\"$name\":<36s} [{\"$running\":>8s}]  \${stats[\"balance\"]:>8.2f}  W/L: {stats[\"wins\"]:>3}/{stats[\"losses\"]:<3}  WR: {wr:>4}  PnL: \${stats[\"total_pnl\"]:+.2f}{uptime}')
+            uptime = f'{h}h'
+        if has_trades:
+            conn2 = db.get_db('$dbfile')
+            first = conn2.execute('SELECT placed_at FROM trades ORDER BY placed_at ASC LIMIT 1').fetchone()
+            last = conn2.execute('SELECT placed_at FROM trades ORDER BY placed_at DESC LIMIT 1').fetchone()
+            conn2.close()
+            if first and last:
+                t0 = datetime.fromisoformat(first['placed_at'])
+                t1 = datetime.fromisoformat(last['placed_at'])
+                span = max((t1 - t0).total_seconds() / 86400, 0.01)
+                tpd = f\"{stats['total_trades'] / span:.0f}\"
+
+# Load expected stats
+exp_wr = 'n/a'
+exp_tpd = 'n/a'
+if '$has_expected' == 'true':
+    try:
+        with open('$expected_file') as f:
+            expected = json.load(f)
+        e = expected.get('$name', {})
+        if isinstance(e, dict):
+            if e.get('wr'): exp_wr = f\"{e['wr']:.0f}%\"
+            if e.get('trades_per_day'): exp_tpd = f\"{e['trades_per_day']:.0f}\"
+    except Exception:
+        pass
+
+wl = f\"{stats['wins']}/{stats['losses']}\" if has_trades else 'n/a'
+bal = f\"\${stats['balance']:.2f}\"
+pnl_val = stats['total_pnl']
+pnl = f'+\${pnl_val:.2f}' if pnl_val >= 0 else f'-\${abs(pnl_val):.2f}'
+print(f'  {\"$name\":<34s} [{\"$running\":>8s}]  {bal:>9s}  {wl:>7s}  {wr:>4s} ({exp_wr:>3s})  {pnl:>9s}  {tpd:>3s} ({exp_tpd:>3s})  {uptime:>7s}')
 " 2>/dev/null
         done
         if [ "$found" = false ]; then

@@ -24,7 +24,7 @@ import price
 import market
 
 MAX_ENTRY_DELAY = 45
-MAX_RUNTIME_SECONDS = 7 * 24 * 3600  # 7 days
+MAX_RUNTIME_SECONDS = 8 * 24 * 3600  # 8 days
 
 TIMEFRAME_SECONDS = {"5m": 300, "15m": 900, "4h": 14400}
 

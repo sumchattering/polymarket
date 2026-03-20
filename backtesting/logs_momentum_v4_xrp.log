@@ -2500,3 +2500,42 @@ Trade #67 → WIN | PnL: $+2.01 | Balance: $119.99
 2026-03-20 03:50:00,189 [INFO] No signal cached, skipping this window
 2026-03-20 03:50:00,189 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
 2026-03-20 03:50:00,193 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:54:30,190 [INFO] Pre-computing signal for next window...
+2026-03-20 03:54:30,743 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 03:55:00,907 [INFO] No signal cached, skipping this window
+2026-03-20 03:55:00,907 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 03:55:00,916 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:59:24,924 [INFO] Shutting down gracefully...
+2026-03-20 03:59:25,404 [INFO] Shutdown complete
+2026-03-20 03:59:25,407 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+Account exists with $119.99
+2026-03-20 03:59:28,438 [INFO] === Starting front-tester ===
+2026-03-20 03:59:28,438 [INFO] Strategy: momentum_v4 | Coin: xrp | Timeframe: 5m
+2026-03-20 03:59:28,438 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 03:59:28,439 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 03:59:28,439 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-20 03:59:28,442 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:59:28,442 [INFO] Waiting 32s for next window. Will precompute signal in 2s...
+2026-03-20 03:59:28,447 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 03:59:30,550 [INFO] Pre-computing signal for next window...
+2026-03-20 03:59:35,015 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 04:00:00,802 [INFO] No signal cached, skipping this window
+2026-03-20 04:00:00,803 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 04:00:00,816 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 04:00:45,690 [INFO] Shutting down gracefully...
+2026-03-20 04:00:46,075 [INFO] Shutdown complete
+2026-03-20 04:00:46,078 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+Account exists with $119.99
+2026-03-20 04:00:49,087 [INFO] === Starting front-tester ===
+2026-03-20 04:00:49,087 [INFO] Strategy: momentum_v4 | Coin: xrp | Timeframe: 5m
+2026-03-20 04:00:49,087 [INFO] Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance
+2026-03-20 04:00:49,087 [INFO] Fee rate: 1.56% | Min confidence: 0.55
+2026-03-20 04:00:49,087 [INFO] DB: /users/sumeruchatterjee/projects/polymarket/backtesting/db_momentum_v4_xrp.db
+2026-03-20 04:00:49,091 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 04:00:49,091 [INFO] Waiting 251s for next window. Will precompute signal in 221s...
+2026-03-20 04:00:49,096 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
+2026-03-20 04:04:30,669 [INFO] Pre-computing signal for next window...
+2026-03-20 04:04:34,664 [INFO] No signal — market is choppy or no pattern detected
+2026-03-20 04:05:00,509 [INFO] No signal cached, skipping this window
+2026-03-20 04:05:00,509 [INFO] Waiting 300s for next window. Will precompute signal in 270s...
+2026-03-20 04:05:00,515 [INFO] Stats | Balance: $119.99 | Trades: 67 | W/L: 40/27 | Win Rate: 59.7% | PnL: $+19.99
