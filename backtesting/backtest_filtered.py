@@ -174,6 +174,11 @@ STRATEGY_PARAMS = {
         "consec5": False, "timeframe": "5m",
         "skip_hours": {"dogecoin": {6,10,14}, "xrp": {3,5,8,9,10,14}},
         "desc": "RSI(21) 35/65 + ADX/CHOP + time filter"},
+    "momentum_v6": {
+        "rsi_col": "rsi_14", "rsi_lo": 30, "rsi_hi": 70, "adx": 25, "chop": 50,
+        "consec5": False, "timeframe": "5m",
+        "skip_hours": {"dogecoin": {2,12,15,18}, "xrp": {3,5,8,9,10,14}},
+        "desc": "RSI(14) 30/70 + ADX/CHOP + live-calibrated hour filter"},
     "momentum_v4_15m": {
         "rsi_col": "rsi_21", "rsi_lo": 35, "rsi_hi": 65, "adx": 25, "chop": 50,
         "consec5": False, "skip_hours": {}, "timeframe": "15m",

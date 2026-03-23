@@ -31,6 +31,7 @@ TIMEFRAME_SECONDS = {"5m": 300, "15m": 900, "4h": 14400}
 running = True
 _db_path = None
 _timeframe = "5m"
+_ohlcv_limit = 120
 
 
 def signal_handler(sig, frame):
@@ -67,7 +68,8 @@ def load_strategy(name):
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     timeframe = getattr(mod, "TIMEFRAME", "5m")
-    return mod.generate_signal, timeframe
+    ohlcv_limit = getattr(mod, "OHLCV_LIMIT", 120)
+    return mod.generate_signal, timeframe, ohlcv_limit
 
 
 def get_bet_size(coin):
@@ -148,7 +150,7 @@ def precompute_signal(strategy_fn, coin="dogecoin"):
     try:
         symbol = price.symbol_for_coin(coin)
         current_price = price.get_current_price(symbol)
-        ohlcv = price.get_ohlcv(symbol, "1m", limit=120)
+        ohlcv = price.get_ohlcv(symbol, "1m", limit=_ohlcv_limit)
 
         result = strategy_fn(coin, _timeframe, current_price, ohlcv)
         if result is None:
@@ -277,7 +279,7 @@ def wait_for_next_window_with_precompute(strategy_fn, strategy_name, coin="dogec
 
 
 def main():
-    global _db_path
+    global _db_path, _ohlcv_limit
 
     parser = argparse.ArgumentParser(description="Live front-testing runner")
     parser.add_argument("--strategy", default="momentum_v2")
@@ -295,10 +297,11 @@ def main():
     db.init_db(args.balance, _db_path)
     if args.reset:
         db.reset_account(args.balance, _db_path)
-    strategy_fn, _timeframe = load_strategy(args.strategy)
+    strategy_fn, _timeframe, _ohlcv_limit = load_strategy(args.strategy)
 
     log.info(f"=== Starting front-tester ===")
     log.info(f"Strategy: {args.strategy} | Coin: {args.coin} | Timeframe: {_timeframe}")
+    log.info(f"Signal history: {_ohlcv_limit} x 1m candles")
     log.info(f"Sizing: 2% (<2x) → 3% (<4x) → 4% (4x+) of starting balance")
     log.info(f"Fee rate: {config.FEE_RATE*100:.2f}% | Min confidence: {config.MIN_CONFIDENCE}")
     log.info(f"DB: {_db_path or 'default'}")
